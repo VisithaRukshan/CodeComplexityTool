@@ -7,6 +7,8 @@ package Interface;
 
 import java.awt.CardLayout;
 import java.io.File;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -26,6 +28,12 @@ public class Index extends javax.swing.JFrame {
         initComponents();
         
         cardLayout = (CardLayout)(card.getLayout());
+        
+        super.setLocationRelativeTo(null);
+        
+        String[] a = {"1", "2", "3", "4", "5"};
+        JComboBox c = new JComboBox(a);
+        jTable8.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
     }
 
     /**
@@ -53,6 +61,7 @@ public class Index extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        backbtnfile = new javax.swing.JButton();
         functions = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -63,6 +72,7 @@ public class Index extends javax.swing.JFrame {
         couplingbtn = new javax.swing.JButton();
         csbtn = new javax.swing.JButton();
         overallbtn = new javax.swing.JButton();
+        backbtnfunction = new javax.swing.JButton();
         multiFileChooser = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -72,6 +82,7 @@ public class Index extends javax.swing.JFrame {
         uploadbtn1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         choosetxtarea = new javax.swing.JTextArea();
+        backbtnmulti = new javax.swing.JButton();
         CouplingFinal = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -114,6 +125,29 @@ public class Index extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
+        viewcs = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        viewcombobox1 = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton8 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
+        jButton9 = new javax.swing.JButton();
+        backbtnviewcs = new javax.swing.JButton();
+        viewoverall = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        viewcombobox2 = new javax.swing.JComboBox<>();
+        jLabel34 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton10 = new javax.swing.JButton();
+        backbtnoverall = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -137,9 +171,11 @@ public class Index extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         MultipleFile.setBackground(new java.awt.Color(204, 204, 204));
-        MultipleFile.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        MultipleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
+        MultipleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/multiple.png"))); // NOI18N
         MultipleFile.setText("Multiple File");
-        MultipleFile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        MultipleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        MultipleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MultipleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MultipleFileActionPerformed(evt);
@@ -147,9 +183,11 @@ public class Index extends javax.swing.JFrame {
         });
 
         singleFile.setBackground(new java.awt.Color(204, 204, 204));
-        singleFile.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        singleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
+        singleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/single.png"))); // NOI18N
         singleFile.setText("Single File");
-        singleFile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        singleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        singleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         singleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singleFileActionPerformed(evt);
@@ -167,30 +205,24 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(248, 248, 248))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
-                        .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(362, 362, 362))))
-            .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
-                    .addContainerGap(398, Short.MAX_VALUE)
-                    .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(363, 363, 363)))
+                        .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(427, 427, 427))))
         );
         selectionLayout.setVerticalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jLabel2)
-                .addGap(169, 169, 169)
+                .addGap(39, 39, 39)
+                .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
-            .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(selectionLayout.createSequentialGroup()
-                    .addGap(179, 179, 179)
-                    .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
-        card.add(selection, "card2");
+        card.add(selection, "selection");
 
         choosetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +269,13 @@ public class Index extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(51, 51, 255));
         jLabel7.setText("Desktop Application -");
 
+        backbtnfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnfileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout filechooseLayout = new javax.swing.GroupLayout(filechoose);
         filechoose.setLayout(filechooseLayout);
         filechooseLayout.setHorizontalGroup(
@@ -265,11 +304,15 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
                         .addComponent(uploadbtn)
                         .addGap(325, 325, 325))))
+            .addGroup(filechooseLayout.createSequentialGroup()
+                .addComponent(backbtnfile)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         filechooseLayout.setVerticalGroup(
             filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(filechooseLayout.createSequentialGroup()
-                .addGap(183, 183, 183)
+                .addComponent(backbtnfile)
+                .addGap(160, 160, 160)
                 .addGroup(filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(filechooseLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -286,7 +329,7 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(uploadbtn)))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
         card.add(filechoose, "filechoose");
@@ -312,6 +355,11 @@ public class Index extends javax.swing.JFrame {
         sizebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/size.png"))); // NOI18N
         sizebtn.setText("Size, Variable, Method");
         sizebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sizebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sizebtnActionPerformed(evt);
+            }
+        });
 
         inheritancebtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         inheritancebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inheritance.png"))); // NOI18N
@@ -351,13 +399,25 @@ public class Index extends javax.swing.JFrame {
         overallbtn.setText("Overall");
         overallbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         overallbtn.setPreferredSize(new java.awt.Dimension(265, 73));
+        overallbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                overallbtnActionPerformed(evt);
+            }
+        });
+
+        backbtnfunction.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnfunction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnfunctionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout functionsLayout = new javax.swing.GroupLayout(functions);
         functions.setLayout(functionsLayout);
         functionsLayout.setHorizontalGroup(
             functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(functionsLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(42, 42, 42)
                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(functionsLayout.createSequentialGroup()
@@ -369,31 +429,33 @@ public class Index extends javax.swing.JFrame {
                                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel11))))))
+                .addGap(80, 80, 80)
                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(functionsLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(functionsLayout.createSequentialGroup()
-                                .addComponent(sizebtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                                .addComponent(inheritancebtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(functionsLayout.createSequentialGroup()
-                                .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(116, 116, 116))
+                    .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(functionsLayout.createSequentialGroup()
+                            .addComponent(sizebtn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                            .addComponent(inheritancebtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(functionsLayout.createSequentialGroup()
+                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(overallbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(315, 315, 315))))
+                        .addGap(199, 199, 199)))
+                .addGap(45, 45, 45))
+            .addGroup(functionsLayout.createSequentialGroup()
+                .addComponent(backbtnfunction)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         functionsLayout.setVerticalGroup(
             functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(functionsLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionsLayout.createSequentialGroup()
+                .addComponent(backbtnfunction)
                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(functionsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(sizebtn, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(inheritancebtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -402,16 +464,18 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(240, 240, 240))
                     .addGroup(functionsLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
                         .addComponent(jLabel9)
-                        .addGap(55, 55, 55)
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel12)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         card.add(functions, "functions");
@@ -460,6 +524,13 @@ public class Index extends javax.swing.JFrame {
         choosetxtarea.setPreferredSize(new java.awt.Dimension(280, 94));
         jScrollPane1.setViewportView(choosetxtarea);
 
+        backbtnmulti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnmulti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnmultiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout multiFileChooserLayout = new javax.swing.GroupLayout(multiFileChooser);
         multiFileChooser.setLayout(multiFileChooserLayout);
         multiFileChooserLayout.setHorizontalGroup(
@@ -486,11 +557,15 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(uploadbtn1)
                 .addGap(309, 309, 309))
+            .addGroup(multiFileChooserLayout.createSequentialGroup()
+                .addComponent(backbtnmulti)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         multiFileChooserLayout.setVerticalGroup(
             multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(multiFileChooserLayout.createSequentialGroup()
-                .addGap(173, 173, 173)
+                .addComponent(backbtnmulti)
+                .addGap(150, 150, 150)
                 .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(multiFileChooserLayout.createSequentialGroup()
@@ -504,7 +579,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(uploadbtn1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         card.add(multiFileChooser, "multiFileChooser");
@@ -1059,6 +1134,243 @@ public class Index extends javax.swing.JFrame {
 
         card.add(VariablesFinal, "card12");
 
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 0, 28)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Code Complexity due to Control Structure");
+
+        jLabel30.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText(" Java / C++ Files :");
+
+        viewcombobox1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        viewcombobox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jLabel31.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("No of  Lines :");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane9.setViewportView(jTextArea1);
+
+        jButton8.setBackground(new java.awt.Color(0, 0, 255));
+        jButton8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Calculate");
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jTable8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable8.setFont(new java.awt.Font("Times New Roman", 0, 14));
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"A conditional c.s - ‘if’ or ‘else-if’ condition", null},
+                {"An iterative c.s - ‘for’, ‘while’, or ‘do-while’ loop", null},
+                {"The ‘switch’ statement in a ‘switch-case’ c.s", null},
+                {"Each ‘case’ statement in a ‘switch-case’ c.s", null}
+            },
+            new String [] {
+                "Control Structure Type", "Weight"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable8.setAlignmentX(1);
+        jTable8.setAlignmentY(1);
+        jTable8.setRowHeight(27);
+        jScrollPane10.setViewportView(jTable8);
+
+        jButton9.setBackground(new java.awt.Color(0, 204, 0));
+        jButton9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Save");
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        backbtnviewcs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnviewcs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backbtnviewcs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnviewcsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewcsLayout = new javax.swing.GroupLayout(viewcs);
+        viewcs.setLayout(viewcsLayout);
+        viewcsLayout.setHorizontalGroup(
+            viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewcsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(242, 242, 242))
+            .addGroup(viewcsLayout.createSequentialGroup()
+                .addGroup(viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewcsLayout.createSequentialGroup()
+                        .addComponent(backbtnviewcs)
+                        .addGap(234, 234, 234)
+                        .addGroup(viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(viewcsLayout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(viewcombobox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel29)))
+                    .addGroup(viewcsLayout.createSequentialGroup()
+                        .addGap(488, 488, 488)
+                        .addComponent(jButton8))
+                    .addGroup(viewcsLayout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(viewcsLayout.createSequentialGroup()
+                        .addGap(503, 503, 503)
+                        .addComponent(jButton9)))
+                .addGap(308, 308, 308))
+        );
+        viewcsLayout.setVerticalGroup(
+            viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewcsLayout.createSequentialGroup()
+                .addGroup(viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewcsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel29))
+                    .addComponent(backbtnviewcs))
+                .addGap(18, 18, 18)
+                .addGroup(viewcsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(viewcombobox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton9)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+
+        card.add(viewcs, "viewcs");
+
+        jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 28)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Overall Code Complexity");
+
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText(" Java / C++ Files :");
+
+        viewcombobox2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        viewcombobox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jLabel34.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("No of  Lines :");
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane11.setViewportView(jTextArea2);
+
+        jButton10.setBackground(new java.awt.Color(0, 0, 255));
+        jButton10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("Calculate");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        backbtnoverall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnoverall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnoverallActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewoverallLayout = new javax.swing.GroupLayout(viewoverall);
+        viewoverall.setLayout(viewoverallLayout);
+        viewoverallLayout.setHorizontalGroup(
+            viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewoverallLayout.createSequentialGroup()
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addGap(500, 500, 500)
+                        .addComponent(jButton10))
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addComponent(backbtnoverall)
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel32)))
+                .addContainerGap(248, Short.MAX_VALUE))
+        );
+        viewoverallLayout.setVerticalGroup(
+            viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewoverallLayout.createSequentialGroup()
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backbtnoverall)
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel32)))
+                .addGap(32, 32, 32)
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jButton10)
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+
+        card.add(viewoverall, "viewoverall");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1119,11 +1431,33 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_uploadbtnActionPerformed
 
     private void inheritancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inheritancebtnActionPerformed
-        // TODO add your handling code here:
+        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
+        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
+        + "Ccs   =  Complexity of a program statement with a control structure <br>"
+        + "Wtcs   =  Weight due to control structure type <br>"
+        + "NC =  Number of conditions in the control structure <br>"
+        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        
+        JOptionPane jo = new JOptionPane();
+        jo.setMessage(data);
+        jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
+        dialog.setVisible(true);*/
     }//GEN-LAST:event_inheritancebtnActionPerformed
 
     private void couplingbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couplingbtnActionPerformed
-        // TODO add your handling code here:
+        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
+        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
+        + "Ccs   =  Complexity of a program statement with a control structure <br>"
+        + "Wtcs   =  Weight due to control structure type <br>"
+        + "NC =  Number of conditions in the control structure <br>"
+        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        
+        JOptionPane jo = new JOptionPane();
+        jo.setMessage(data);
+        jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
+        dialog.setVisible(true);*/
     }//GEN-LAST:event_couplingbtnActionPerformed
 
     private void csbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csbtnActionPerformed
@@ -1132,12 +1466,15 @@ public class Index extends javax.swing.JFrame {
         + "Ccs   =  Complexity of a program statement with a control structure <br>"
         + "Wtcs   =  Weight due to control structure type <br>"
         + "NC =  Number of conditions in the control structure <br>"
-        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        
         JOptionPane jo = new JOptionPane();
         jo.setMessage(data);
-        jo.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
         JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
         dialog.setVisible(true);
+        
+        cardLayout.show(card, "viewcs");
     }//GEN-LAST:event_csbtnActionPerformed
 
     private void MultipleFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultipleFileActionPerformed
@@ -1188,6 +1525,81 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void backbtnfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnfileActionPerformed
+        cardLayout.show(card, "selection");
+    }//GEN-LAST:event_backbtnfileActionPerformed
+
+    private void backbtnmultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnmultiActionPerformed
+        cardLayout.show(card, "selection");
+    }//GEN-LAST:event_backbtnmultiActionPerformed
+
+    private void backbtnfunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnfunctionActionPerformed
+        cardLayout.show(card, "selection");
+    }//GEN-LAST:event_backbtnfunctionActionPerformed
+
+    private void overallbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overallbtnActionPerformed
+        String data = "<html>Total complexity of a program statement (TCps) is computed as follows: <br><br>"
+        + "<b>TCps = Cs + Cv + Cm + Ci + Ccp + Ccs</b> <br><br>"
+        + "TCps = Total complexity of a program due to all factors <br>"
+        + "Cs = Complexity of a program statement with a size <br>"
+        + "Cv = Complexity of a program statement with a variable <br>"
+        + "Cm = Complexity of a program statement with a method <br>"
+        + "Ci = Complexity of a program statement with a inheritance <br>"
+        + "Ccp = Complexity of a program statement with a coupling <br>"
+        + "Ccs = Complexity of a program statement with a control structure  </html>";
+        
+        JOptionPane jo = new JOptionPane();
+        jo.setMessage(data);
+        jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        JDialog dialog = jo.createDialog(null, "Overall Code Complexity");
+        dialog.setVisible(true);
+        
+        cardLayout.show(card, "viewoverall");
+    }//GEN-LAST:event_overallbtnActionPerformed
+
+    private void sizebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizebtnActionPerformed
+        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
+        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
+        + "Ccs   =  Complexity of a program statement with a control structure <br>"
+        + "Wtcs   =  Weight due to control structure type <br>"
+        + "NC =  Number of conditions in the control structure <br>"
+        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        
+        JOptionPane jo = new JOptionPane();
+        jo.setMessage(data);
+        jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
+        JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
+        dialog.setVisible(true);*/
+    }//GEN-LAST:event_sizebtnActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void backbtnviewcsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcsActionPerformed
+        cardLayout.show(card, "functions");
+    }//GEN-LAST:event_backbtnviewcsActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void backbtnoverallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnoverallActionPerformed
+        cardLayout.show(card, "functions");
+    }//GEN-LAST:event_backbtnoverallActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1232,6 +1644,11 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton MultipleFile;
     private javax.swing.JPanel SizeFinal;
     private javax.swing.JPanel VariablesFinal;
+    private javax.swing.JButton backbtnfile;
+    private javax.swing.JButton backbtnfunction;
+    private javax.swing.JButton backbtnmulti;
+    private javax.swing.JButton backbtnoverall;
+    private javax.swing.JButton backbtnviewcs;
     private javax.swing.JPanel card;
     private javax.swing.JButton choosebtn;
     private javax.swing.JButton choosebtn1;
@@ -1243,12 +1660,15 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel functions;
     private javax.swing.JButton inheritancebtn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1270,7 +1690,13 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1279,6 +1705,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1286,12 +1714,18 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel multiFileChooser;
     private javax.swing.JButton overallbtn;
     private javax.swing.JPanel selection;
@@ -1300,5 +1734,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton sizebtn;
     private javax.swing.JButton uploadbtn;
     private javax.swing.JButton uploadbtn1;
+    private javax.swing.JComboBox<String> viewcombobox1;
+    private javax.swing.JComboBox<String> viewcombobox2;
+    private javax.swing.JPanel viewcs;
+    private javax.swing.JPanel viewoverall;
     // End of variables declaration//GEN-END:variables
 }
