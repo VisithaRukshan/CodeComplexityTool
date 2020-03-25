@@ -21,6 +21,7 @@ public class Index extends javax.swing.JFrame {
      * Creates new form Index
      */
     CardLayout cardLayout;
+    
     public Index() {
         initComponents();
         
@@ -62,6 +63,15 @@ public class Index extends javax.swing.JFrame {
         couplingbtn = new javax.swing.JButton();
         csbtn = new javax.swing.JButton();
         overallbtn = new javax.swing.JButton();
+        multiFileChooser = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        choosebtn1 = new javax.swing.JButton();
+        uploadbtn1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        choosetxtarea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -323,7 +333,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(functionsLayout.createSequentialGroup()
                                 .addComponent(sizebtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                                 .addComponent(inheritancebtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(functionsLayout.createSequentialGroup()
                                 .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,6 +373,99 @@ public class Index extends javax.swing.JFrame {
         );
 
         card.add(functions, "functions");
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Home");
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel13.setText("- You can calculate the complexity of");
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel14.setText("Java / C++ code using this");
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel15.setText("Desktop Application -");
+
+        choosebtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        choosebtn1.setText("Choose");
+        choosebtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        choosebtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        choosebtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choosebtn1ActionPerformed(evt);
+            }
+        });
+
+        uploadbtn1.setBackground(new java.awt.Color(0, 0, 255));
+        uploadbtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        uploadbtn1.setForeground(new java.awt.Color(255, 255, 255));
+        uploadbtn1.setText("Upload");
+        uploadbtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uploadbtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        uploadbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadbtn1ActionPerformed(evt);
+            }
+        });
+
+        choosetxtarea.setColumns(20);
+        choosetxtarea.setRows(5);
+        choosetxtarea.setPreferredSize(new java.awt.Dimension(280, 94));
+        jScrollPane1.setViewportView(choosetxtarea);
+
+        javax.swing.GroupLayout multiFileChooserLayout = new javax.swing.GroupLayout(multiFileChooser);
+        multiFileChooser.setLayout(multiFileChooserLayout);
+        multiFileChooserLayout.setHorizontalGroup(
+            multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiFileChooserLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(multiFileChooserLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addGroup(multiFileChooserLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiFileChooserLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(uploadbtn1)
+                .addGap(309, 309, 309))
+        );
+        multiFileChooserLayout.setVerticalGroup(
+            multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(multiFileChooserLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(multiFileChooserLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel15))
+                    .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(uploadbtn1)
+                .addContainerGap(189, Short.MAX_VALUE))
+        );
+
+        card.add(multiFileChooser, "multiFileChooser");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -446,12 +549,24 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_csbtnActionPerformed
 
     private void MultipleFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MultipleFileActionPerformed
-        // TODO add your handling code here:
+            cardLayout.show(card, "multiFileChooser");
     }//GEN-LAST:event_MultipleFileActionPerformed
 
     private void singleFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleFileActionPerformed
             cardLayout.show(card, "filechoose");
     }//GEN-LAST:event_singleFileActionPerformed
+
+    private void choosebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtn1ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        choosetxtarea.setText(filename);
+    }//GEN-LAST:event_choosebtn1ActionPerformed
+
+    private void uploadbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtn1ActionPerformed
+            cardLayout.show(card, "functions");
+    }//GEN-LAST:event_uploadbtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,7 +607,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton MultipleFile;
     private javax.swing.JPanel card;
     private javax.swing.JButton choosebtn;
+    private javax.swing.JButton choosebtn1;
     private javax.swing.JTextField choosetxt;
+    private javax.swing.JTextArea choosetxtarea;
     private javax.swing.JButton couplingbtn;
     private javax.swing.JButton csbtn;
     private javax.swing.JPanel filechoose;
@@ -502,18 +619,25 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel multiFileChooser;
     private javax.swing.JButton overallbtn;
     private javax.swing.JPanel selection;
     private javax.swing.ButtonGroup selectionButtonGroup;
     private javax.swing.JButton singleFile;
     private javax.swing.JButton sizebtn;
     private javax.swing.JButton uploadbtn;
+    private javax.swing.JButton uploadbtn1;
     // End of variables declaration//GEN-END:variables
 }
