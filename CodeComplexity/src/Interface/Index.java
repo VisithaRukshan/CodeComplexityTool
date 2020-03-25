@@ -84,7 +84,8 @@ public class Index extends javax.swing.JFrame {
         jLabel2.setText("Do you want to upload Single file or Multiple files ?");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        MultipleFile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        MultipleFile.setBackground(new java.awt.Color(204, 204, 204));
+        MultipleFile.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         MultipleFile.setText("Multiple File");
         MultipleFile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         MultipleFile.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +94,8 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        singleFile.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        singleFile.setBackground(new java.awt.Color(204, 204, 204));
+        singleFile.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         singleFile.setText("Single File");
         singleFile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         singleFile.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +109,7 @@ public class Index extends javax.swing.JFrame {
         selectionLayout.setHorizontalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -117,7 +119,7 @@ public class Index extends javax.swing.JFrame {
                         .addGap(362, 362, 362))))
             .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
-                    .addContainerGap(394, Short.MAX_VALUE)
+                    .addContainerGap(398, Short.MAX_VALUE)
                     .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(363, 363, 363)))
         );
@@ -208,7 +210,7 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filechooseLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
                         .addComponent(uploadbtn)
                         .addGap(325, 325, 325))))
         );
@@ -321,7 +323,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(functionsLayout.createSequentialGroup()
                                 .addComponent(sizebtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                                 .addComponent(inheritancebtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(functionsLayout.createSequentialGroup()
                                 .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,8 +350,7 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(164, Short.MAX_VALUE))
+                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(functionsLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(55, 55, 55)
@@ -357,8 +358,8 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(34, 34, 34)
-                        .addComponent(jLabel12)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel12)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         card.add(functions, "functions");
