@@ -29,6 +29,7 @@ public class Index extends javax.swing.JFrame {
         
         cardLayout = (CardLayout)(card.getLayout());
         
+        
         super.setLocationRelativeTo(null);
         
         String[] a = {"1", "2", "3", "4", "5"};
@@ -642,7 +643,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(37, Short.MAX_VALUE)))
+                    .addContainerGap(43, Short.MAX_VALUE)))
         );
         CouplingFinalLayout.setVerticalGroup(
             CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1145,6 +1146,11 @@ public class Index extends javax.swing.JFrame {
 
         viewcombobox1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         viewcombobox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        viewcombobox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewcombobox1ActionPerformed(evt);
+            }
+        });
 
         jLabel31.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1162,7 +1168,6 @@ public class Index extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(0, 0, 255));
         jButton8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Calculate");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -1431,33 +1436,53 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_uploadbtnActionPerformed
 
     private void inheritancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inheritancebtnActionPerformed
-        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
-        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
-        + "Ccs   =  Complexity of a program statement with a control structure <br>"
-        + "Wtcs   =  Weight due to control structure type <br>"
-        + "NC =  Number of conditions in the control structure <br>"
-        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        String data = "<html>Complexity of a program statement with a Inheritance is computed as follows: <br><br>"
+        + "<b>Ccs = Inheritance complexity of a program statement of a class (Ci) = Weight assigned for that class due to its inheritance pattern(</b> <br><br> </html>";
         
         JOptionPane jo = new JOptionPane();
         jo.setMessage(data);
         jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
         JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
-        dialog.setVisible(true);*/
+        dialog.setVisible(true);
     }//GEN-LAST:event_inheritancebtnActionPerformed
 
     private void couplingbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_couplingbtnActionPerformed
-        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
-        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
-        + "Ccs   =  Complexity of a program statement with a control structure <br>"
-        + "Wtcs   =  Weight due to control structure type <br>"
-        + "NC =  Number of conditions in the control structure <br>"
-        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        String data = "<html>Complexity of a program statement with a coupling is computed as follows: <br><br>"
+        + "<b>Ccp = (Wr * Nr) + (Wmcms * Nmcms) + (Wmcmd * Nmcmd) + (Wmcrms * Nmcrms) + (Wmcrmd * Nmcrmd) + <br> (Wrmcrms * Nrmcrms) + (Wrmcrmd *Nrmcrmd) + (Wrmcms * Nrmcms) + (Wrmcmd * Nrmcmd) +  (Wmrgvs *Nmrgvs) +<br> (Wmrgvd * Nmrgvd) + (Wrmrgvs * Nrmrgvs) + (Wrmrgvd * Nrmrgvd) </b> <br><br>"
+        +"Wr = Weight of a recursive call<br>"
+        +"Nr = Number of recursive calls<br>"
+        +"Wmcms = Weight of a regular method calling another regular method in the same file<br>"
+        +"Nmcms = Number of calls from regular method(s) to other regular methods in the same file<br>"
+        +"Wmcmd = Weight of a regular method calling another regular method in a different file<br>"
+        +"Nmcmd = Number of calls from regular method(s) to other regular methods in different files<br>"
+        +"Wmcrms = Weight of a regular method calling a recursive method in the same file<br>"
+        +"Nmcrms = Number of calls from regular method(s) to recursive methods in the same file<br>"
+        +"Wmcrmd = Weight of a regular method calling a recursive method in a different filem<br>"
+        +"Nmcrmd = Number of calls from regular method(s) to recursive methods in different files<br>"
+        +"Wrmcrms = Weight of a recursive method calling another recursive method in the same file<br>"
+        +"Nrmcrms = Number of calls from recursive method(s) to other recursive methods in the same file<br>"
+        +"Wrmcrmd = Weight of a recursive method calling another recursive method in a different file<br>"
+        +"Nrmcrmd = Number of calls from recursive method(s) to other recursive methods in different files<br>"
+        +"Wrmcms = Weight of a recursive method calling a regular method in the same file<br>"
+        +"Nrmcms = Number of calls from recursive method(s) to regular methods in the same file<br>"
+        +"Wrmcmd = Weight of a recursive method calling a regular method in a different file<br>"
+        +"Nrmcmd = Number of calls from recursive method(s) to regular methods in different files<br>"
+        +"Wmrgvs = Weight of a regular method referencing a global variable in the same file<br>"
+        +"Nmrgvs = Number of references from regular method(s) to global variables in the same file<br>"
+        +"Wmrgvd = Weight of a regular method referencing a global variable in a different file<br>"
+        +"Nmrgvd = Number of references from regular method(s) to global variables in different files<br>"
+        +"Wrmrgvs = Weight of a recursive method referencing a global variable in the same file<br>"
+        +"Nrmrgvs = Number of references from recursive method(s) to global variables in the same file<br>"
+        +"Wrmrgvd = Weight of a recursive method referencing a global variable in a different file<br>"
+        +"Nrmrgvd = Number of references from recursive method(s) to global variable in different files</html>";
+
         
         JOptionPane jo = new JOptionPane();
         jo.setMessage(data);
         jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
-        JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
-        dialog.setVisible(true);*/
+        JDialog dialog = jo.createDialog(null, "Code Complexity due to Coupling");
+        dialog.setVisible(true);
+   
     }//GEN-LAST:event_couplingbtnActionPerformed
 
     private void csbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csbtnActionPerformed
@@ -1558,18 +1583,26 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_overallbtnActionPerformed
 
     private void sizebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizebtnActionPerformed
-        /*String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
-        + "<b>Ccs = ( Wtcs * NC ) + Ccspps</b> <br><br>"
-        + "Ccs   =  Complexity of a program statement with a control structure <br>"
-        + "Wtcs   =  Weight due to control structure type <br>"
-        + "NC =  Number of conditions in the control structure <br>"
-        + "Ccspps = Control structure complexity of the previous program statement. Hence, always the value of <br>Ccspps would be zero for control structures which reside at the first nesting level or outer most nesting level.   </html>";
+        String data = "<html>Complexity of a program statement with a control structure is computed as follows: <br><br>"
+        
+        +"CS   = Complexity of a program statement due to its size <br>"
+        +"Wkw  = Weight due to keywords or reserved words (class, public, void, true, else, default, return, null, break, this, etc.)<br>"
+        +" Nkw = Number of keywords or reserved words in the program statement<br>" 
+        +"Wid = Weight due to identifiers (names of classes, methods, objects, variables, arguments, and data structures) <br>" 
+        +"Nid = Number of identifiers in the program statement<br>" 
+        +"Wop = Weight due to operators <br>"
+        +"Nop = Number of operators in the program statement<br>" 
+        +"Wnv = Weight due to numerical values or numbers <br>"
+        +"Nnv = Number of numerical values in the program statement<br>" 
+        +"Wsl= Weight due to string literals (“ ” ,“Hi”, “Hello World”, “The factorial value of the entered number is”)<br>"
+        +"Nsl = Number of string literals in the program statement </html>";
+
         
         JOptionPane jo = new JOptionPane();
         jo.setMessage(data);
         jo.setMessageType(JOptionPane.PLAIN_MESSAGE);
         JDialog dialog = jo.createDialog(null, "Code Complexity due to Control Structure");
-        dialog.setVisible(true);*/
+        dialog.setVisible(true);
     }//GEN-LAST:event_sizebtnActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -1599,6 +1632,10 @@ public class Index extends javax.swing.JFrame {
     private void backbtnoverallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnoverallActionPerformed
         cardLayout.show(card, "functions");
     }//GEN-LAST:event_backbtnoverallActionPerformed
+
+    private void viewcombobox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewcombobox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewcombobox1ActionPerformed
 
     /**
      * @param args the command line arguments
