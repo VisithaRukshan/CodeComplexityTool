@@ -38,6 +38,7 @@ public class Index extends javax.swing.JFrame {
         
         String[] a = {"1", "2", "3", "4", "5"};
         JComboBox c = new JComboBox(a);
+        //set jcombobox to all jtable
         jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
