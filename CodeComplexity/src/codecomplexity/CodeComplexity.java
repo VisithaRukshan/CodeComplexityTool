@@ -5,6 +5,8 @@
  */
 package codecomplexity;
 
+import Interface.Index;
+
 /**
  *
  * @author HP
@@ -15,7 +17,8 @@ public class CodeComplexity {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Index i = new Index();
+        i.setVisible(true);
     }
     
 }
