@@ -6,6 +6,8 @@
 package codecomplexity;
 
 import Interface.Index;
+import Interface.splash_Screen;
+
 
 /**
  *
@@ -16,9 +18,13 @@ public class CodeComplexity {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
-        Index i = new Index();
-        i.setVisible(true);
+      
+        splash_Screen s = new splash_Screen();
+        s.setVisible(true);
+       
+       
     }
     
 }
