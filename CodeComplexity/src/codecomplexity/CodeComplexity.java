@@ -20,11 +20,8 @@ public class CodeComplexity {
      */
     
     public static void main(String[] args) {
-      
-        splash_Screen s = new splash_Screen();
-        s.setVisible(true);
-       
-       
+       splash_Screen s = new splash_Screen();
+       s.setVisible(true);
     }
     
 }
