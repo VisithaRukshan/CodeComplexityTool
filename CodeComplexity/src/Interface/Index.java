@@ -60,6 +60,9 @@ public class Index extends javax.swing.JFrame {
         jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+        
+        
+        
     }
 
     /**
@@ -304,7 +307,7 @@ public class Index extends javax.swing.JFrame {
         selectionLayout.setHorizontalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -324,7 +327,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         card.add(selection, "selection");
@@ -1848,12 +1851,12 @@ public class Index extends javax.swing.JFrame {
                                 .addGap(317, 317, 317)
                                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(223, 223, 223)
+                                .addGap(337, 337, 337)
+                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(360, 360, 360)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         inheritanceCalculationLayout.setVerticalGroup(
             inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1875,14 +1878,14 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
+                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         card.add(inheritanceCalculation, "inheritanceCalculation");
@@ -2339,7 +2342,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2372,7 +2375,8 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void uploadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtnActionPerformed
-                cardLayout.show(card, "functions");
+        jButton14.setVisible(false);        
+        cardLayout.show(card, "functions");
     }//GEN-LAST:event_uploadbtnActionPerformed
 
     private void inheritancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inheritancebtnActionPerformed
@@ -2679,8 +2683,8 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnfunction7ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-                                         
-        
+        jButton23.setVisible(false);
+        jButton14.setVisible(true);
         
         try {
            
