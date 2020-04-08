@@ -143,7 +143,7 @@
                           <Component id="singleFile" min="-2" pref="79" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="MultipleFile" min="-2" pref="79" max="-2" attributes="0"/>
-                          <EmptySpace pref="350" max="32767" attributes="0"/>
+                          <EmptySpace pref="348" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -174,11 +174,6 @@
                       <Image iconType="3" name="/Images/multiple.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Multiple File"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -199,11 +194,6 @@
                       <Image iconType="3" name="/Images/single.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Single File"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -1126,14 +1116,7 @@
                     <Component class="javax.swing.JTable" name="jTable3">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="6" rowCount="10">
-                            <Column editable="true" title="Count" type="java.lang.Object"/>
-                            <Column editable="true" title="Class Name" type="java.lang.Object"/>
-                            <Column editable="true" title="No of direct inheritance" type="java.lang.Object"/>
-                            <Column editable="true" title="No of indirect inheritance" type="java.lang.Object"/>
-                            <Column editable="true" title="Total inheritance" type="java.lang.Object"/>
-                            <Column editable="true" title="Ci" type="java.lang.Object"/>
-                          </Table>
+                          <Table columnCount="0" rowCount="10"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -2450,19 +2433,6 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="backbtnviewcs3" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="318" max="-2" attributes="0"/>
-                                          <Component id="jButton16" min="-2" pref="94" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
-                                          <Component id="jButton15" min="-2" pref="105" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="486" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="jLabel43" alignment="0" min="-2" pref="402" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2478,6 +2448,21 @@
                                           <Component id="jLabel42" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
+                                          <Component id="jButton15" min="-2" pref="105" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                                          <Component id="jButton16" min="-2" pref="94" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+                                          <Component id="jButton23" min="-2" pref="130" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="360" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="128" max="32767" attributes="0"/>
@@ -2508,7 +2493,10 @@
                               <Component id="jScrollPane16" alignment="0" min="-2" pref="208" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton16" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButton23" max="32767" attributes="0"/>
+                              <Component id="jButton16" pref="41" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="jScrollPane17" min="-2" pref="145" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -2624,6 +2612,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backbtnviewcs3ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton23">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Show Details"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton23ActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

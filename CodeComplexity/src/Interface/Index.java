@@ -7,12 +7,15 @@ package Interface;
 
 import java.awt.CardLayout;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,6 +28,18 @@ public class Index extends javax.swing.JFrame {
      */
     CardLayout cardLayout;
     CardLayout cardLayout1;
+    
+    ArrayList<String> classes = new ArrayList<String>();
+   ArrayList<Integer> directInheritence = new ArrayList<Integer>();
+    ArrayList<Integer> IndirectInheritence = new ArrayList<Integer>();
+   
+    ArrayList<String> all = new ArrayList<String>();
+    ArrayList<Integer> Ti = new ArrayList<Integer>();
+    ArrayList<Integer> Ci = new ArrayList<Integer>();
+   
+   String arg2[] = {"0"};
+    
+   int countIndex = 0;
    
     
     public Index() {
@@ -198,6 +213,7 @@ public class Index extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         backbtnviewcs3 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
         threeInOne = new javax.swing.JPanel();
         backbtnviewcs4 = new javax.swing.JButton();
         subCard = new javax.swing.JPanel();
@@ -248,8 +264,7 @@ public class Index extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/code.png"))); // NOI18N
-        jLabel1.setText("CODE COMPLEXITY TOOL");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Free_Sample_By_Wix.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(313, 80));
 
         card.setLayout(new java.awt.CardLayout());
@@ -266,7 +281,6 @@ public class Index extends javax.swing.JFrame {
         MultipleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         MultipleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/multiple.png"))); // NOI18N
         MultipleFile.setText("Multiple File");
-        MultipleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         MultipleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MultipleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +292,6 @@ public class Index extends javax.swing.JFrame {
         singleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         singleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/single.png"))); // NOI18N
         singleFile.setText("Single File");
-        singleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         singleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         singleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +304,7 @@ public class Index extends javax.swing.JFrame {
         selectionLayout.setHorizontalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -311,7 +324,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         card.add(selection, "selection");
@@ -421,7 +434,7 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(uploadbtn)))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
 
         card.add(filechoose, "filechoose");
@@ -566,7 +579,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         card.add(functions, "functions");
@@ -670,7 +683,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(uploadbtn1)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         card.add(multiFileChooser, "multiFileChooser");
@@ -739,7 +752,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(CouplingFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction1)
-                .addContainerGap(653, Short.MAX_VALUE))
+                .addContainerGap(652, Short.MAX_VALUE))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGap(108, 108, 108)
@@ -748,7 +761,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(78, 78, 78)
                     .addComponent(jButton1)
-                    .addContainerGap(205, Short.MAX_VALUE)))
+                    .addContainerGap(204, Short.MAX_VALUE)))
         );
 
         card.add(CouplingFinal, "couplingFinal");
@@ -821,12 +834,12 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(backbtnfunction2)
                 .addGap(121, 121, 121)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
             .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MethodFinalLayout.createSequentialGroup()
                     .addGap(105, 105, 105)
                     .addComponent(jLabel18)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 520, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 521, Short.MAX_VALUE)
                     .addComponent(jButton2)
                     .addContainerGap()))
         );
@@ -835,19 +848,19 @@ public class Index extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Count", "Class Name", "No of direct inheritance", "No of indirect inheritance", "Total inheritance", "Ci"
+
             }
         ));
         jScrollPane4.setViewportView(jTable3);
@@ -901,7 +914,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(backbtnfunction3)
                 .addGap(108, 108, 108)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(353, Short.MAX_VALUE))
             .addGroup(InheritanceFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(InheritanceFinalLayout.createSequentialGroup()
                     .addGap(105, 105, 105)
@@ -989,12 +1002,12 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(backbtnfunction4)
                 .addGap(101, 101, 101)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
             .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
                     .addGap(100, 100, 100)
                     .addComponent(jLabel22)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 530, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE)
                     .addComponent(jButton4)
                     .addContainerGap()))
         );
@@ -1067,7 +1080,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(backbtnfunction5)
                 .addGap(112, 112, 112)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(349, Short.MAX_VALUE))
             .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                     .addGap(111, 111, 111)
@@ -1148,12 +1161,12 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(backbtnfunction6)
                 .addGap(152, 152, 152)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
             .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SizeFinalLayout.createSequentialGroup()
                     .addGap(112, 112, 112)
                     .addComponent(jLabel26)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 513, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
                     .addComponent(jButton6)
                     .addContainerGap()))
         );
@@ -1228,7 +1241,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jLabel28)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
             .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(VariablesFinalLayout.createSequentialGroup()
                     .addGap(468, 468, 468)
@@ -1380,7 +1393,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton9)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         card.add(viewcs, "viewcs");
@@ -1474,7 +1487,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jButton10)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         card.add(viewoverall, "viewoverall");
@@ -1599,7 +1612,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         card.add(controlStructureCalculation, "controlStructureCalculation");
@@ -1732,7 +1745,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         card.add(couplingCalculation, "couplingCalculation");
@@ -1802,6 +1815,13 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButton23.setText("Show Details");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inheritanceCalculationLayout = new javax.swing.GroupLayout(inheritanceCalculation);
         inheritanceCalculation.setLayout(inheritanceCalculationLayout);
         inheritanceCalculationLayout.setHorizontalGroup(
@@ -1810,15 +1830,6 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backbtnviewcs3)
                 .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(318, 318, 318)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(317, 317, 317)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(inheritanceCalculationLayout.createSequentialGroup()
@@ -1830,7 +1841,18 @@ public class Index extends javax.swing.JFrame {
                                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                                .addGap(317, 317, 317)
+                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(223, 223, 223)
+                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(360, 360, 360)))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         inheritanceCalculationLayout.setVerticalGroup(
@@ -1853,12 +1875,14 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         card.add(inheritanceCalculation, "inheritanceCalculation");
@@ -2296,10 +2320,10 @@ public class Index extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(337, 337, 337)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(363, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(362, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(361, 361, 361))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -2309,13 +2333,13 @@ public class Index extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(716, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2593,6 +2617,24 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        
+        model.addColumn("Class Name" ,classes.toArray());
+         model.addColumn("Direct Inheritence" ,directInheritence.toArray());
+          model.addColumn("Indirect Inheritence" ,IndirectInheritence.toArray());
+        for(int y = 0 ; y < classes.size() ; y++) {
+            Ti.add(directInheritence.get(y) + IndirectInheritence.get(y));
+        }
+         model.addColumn("Ti" ,Ti.toArray());
+        for(int h = 0 ; h < classes.size() ; h++) {
+           if(Ti.get(h) <= 3) {
+               Ci.add(Ti.get(h));
+           }
+           else {
+               Ci.add(4);
+           }
+        }
+         model.addColumn("Ci" ,Ti.toArray());
         cardLayout.show(card, "inheritanceFinal");
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -2635,6 +2677,156 @@ public class Index extends javax.swing.JFrame {
     private void backbtnfunction7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnfunction7ActionPerformed
        cardLayout.show(card, "threeInOne");
     }//GEN-LAST:event_backbtnfunction7ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+                                         
+        
+        
+        try {
+           
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+             int cout = 0;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                jTextArea5.setText(jTextArea5.getText() + "\n" + line  );
+                cout++;
+		//System.out.println(scanner.nextLine().split(" "));
+		//String[] words = scanner.nextLine().split(" ");
+		//chr.checkWord(words);
+                String[] words = line.split(" " ) ;
+              
+                printFunction(words);
+                
+            }
+            jTextField9.setText(Integer.toString(cout) );
+            scanner.close();
+            
+            fillArray( classes.size());
+            for(int count = 0 ; count < classes.size() ; count++){
+                getAmount(classes.get(count)); //serachInderectInheritence(classes.get(count));
+             }
+             for(int countC = 0 ; countC < classes.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                     IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+                    
+             }
+             //serachInderectInheritence(classes.get(1));
+            System.out.println(classes);
+            System.out.println(directInheritence );
+            System.out.println(all);
+             System.out.println(IndirectInheritence);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+        
+			
+    }                                         
+
+   public void printFunction(String agrWord[]) {
+        String sentence = "";
+        for ( int i = 0 ; i < agrWord.length ; i++) {
+           
+            if(agrWord[i].equals("class") || agrWord[i].equals("Class")  ) {
+               classes.add(agrWord[i+1]);
+                for ( int j = 0 ; j < agrWord.length ; j++) {
+                          sentence =  sentence + " " + agrWord[j];
+                     }
+                     all.add(sentence);
+                if(agrWord[i+2].equals("extends") ) {      
+                    //directInheritence.add(String.valueOf((Integer.parseInt( directInheritence.get(countIndex) ) + 1)) );
+                    directInheritence.add(1);
+                    
+                     
+                }
+                else {
+                     directInheritence.add(0);
+                }
+               
+                countIndex++;
+                
+            }
+       		
+	}
+   
+   
+   }
+   
+   public void fillArray(int i) {
+       for(int x = 0 ; x < i ; x++){
+           IndirectInheritence.add(0);
+       }
+   }
+   
+   int counter = 0;
+   
+   
+   /*public void serachInderectInheritence(String s){
+       counter = 0;
+       for(int a  = 0 ; a < all.size() ; a++){
+            String[] words2 = all.get(a).split(" " ) ; 
+             for(int b  = 0 ; b < words2.length ; b++){
+                 if(words2[b].equals("class") || words2[b].equals("Class")) {
+                       if(words2[b+1].equals(s)) {
+                           
+                           
+                            if(words2[b+2].equals("extends")) {
+                                //get the value by another function
+                                
+                                
+                                //System.err.println("extends called");
+                                 //System.err.println(count3);
+                                /*IndirectInheritence.set(counter , 
+                                     IndirectInheritence.get(counter) + count3
+                                );
+                                //count3 = 0;
+                            }else {
+                                 //System.err.println("else called");
+                                IndirectInheritence.set(
+                                         counter , 
+                                     IndirectInheritence.get(counter) + 0
+                                );
+                            }
+                            
+                       }
+                 }
+             }
+       }
+       
+       counter++;
+   }*/
+   
+   int count3 = 0;
+   public void getAmount(String s) {
+      
+       for(int a  = 0 ; a < all.size() ; a++){
+            String[] words2 = all.get(a).split(" " ) ; 
+             for(int b  = 0 ; b < words2.length ; b++){
+                 if(words2[b].equals("class") || words2[b].equals("Class")) {
+                       if(words2[b+1].equals(s)) {
+                           
+                           
+                            if(words2[b+2].equals("extends")) {
+                                
+                                IndirectInheritence.set(count3 , 
+                                     IndirectInheritence.get(count3) + 1
+                                );
+                                getAmount(words2[b+3]);
+                            }else {
+                                count3++;
+                            }
+                            
+                       }
+                 }
+             }
+       }
+       
+      
+       
+       
+         
+    }//GEN-LAST:event_jButton23ActionPerformed
 
    
     /**
@@ -2725,6 +2917,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
