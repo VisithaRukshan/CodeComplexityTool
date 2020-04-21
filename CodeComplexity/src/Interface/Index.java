@@ -2740,7 +2740,15 @@ public class Index extends javax.swing.JFrame {
                      all.add(sentence);
                 if(agrWord[i+2].equals("extends") ) {      
                     //directInheritence.add(String.valueOf((Integer.parseInt( directInheritence.get(countIndex) ) + 1)) );
-                    directInheritence.add(1);
+                     String[] words2 = agrWord[i+3].split("\\." ) ;
+                       System.err.println(words2.length);
+                     if(words2.length > 1 ) {
+                         directInheritence.add(0);
+                     }
+                     else {
+                         directInheritence.add(1);
+                    }
+                  
                     
                      
                 }
@@ -2753,8 +2761,6 @@ public class Index extends javax.swing.JFrame {
             }
        		
 	}
-   
-   
    }
    
    public void fillArray(int i) {
@@ -2766,45 +2772,11 @@ public class Index extends javax.swing.JFrame {
    int counter = 0;
    
    
-   /*public void serachInderectInheritence(String s){
-       counter = 0;
-       for(int a  = 0 ; a < all.size() ; a++){
-            String[] words2 = all.get(a).split(" " ) ; 
-             for(int b  = 0 ; b < words2.length ; b++){
-                 if(words2[b].equals("class") || words2[b].equals("Class")) {
-                       if(words2[b+1].equals(s)) {
-                           
-                           
-                            if(words2[b+2].equals("extends")) {
-                                //get the value by another function
-                                
-                                
-                                //System.err.println("extends called");
-                                 //System.err.println(count3);
-                                /*IndirectInheritence.set(counter , 
-                                     IndirectInheritence.get(counter) + count3
-                                );
-                                //count3 = 0;
-                            }else {
-                                 //System.err.println("else called");
-                                IndirectInheritence.set(
-                                         counter , 
-                                     IndirectInheritence.get(counter) + 0
-                                );
-                            }
-                            
-                       }
-                 }
-             }
-       }
-       
-       counter++;
-   }*/
    
    int count3 = 0;
    public void getAmount(String s) {
       
-       for(int a  = 0 ; a < all.size() ; a++){
+        for(int a  = 0 ; a < all.size() ; a++){
             String[] words2 = all.get(a).split(" " ) ; 
              for(int b  = 0 ; b < words2.length ; b++){
                  if(words2[b].equals("class") || words2[b].equals("Class")) {
@@ -2825,6 +2797,7 @@ public class Index extends javax.swing.JFrame {
                  }
              }
        }
+       
        
       
        
