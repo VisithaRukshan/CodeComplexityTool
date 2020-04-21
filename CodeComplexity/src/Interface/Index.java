@@ -6,9 +6,17 @@
 package Interface;
 
 import java.awt.CardLayout;
+import java.awt.print.PrinterException;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
@@ -16,6 +24,7 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.Document;
 
 /**
  *
@@ -29,8 +38,13 @@ public class Index extends javax.swing.JFrame {
     CardLayout cardLayout;
     CardLayout cardLayout1;
     
+    ArrayList<String> controlstruc = new ArrayList<String>();
+    ArrayList<Integer> ifelse = new ArrayList<Integer>();
+    ArrayList<LineComplexity> lineComplexityList = new ArrayList<>();
+    DefaultTableModel lineComplexityTableModel =  new DefaultTableModel();
+    
     ArrayList<String> classes = new ArrayList<String>();
-   ArrayList<Integer> directInheritence = new ArrayList<Integer>();
+    ArrayList<Integer> directInheritence = new ArrayList<Integer>();
     ArrayList<Integer> IndirectInheritence = new ArrayList<Integer>();
    
     ArrayList<String> all = new ArrayList<String>();
@@ -915,7 +929,7 @@ public class Index extends javax.swing.JFrame {
                             .addGap(416, 416, 416)
                             .addComponent(jButton3))
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(586, Short.MAX_VALUE)))
+                    .addContainerGap(596, Short.MAX_VALUE)))
         );
         InheritanceFinalLayout.setVerticalGroup(
             InheritanceFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,7 +1017,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
                             .addGap(100, 100, 100)
                             .addComponent(jLabel22)))
-                    .addContainerGap(532, Short.MAX_VALUE)))
+                    .addContainerGap(536, Short.MAX_VALUE)))
         );
         FinalDueToAllFactorLayout.setVerticalGroup(
             FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1029,23 +1043,7 @@ public class Index extends javax.swing.JFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Control Structure");
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Line NO", "Program Statement", "Wtcs", "Nc", "Ccpps", "Ccs"
-            }
-        ));
+        jTable5.setModel(this.lineComplexityTableModel);
         jScrollPane6.setViewportView(jTable5);
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
@@ -1077,33 +1075,28 @@ public class Index extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(backbtnfunction5))
                     .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                        .addGap(501, 501, 501)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                        .addGap(501, 501, 501)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(86, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(851, Short.MAX_VALUE)))
         );
         ControlStructureFinalLayout.setVerticalGroup(
             ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction5)
-                .addGap(138, 138, 138)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel24)
+                .addGap(32, 32, 32)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(210, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addGap(111, 111, 111)
-                    .addComponent(jLabel24)
-                    .addContainerGap(549, Short.MAX_VALUE)))
         );
 
         card.add(ControlStructureFinal, "controlStuctureFinal");
@@ -1618,9 +1611,9 @@ public class Index extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206)
+                .addGap(121, 121, 121)
                 .addComponent(jButton12)
-                .addGap(371, 371, 371))
+                .addGap(421, 421, 421))
         );
         controlStructureCalculationLayout.setVerticalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1768,11 +1761,11 @@ public class Index extends javax.swing.JFrame {
                                 .addGap(317, 317, 317)
                                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(couplingCalculationLayout.createSequentialGroup()
-                                .addGap(165, 165, 165)
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(236, 236, 236)
+                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
                                 .addComponent(jButton25)))
-                        .addGap(302, 302, 302)))
+                        .addGap(385, 385, 385)))
                 .addGap(54, 54, 54))
         );
         couplingCalculationLayout.setVerticalGroup(
@@ -1897,11 +1890,17 @@ public class Index extends javax.swing.JFrame {
             inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                 .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backbtnviewcs3)
-                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                            .addGap(295, 295, 295)
+                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(147, 147, 147)
+                            .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(328, 328, 328))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createSequentialGroup()
+                            .addComponent(backbtnviewcs3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                                     .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1912,13 +1911,7 @@ public class Index extends javax.swing.JFrame {
                                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(228, 228, 228)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(147, 147, 147)
-                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(328, 328, 328))))
+                                        .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                         .addGap(424, 424, 424)
                         .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2464,7 +2457,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void uploadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtnActionPerformed
-        jButton14.setVisible(false);        
+        uploadbtn.setVisible(true);        
         cardLayout.show(card, "functions");
     }//GEN-LAST:event_uploadbtnActionPerformed
 
@@ -2571,7 +2564,20 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        
+        /*String path = "";
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = chooser.showSaveDialog(this);
+        
+        if(x == JFileChooser.APPROVE_OPTION){
+            path = chooser.getSelectedFile().getPath();
+        }
+        
+        Document document = new Document();
+        
+        pdfWriter.getIn*/
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -2670,7 +2676,39 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_viewcombobox1ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        jButton12.setVisible(false);
+        jButton24.setVisible(true);
         
+        try {
+           
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+             int lineCount = 0;
+            
+            while (scanner.hasNextLine()) {
+                String lineStatement = scanner.nextLine();
+                jTextArea3.setText(jTextArea3.getText() + "\n" + lineStatement  );
+                lineCount++;
+               
+                LineComplexity lineObj = initLineObj(lineStatement, lineCount);
+                this.lineComplexityList.add(lineObj);                
+            }
+            
+            jTextField5.setText(Integer.toString(lineCount) );
+            scanner.close();
+            
+            fillArray( controlstruc.size());
+            for(int count = 0 ; count < controlstruc.size() ; count++){
+                getAmount(controlstruc.get(count)); //serachInderectInheritence(classes.get(count));
+             }
+             for(int countC = 0 ; countC < controlstruc.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                     IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+                    
+             }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void backbtnviewcs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs1ActionPerformed
@@ -2773,7 +2811,7 @@ public class Index extends javax.swing.JFrame {
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
         jButton23.setVisible(false);
-        jButton14.setVisible(true);
+        jButton16.setVisible(true);
         
         try {
            
@@ -2922,11 +2960,150 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        
+        this.lineComplexityTableModel.addColumn("Line no");
+        this.lineComplexityTableModel.addColumn("Program statements");
+        this.lineComplexityTableModel.addColumn("Wtcs");
+        this.lineComplexityTableModel.addColumn("NC");
+        this.lineComplexityTableModel.addColumn("Ccspps");
+        this.lineComplexityTableModel.addColumn("Ccs");
+        Stack ccsStack = new Stack();  
+        int currentCcs = 0;
+        for(LineComplexity lineObj : lineComplexityList)
+        {  
+            String codeSegment = this.getControllerCodeSegment(lineObj.statement);
+            String type = this.getGontrolStructureType(codeSegment);
+            int closingTagCount = this.numberOfClosingTags(lineObj.statement); 
+            int openingTagCount = this.numberOfOpeningTags(lineObj.statement);
+            System.out.println(codeSegment);
+
+            if (closingTagCount > 0) {
+                for (int i = 0;i<closingTagCount;i++)
+                    currentCcs = (int) ccsStack.pop();
+            }
+            if (type.isEmpty()) {
+                if (openingTagCount > 0) {
+                    ccsStack.push(currentCcs);
+                }
+                this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, null, null, null, 0});
+            } else {
+                int weight = this.getWeight(type);
+                int nc = this.getNumberOfConditions(codeSegment);
+                int ccpps = (int)ccsStack.lastElement();
+                int ccs = (weight*nc)+ccpps;
+                currentCcs = ccs;
+                if (openingTagCount > 0) {
+                    ccsStack.push(currentCcs);
+                }
+                this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, weight, nc, ccpps, ccs});
+            }
+          
+        }
         cardLayout.show(card, "controlStuctureFinal");
     }//GEN-LAST:event_jButton24ActionPerformed
 
+    // Get controller coed segment from the line 
+    private String getControllerCodeSegment(String statement){
+      String codeSegment = "";
+      Matcher findIf = Pattern.compile("^[ \\t]*if *.*").matcher(statement);
+      Matcher findFor = Pattern.compile("^[ \\t]*for *.*").matcher(statement);
+      Matcher findWhile = Pattern.compile("^[ \\t]*while *.*").matcher(statement);
+      Matcher findSwitch = Pattern.compile("^[ \\t]*switch *.*").matcher(statement);
+      Matcher findSwitchCase = Pattern.compile("^[ \\t]*case *.*").matcher(statement);
+      if (findIf.find()) {
+         codeSegment = findIf.group();
+      } else if (findFor.find()){
+         codeSegment = findFor.group();
+      } else if (findWhile.find()){
+         codeSegment = findWhile.group();
+      } else if (findSwitch.find()){
+         codeSegment = findSwitch.group();
+      } else if (findSwitchCase.find()){
+         codeSegment = findSwitchCase.group();
+      }
+      return codeSegment;
+    }
+    
+    private String getGontrolStructureType(String statement){
+        String codeType = "";
+      Matcher findIf = Pattern.compile("^[ \\t]*if *.*").matcher(statement);
+      Matcher findFor = Pattern.compile("^[ \\t]*for *.*").matcher(statement);
+      Matcher findWhile = Pattern.compile("^[ \\t]*while *.*").matcher(statement);
+      Matcher findSwitch = Pattern.compile("^[ \\t]*switch *.*").matcher(statement);
+      Matcher findSwitchCase = Pattern.compile("^[ \\t]*case *.*").matcher(statement);
+      if (findIf.find()) {
+         codeType = "if";
+      } else if (findFor.find()){
+         codeType = "for";
+      } else if (findWhile.find()){
+         codeType = "while";
+      } else if (findSwitch.find()){
+         codeType = "switch";
+      } else if (findSwitchCase.find()){
+         codeType = "case";
+      }
+      return codeType;
+    }
+    
+    private int numberOfClosingTags(String statement){
+        int numberOfClosing = 0;
+        Matcher findClosing = Pattern.compile("[ \\t]*\\}").matcher(statement);
+         while(findClosing.find()){
+            numberOfClosing++;
+        }
+        return numberOfClosing;
+    }
+
+    private int numberOfOpeningTags(String statement) {
+        int numberOfOpening = 0;
+        Matcher findOpening = Pattern.compile("[ \\t]*\\{[ \\n]*").matcher(statement);
+        while(findOpening.find()){
+            numberOfOpening++;
+        }
+        return numberOfOpening;
+    }
+    
+    private int getWeight(String controlStructureType){
+        int wtcs = 0;
+        switch (controlStructureType){
+            case "if":
+                wtcs = 2;
+                break;
+            case "for":
+                wtcs = 3;
+                break;
+            case "while":
+                wtcs = 3;
+                break;
+            case "switch":
+                wtcs = 2;
+                break;
+            case "case":
+                wtcs = 1;
+                break;
+        }
+        return wtcs;
+    }
+    
+    private int getNumberOfConditions(String codeStatement) {
+        int totalConditions = 0;
+        Matcher findConditions = Pattern.compile("(>|<|<=|>=|==|!=)").matcher(codeStatement);
+        while(findConditions.find()){
+            totalConditions++;
+        }
+        return totalConditions == 0 ? 1 : totalConditions;
+    }
+    
+    private LineComplexity initLineObj(String lineStatement, int lineCount) {
+        LineComplexity lineObj = new LineComplexity();
+        lineObj.lineNumber = lineCount;
+        lineObj.statement = lineStatement;
+        return lineObj;
+    }
+    
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        // TODO add your handling code here:
+        jButton25.setVisible(false);
+        jButton14.setVisible(true);
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
@@ -3158,4 +3335,13 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel viewcs;
     private javax.swing.JPanel viewoverall;
     // End of variables declaration//GEN-END:variables
+}
+
+class  LineComplexity {
+    int lineNumber;
+    String statement;
+    int wtcs;
+    int nc;
+    int ccspps;
+    int ccs;
 }
