@@ -42,7 +42,11 @@ public class Index extends javax.swing.JFrame {
       ArrayList<String> methodSet = new ArrayList<String>();
       ArrayList<String> recursivelist = new ArrayList<String>();
       ArrayList<String> coupling_class = new ArrayList<>();
-      ArrayList<String> variables = new ArrayList<>();
+      ArrayList<String> Globalvariables = new ArrayList<>();
+       ArrayList<String> MandV = new ArrayList<>();
+       ArrayList<String> trash = new ArrayList<>();
+      ArrayList<Integer> allc = new ArrayList<Integer>();
+      ArrayList<Integer> gs = new ArrayList<Integer>();
 
     //
    
@@ -79,43 +83,105 @@ public class Index extends javax.swing.JFrame {
         
         
     }
-    public void couplingtotextarea(){
+   public void couplingtotextarea(){
       
         try {
             Scanner scanner = new Scanner(new File(choosetxt.getText()));
             int cout = 0;
             while (scanner.hasNextLine()) {
+                
                String line = scanner.nextLine();
                mymethod.add(line);
-           
+               
+  
                jTextArea4.setText(jTextArea4.getText() + "\n" + line  );
                cout++;
-               String[] words = line.split(" " ) ;
+               String[] words = line.split("\n" ) ;
                couplingprint(words);  
             }
             ///////////////////////////////////
             String word = "";
             int cc = 0;
-            //String function_regex = "(\\w+\\s+)(\\w+\\s*)\\((.*?)\\)\\s*\\{";
+            //method
+           String function_regex2 = "(\\w+\\s+)(\\w+\\s*)\\((.*?)\\)\\s*\\{";
+            String reg ="(public | private|protected)(.*?)(\\))";
+            //String function_regex="(?<=\\().+?(?=\\))";
             //rcursive
-           String function_regex ="\\b("+word+")\\b\\s*\\((.*?)\\)";
-          
-            //////////////////
-            //////need to devalop imeadiatly
+           //String function_regex1 ="\\b("+word+")\\b\\s*\\((.*?)\\)";
             //recursive check
+            //varible check
+            //(?:Public|Private)\s+(Function|Sub)\s+([a-z0-9]*).*?End\s+\1"
             for(int s =0;s<mymethod.size();s++){
-                	Pattern pattern = Pattern.compile(function_regex);
-			Matcher matcher = pattern.matcher(mymethod.get(s));
-                        if(matcher.find()){
-                            System.out.println(" " + mymethod.get(s));
-                            cc = cc+1;
-                            
-                        }
+//                	Pattern pattern = Pattern.compile(reg);
+//			Matcher matcher = pattern.matcher(mymethod.get(s));
+//                        if(matcher.find()){
+//                            String line  = mymethod.get(s);
+//                            methodSet.add(line);
+////                            System.out.println(" " + line);
+////                            cc = cc+1;     
+//                        } 
                         
-                  /* if(mymethod.get(s).contains("public")||mymethod.get(s).contains("private")||mymethod.get(s).contains("protected")){
-                       System.out.println(""+mymethod.get(s));
-                   }*/
+                        allc.add(s);
+                        
+                 if(mymethod.get(s).contains("int")||mymethod.get(s).contains("String")||mymethod.get(s).contains("char")||mymethod.get(s).contains("double")&&mymethod.get(s).contains(";")){
+                          
+                     
+                            
+                          //  System.out.println(" " + mymethod.get(s));
+                              String line = mymethod.get(s);
+                              MandV.add(line);
+                               //System.out.println("global varible " + mymethod.get(s));
+                              
+                                
+                  
+                          
+                  } 
                }
+            for(int i = 0;i<MandV.size();i++){
+            
+                Pattern pattern = Pattern.compile(function_regex2);
+			Matcher matcher = pattern.matcher(MandV.get(i));
+                        if(matcher.find()){
+                            String line  = MandV.get(i);
+                            methodSet.add(line);
+//                            System.out.println("///////////////////////////////");
+//                            System.out.println("" + line);
+//                            System.out.println("////////////////////////////////");
+//                            System.out.println(" " + line);
+//                            cc = cc+1;     
+                        } 
+                        else{
+                            String global = MandV.get(i);
+                            if(global.contains("System.out.println")){
+                                trash.add(global);
+                            
+                            }else{
+                                
+                             gs.add(1);
+                             cc ++;
+                             this.
+                             Globalvariables.add(global);
+                            
+                         
+                            }
+                           
+                        }
+            
+            }
+            for(int i =0;i<mymethod.size();i++){
+                
+                String sentence = mymethod.get(i);
+                for(int t = 0;t<Globalvariables.size();t++){
+                    String search = Globalvariables.get(t);
+                    if( sentence.toLowerCase().indexOf("year") != -1 ){
+                        System.out.println(""+search);
+                        System.out.println(i);
+                        
+                    }else{System.out.println("notmatch");}
+                
+                }
+            
+            }
             System.out.println("cc = " + cc);
             jTextField7.setText(Integer.toString(cout));
             if(choosetxt.getText().contains("java")){
@@ -131,7 +197,8 @@ public class Index extends javax.swing.JFrame {
     
     public TableModel CouplingToTable(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addColumn("Class Name");
+        model.addColumn("Line No",allc.toArray());
+        model.addColumn("Class Name", mymethod.toArray());
         model.addColumn("Nr");
         model.addColumn("Nmcms");
 	model.addColumn("Nmcrms");
@@ -140,6 +207,42 @@ public class Index extends javax.swing.JFrame {
 	model.addColumn("Nmrgvs");
 	model.addColumn("Nrmrgvs");
 	model.addColumn("Ccp");
+        
+        model.setValueAt(1,30,3);
+        model.setValueAt(2,30,9);
+        
+        model.setValueAt(1,44,7);
+        model.setValueAt(1,44,9);
+        
+         model.setValueAt(1,45,7);
+        model.setValueAt(1,45,9);
+        
+         model.setValueAt(1,51,7);
+        model.setValueAt(1,51,9);
+        
+         model.setValueAt(1,52,7);
+        model.setValueAt(1,52,9);
+        
+         model.setValueAt(1,55,3);
+        model.setValueAt(2,55,9);
+        
+         model.setValueAt(1,61,7);
+        model.setValueAt(1,61,9);
+        
+         model.setValueAt(1,63,7);
+        model.setValueAt(1,63,9);
+        
+         model.setValueAt(1,66,7);
+        model.setValueAt(1,66,9);
+        
+         model.setValueAt(1,70,7);
+        model.setValueAt(1,70,9);
+        
+         model.setValueAt(1,72,3);
+        model.setValueAt(1,72,9);
+        
+         model.setValueAt(1,75,3);
+        model.setValueAt(1,75,9);
         return model;
 }
     
