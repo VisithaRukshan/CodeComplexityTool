@@ -9,6 +9,7 @@ import Optimization.optimizeCode;
 import java.awt.CardLayout;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
@@ -29,6 +30,10 @@ public class Index extends javax.swing.JFrame {
      */
     CardLayout cardLayout;
     CardLayout cardLayout1;
+    
+    private String filename = "";
+    private String foldername = "";
+    private List<String> folderPathList = new ArrayList<>();
     
     ArrayList<String> classes = new ArrayList<String>();
    ArrayList<Integer> directInheritence = new ArrayList<Integer>();
@@ -2371,13 +2376,18 @@ public class Index extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
+        filename = f.getAbsolutePath();
         choosetxt.setText(filename);
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void uploadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtnActionPerformed
-        jButton14.setVisible(false);        
-        cardLayout.show(card, "functions");
+        uploadbtn.setVisible(true);        
+        
+        if(filename.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please Select File !");
+          }else{
+            cardLayout.show(card, "functions");
+        }
     }//GEN-LAST:event_uploadbtnActionPerformed
 
     private void inheritancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inheritancebtnActionPerformed
