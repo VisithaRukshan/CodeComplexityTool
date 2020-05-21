@@ -44,6 +44,8 @@ public class Index extends javax.swing.JFrame {
     ArrayList<Integer> Ci = new ArrayList<Integer>();
     
     ArrayList<String> optimizedCode = new ArrayList();
+    
+    ArrayList<Integer> nkw = new ArrayList();
    
    String arg2[] = {"0"};
     
@@ -62,12 +64,12 @@ public class Index extends javax.swing.JFrame {
         String[] a = {"1", "2", "3", "4", "5"};
         JComboBox c = new JComboBox(a);
         //set jcombobox to all jtable
-        jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         
         
         
