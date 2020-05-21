@@ -79,7 +79,6 @@ public class Index extends javax.swing.JFrame {
         //jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         //jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         //jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        //jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         
         
         
@@ -191,13 +190,14 @@ public class Index extends javax.swing.JFrame {
         viewoverall = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        viewcombobox2 = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane11 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton10 = new javax.swing.JButton();
         backbtnoverall = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton27 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         controlStructureCalculation = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -1431,17 +1431,14 @@ public class Index extends javax.swing.JFrame {
 
         card.add(viewcs, "viewcs");
 
-        jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 28)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 0, 0));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Overall Code Complexity");
 
         jLabel33.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText(" Java / C++ Files :");
-
-        viewcombobox2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        viewcombobox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabel34.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1457,21 +1454,37 @@ public class Index extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane11.setViewportView(jTextArea2);
 
+        backbtnoverall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnoverall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnoverallActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        jButton27.setBackground(new java.awt.Color(0, 204, 0));
+        jButton27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton27.setForeground(new java.awt.Color(255, 255, 255));
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/show.png"))); // NOI18N
+        jButton27.setText("Show Details");
+        jButton27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton27.setIconTextGap(6);
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
         jButton10.setBackground(new java.awt.Color(0, 0, 255));
         jButton10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calculate.png"))); // NOI18N
         jButton10.setText("Calculate");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
-            }
-        });
-
-        backbtnoverall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
-        backbtnoverall.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backbtnoverallActionPerformed(evt);
             }
         });
 
@@ -1482,25 +1495,28 @@ public class Index extends javax.swing.JFrame {
             .addGroup(viewoverallLayout.createSequentialGroup()
                 .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewoverallLayout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(viewoverallLayout.createSequentialGroup()
-                        .addGap(500, 500, 500)
-                        .addComponent(jButton10))
-                    .addGroup(viewoverallLayout.createSequentialGroup()
                         .addGap(276, 276, 276)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(viewoverallLayout.createSequentialGroup()
                         .addComponent(backbtnoverall)
                         .addGap(345, 345, 345)
-                        .addComponent(jLabel32)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addComponent(jLabel32))
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewoverallLayout.createSequentialGroup()
+                .addContainerGap(482, Short.MAX_VALUE)
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(476, 476, 476))
         );
         viewoverallLayout.setVerticalGroup(
             viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1510,17 +1526,19 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(viewoverallLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel32)))
-                .addGap(32, 32, 32)
+                .addGap(34, 34, 34)
                 .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33)
                     .addComponent(jLabel34)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jButton10)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         card.add(viewoverall, "viewoverall");
@@ -2704,10 +2722,6 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        cardLayout.show(card,"finalDueAllFactor");
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void backbtnoverallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnoverallActionPerformed
         cardLayout.show(card, "functions");
     }//GEN-LAST:event_backbtnoverallActionPerformed
@@ -3132,6 +3146,52 @@ public class Index extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        jButton27.setVisible(false);
+        jButton10.setVisible(true);
+
+        if(choosetxt.getText().contains("java")){
+            jLabel3.setText("Java");
+        }else{
+            jLabel3.setText("C++");
+        }
+
+        try {
+
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+            int lineCount = 0;
+
+            while (scanner.hasNextLine()) {
+                String lineStatement = scanner.nextLine();
+                jTextArea2.setText(jTextArea2.getText() + "\n" + lineStatement  );
+                lineCount++;
+
+                LineComplexity lineObj = initLineObj(lineStatement, lineCount);
+                this.lineComplexityList.add(lineObj);
+            }
+
+            jTextField3.setText(Integer.toString(lineCount) );
+            scanner.close();
+
+            fillArray( controlstruc.size());
+            for(int count = 0 ; count < controlstruc.size() ; count++){
+                getAmount(controlstruc.get(count)); //serachInderectInheritence(classes.get(count));
+            }
+            for(int countC = 0 ; countC < controlstruc.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                    IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        cardLayout.show(card,"finalDueAllFactor");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     
    
     /**
@@ -3225,6 +3285,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
@@ -3248,6 +3309,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -3354,7 +3416,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JRadioButton variable;
     private javax.swing.JPanel variableCalculation;
     private javax.swing.JComboBox<String> viewcombobox1;
-    private javax.swing.JComboBox<String> viewcombobox2;
     private javax.swing.JPanel viewcs;
     private javax.swing.JPanel viewoverall;
     // End of variables declaration//GEN-END:variables
