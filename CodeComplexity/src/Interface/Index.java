@@ -6,10 +6,14 @@
 package Interface;
 
 import Optimization.optimizeCode;
+import Size.Size_JAVA;
 import java.awt.CardLayout;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
@@ -39,6 +43,12 @@ public class Index extends javax.swing.JFrame {
     ArrayList<Integer> Ci = new ArrayList<Integer>();
     
     ArrayList<String> optimizedCode = new ArrayList();
+    ArrayList<Integer> nkw = new ArrayList();
+    ArrayList<Integer> nid = new ArrayList();
+    ArrayList<Integer> nnv = new ArrayList();
+    ArrayList<Integer> nop = new ArrayList();
+    ArrayList<Integer> nsl = new ArrayList();
+    
    
    String arg2[] = {"0"};
     
@@ -57,13 +67,13 @@ public class Index extends javax.swing.JFrame {
         String[] a = {"1", "2", "3", "4", "5"};
         JComboBox c = new JComboBox(a);
         //set jcombobox to all jtable
-        jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        
+//        jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+//        
         
         
     }
@@ -2674,6 +2684,33 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        
+         String filename = choosetxt.getText();
+        
+        try {
+           optimizeCode opt = new optimizeCode(filename);
+           optimizedCode = opt.getOptimizedCode();
+           
+           Size_JAVA sizeJava = new Size_JAVA(optimizedCode);
+           nkw = sizeJava.getNKW();
+           nid = sizeJava.getNID();
+           nnv = sizeJava.getNNV();
+           nop = sizeJava.getNOP();
+           nsl = sizeJava.getNSL();
+              
+
+           for(int i =0 ; i < optimizedCode.size(); i++){
+           
+               System.out.println(optimizedCode.get(i));
+               System.out.println(nkw.get(i) + "  " + nid.get(i) + "  " + nnv.get(i) + "  " + nop.get(i) + "  " + nsl.get(i));
+
+           }
+           
+           
+        } catch (IOException ex) {
+            
+        }
+        
         cardLayout.show(card, "sizeFinal");
     }//GEN-LAST:event_jButton20ActionPerformed
 
