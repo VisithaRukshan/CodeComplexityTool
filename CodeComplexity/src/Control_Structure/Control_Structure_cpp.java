@@ -3,8 +3,14 @@ package Control_Structure;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author Chamal PC
+ */
+
 public class Control_Structure_cpp {
     
+    // Get control structure type from the line (C++)
     public String getControlStructureType(String statement){
       String codeType = "";
       Matcher findIf = Pattern.compile("^[ \\t]*if *.*").matcher(statement);
@@ -33,6 +39,7 @@ public class Control_Structure_cpp {
       return codeType;
     }
     
+    // Get closing tag count (C++)
     public int numberOfClosingTags(String statement){
         int numberOfClosing = 0;
         Matcher findClosing = Pattern.compile("[ \\t]*\\}").matcher(statement);
@@ -42,6 +49,7 @@ public class Control_Structure_cpp {
         return numberOfClosing;
     }
 
+    // Get opening tag count (C++)
     public int numberOfOpeningTags(String statement) {
         int numberOfOpening = 0;
         Matcher findOpening = Pattern.compile("[ \\t]*\\{[ \\n]*").matcher(statement);
@@ -51,6 +59,7 @@ public class Control_Structure_cpp {
         return numberOfOpening;
     }
     
+    // Assign the weight that mannually input (C++)
     public int getWeight(String controlStructureType,int ifWeight, int iterateWeight, int switchWeight, int caseWeight){
         int wtcs = 0;
         switch (controlStructureType){
@@ -76,6 +85,7 @@ public class Control_Structure_cpp {
         return wtcs;
     }
     
+    // Get the condition count (C++)
     public int getNumberOfConditions(String codeStatement) {
         int totalConditions = 0;
         Matcher findConditions = Pattern.compile("(>|<|<=|>=|==|!=)").matcher(codeStatement);

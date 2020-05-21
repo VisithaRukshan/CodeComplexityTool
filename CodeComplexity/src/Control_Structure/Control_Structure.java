@@ -3,10 +3,14 @@ package Control_Structure;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author Chamal PC
+ */
 
 public class Control_Structure {
     
-    // Get controller coed segment from the line 
+    // Get controller code segment from the line (Java) 
     public String getControllerCodeSegment(String statement){
       String codeSegment = "";
       Matcher findIf = Pattern.compile("^[ \\t]*if *.*").matcher(statement);
@@ -29,6 +33,7 @@ public class Control_Structure {
       return codeSegment;
     }
     
+    // Get control structure type from the line (Java) 
     public String getControlStructureType(String statement){
       String codeType = "";
       Matcher findIf = Pattern.compile("^[ \\t]*if *.*").matcher(statement);
@@ -51,6 +56,7 @@ public class Control_Structure {
       return codeType;
     }
     
+    // Get closing tag count (Java) 
     public int numberOfClosingTags(String statement){
         int numberOfClosing = 0;
         Matcher findClosing = Pattern.compile("[ \\t]*\\}").matcher(statement);
@@ -60,6 +66,7 @@ public class Control_Structure {
         return numberOfClosing;
     }
 
+    // Get opening tag count (Java)
     public int numberOfOpeningTags(String statement) {
         int numberOfOpening = 0;
         Matcher findOpening = Pattern.compile("[ \\t]*\\{[ \\n]*").matcher(statement);
@@ -69,6 +76,7 @@ public class Control_Structure {
         return numberOfOpening;
     }
     
+    // Assign the weight that mannually input (Java)
     public int getWeight(String controlStructureType,int ifWeight, int iterateWeight, int switchWeight, int caseWeight){
         int wtcs = 0;
         switch (controlStructureType){
@@ -91,6 +99,7 @@ public class Control_Structure {
         return wtcs;
     }
     
+    // Get the condition count (Java)
     public int getNumberOfConditions(String codeStatement) {
         int totalConditions = 0;
         Matcher findConditions = Pattern.compile("(>|<|<=|>=|==|!=)").matcher(codeStatement);
