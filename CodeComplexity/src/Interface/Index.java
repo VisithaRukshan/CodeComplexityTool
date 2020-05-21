@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Optimization.optimizeCode;
 import java.awt.CardLayout;
 import java.io.File;
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class Index extends javax.swing.JFrame {
     ArrayList<String> all = new ArrayList<String>();
     ArrayList<Integer> Ti = new ArrayList<Integer>();
     ArrayList<Integer> Ci = new ArrayList<Integer>();
+    
+    ArrayList<String> optimizedCode = new ArrayList();
    
    String arg2[] = {"0"};
     
@@ -736,7 +739,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(CouplingFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction1)
-                .addContainerGap(1030, Short.MAX_VALUE))
+                .addContainerGap(1036, Short.MAX_VALUE))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1962,30 +1965,30 @@ public class Index extends javax.swing.JFrame {
         sizeCalculation.setLayout(sizeCalculationLayout);
         sizeCalculationLayout.setHorizontalGroup(
             sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sizeCalculationLayout.createSequentialGroup()
-                .addGap(344, 344, 344)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sizeCalculationLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 107, Short.MAX_VALUE)
+                .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sizeCalculationLayout.createSequentialGroup()
+                        .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane21)
+                            .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(84, 84, 84))
+            .addGroup(sizeCalculationLayout.createSequentialGroup()
                 .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(sizeCalculationLayout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(sizeCalculationLayout.createSequentialGroup()
-                            .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane21)
-                                .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50)
-                            .addGroup(sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(84, 84, 84))
+                        .addGap(344, 344, 344)
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sizeCalculationLayout.createSequentialGroup()
+                        .addGap(340, 340, 340)
+                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         sizeCalculationLayout.setVerticalGroup(
             sizeCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2206,29 +2209,27 @@ public class Index extends javax.swing.JFrame {
         variableCalculationLayout.setHorizontalGroup(
             variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(variableCalculationLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(variableCalculationLayout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(variableCalculationLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(variableCalculationLayout.createSequentialGroup()
-                                .addGap(318, 318, 318)
-                                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(variableCalculationLayout.createSequentialGroup()
-                                .addGap(317, 317, 317)
-                                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(variableCalculationLayout.createSequentialGroup()
-                            .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane23)
-                                .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50)
-                            .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane23)
+                                    .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addGroup(variableCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(variableCalculationLayout.createSequentialGroup()
+                        .addGap(360, 360, 360)
+                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         variableCalculationLayout.setVerticalGroup(
@@ -2342,7 +2343,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2542,8 +2543,38 @@ public class Index extends javax.swing.JFrame {
         int t = JOptionPane.showConfirmDialog(null, data,  "Overall Code Complexity", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         
         if(t == 0){
+            jTextArea6.setText("");
+            jTextArea7.setText("");
+            jTextArea8.setText("");
+            
+            String filename = choosetxt.getText();
+            if(filename.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No file has been selected", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+       try{      
+           Scanner scanner = new Scanner(new File(choosetxt.getText()));
+             int cout = 0;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+               jTextArea6.setText(jTextArea6.getText() + "\n" + line  );
+               jTextArea7.setText(jTextArea7.getText() + "\n" + line  );
+               jTextArea8.setText(jTextArea8.getText() + "\n" + line  );
+                cout++;
+            }
+            
+            jTextField11.setText(Integer.toString(cout));
+            jTextField13.setText(Integer.toString(cout));
+            jTextField15.setText(Integer.toString(cout));
+        
+       }catch (Exception e){
+          
+       }
+            
             cardLayout.show(card, "threeInOne");
             size.doClick();
+            
         }
         
     }//GEN-LAST:event_sizebtnActionPerformed
@@ -2703,6 +2734,8 @@ public class Index extends javax.swing.JFrame {
                 
             }
             jTextField9.setText(Integer.toString(cout) );
+           
+            
             scanner.close();
             
             fillArray( classes.size());
@@ -2764,43 +2797,7 @@ public class Index extends javax.swing.JFrame {
    }
    
    int counter = 0;
-   
-   
-   /*public void serachInderectInheritence(String s){
-       counter = 0;
-       for(int a  = 0 ; a < all.size() ; a++){
-            String[] words2 = all.get(a).split(" " ) ; 
-             for(int b  = 0 ; b < words2.length ; b++){
-                 if(words2[b].equals("class") || words2[b].equals("Class")) {
-                       if(words2[b+1].equals(s)) {
-                           
-                           
-                            if(words2[b+2].equals("extends")) {
-                                //get the value by another function
-                                
-                                
-                                //System.err.println("extends called");
-                                 //System.err.println(count3);
-                                /*IndirectInheritence.set(counter , 
-                                     IndirectInheritence.get(counter) + count3
-                                );
-                                //count3 = 0;
-                            }else {
-                                 //System.err.println("else called");
-                                IndirectInheritence.set(
-                                         counter , 
-                                     IndirectInheritence.get(counter) + 0
-                                );
-                            }
-                            
-                       }
-                 }
-             }
-       }
-       
-       counter++;
-   }*/
-   
+
    int count3 = 0;
    public void getAmount(String s) {
       
@@ -2827,11 +2824,10 @@ public class Index extends javax.swing.JFrame {
        }
        
       
-       
-       
          
     }//GEN-LAST:event_jButton23ActionPerformed
 
+    
    
     /**
      * @param args the command line arguments
@@ -3054,4 +3050,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel viewcs;
     private javax.swing.JPanel viewoverall;
     // End of variables declaration//GEN-END:variables
+
+    
 }

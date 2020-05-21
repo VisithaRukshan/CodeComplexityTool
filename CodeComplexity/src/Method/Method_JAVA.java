@@ -1,0 +1,194 @@
+package Method;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+
+public class Method_JAVA {
+    
+    ArrayList<String> lines;
+    ArrayList<Integer> CmUnit;
+    ArrayList<Integer> NPCRT;
+    //ArrayList<Integer> NCRT;
+    ArrayList<Integer> VOID;
+    ArrayList<Integer> NPDTP;
+    ArrayList<Integer> NCDTP;
+    ArrayList<String> tokens;
+    ArrayList<String> matcherP1;
+    ArrayList<String> matcherP2;
+    ArrayList<String> matcherP3;
+     
+     int NPRT_WEIGHT = 1;
+     int NCRT_WEIGHT = 1;
+     int VOID_WEIGHT = 0;
+     int NPDTP_WEIGHT = 1;
+     int NCDTP_WEIGHT = 1;
+     
+  
+    String P_Return_REGEX = "(public|private|protected)( byte| short | int| long| float | double | boolean | char)(.*?)(\\))";
+    String C_Return_REGEX = "((?!((public class)(.*?)(\\)|\\{))|((public|private|protected|public static|private static |protected static)( void| byte| short | int| long| float | double | boolean | char)(.*?)(\\))))((public|private|protected)(.*?)(\\)|\\{|\\})))";
+    String Parameter_1_REGEX =  "(?<=private |public |protected )(.*?)(\\))";
+    String Parameter_2_REGEX = "(?<=\\().+?(?=\\))";
+    String Parameter_3_REGEX = "\\b(\\w*(byte |short |int |long |float |double |boolean |char )\\w*)\\b";
+			 
+   public Method_JAVA (ArrayList<String> lines, int NPRT_W, int NCRT_W, int VOID_W, int NPDTP_W, int NCDTP_W){
+       
+         NPRT_WEIGHT = NPRT_W;
+         NCRT_WEIGHT = NCRT_W;
+         VOID_WEIGHT = VOID_W;
+         NPDTP_WEIGHT = NPDTP_W;
+         NCDTP_WEIGHT = NCDTP_W;
+         
+        this.lines = lines;
+        tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
+        CmUnit = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+ //       NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        VOID = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NPDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NCDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+       
+       CalculateCM();
+       
+   }
+
+    private void CalculateCM() {
+         for (int i = 0; i < lines.size(); i++) {
+            CalculateNPCRT(lines.get(i), i);
+//            CalculateNCRT(lines.get(i), i);
+            CalculateNPDTP(lines.get(i), i);
+            CalculateNCDTP(lines.get(i), i);
+        }
+        CalculateTotal();
+    }
+
+    //.........................................................................
+    //................RETURN TYPE CALCULATION..................................
+    
+    private int CalculateNPCRT(String line, int lineNo) {
+        Pattern p_pattern = Pattern.compile(P_Return_REGEX);
+        Matcher p_matcher = p_pattern.matcher(line);
+        
+        Pattern c_pattern = Pattern.compile(C_Return_REGEX);
+        Matcher c_matcher = c_pattern.matcher(line);
+        
+        int premitive = 0;
+        int composite = 0;
+        int count =0;
+        while (p_matcher.find()) {
+            premitive++;
+            AddToken(p_matcher.group(), lineNo);
+        }
+        
+        while (c_matcher.find()) {
+            composite++;
+            AddToken(c_matcher.group(), lineNo);
+        }
+        
+        count = (premitive*NPRT_WEIGHT) + (composite*NCRT_WEIGHT);
+        
+        NPCRT.set(lineNo, count);
+        return count;
+    }
+
+    //.........................................................................
+    //................PREMITIVE PARAMETER CALCULATION..................................
+    
+    private int CalculateNPDTP(String line, int lineNo) {
+        Pattern pattern_1 = Pattern.compile(Parameter_1_REGEX);
+        Matcher matcher_1 = pattern_1.matcher(line);
+        
+        int count = 0;
+        while (matcher_1.find()) {
+            matcherP1.add(matcher_1.group());
+            
+            Pattern pattern_2 = Pattern.compile(Parameter_2_REGEX);
+            Matcher matcher_2 = pattern_2.matcher(matcherP1.toString());
+            
+            while (matcher_2.find()){
+                matcherP2.add(matcher_2.group());
+                
+                Pattern pattern_3 = Pattern.compile(Parameter_3_REGEX);
+                Matcher matcher_3 = pattern_3.matcher(matcherP2.toString());
+                
+                while(matcher_3.find()){
+                    count++;
+                    AddToken(matcher_3.group(), lineNo);
+
+                }
+            }  
+        }
+        NPDTP.set(lineNo, count);
+        return count;
+    }
+
+    //.........................................................................
+    //................COMPOSITE TYPE CALCULATION..................................
+    
+    private int CalculateNCDTP(String line, int lineNo) {
+        Pattern pattern_1 = Pattern.compile(Parameter_1_REGEX);
+        Matcher matcher_1 = pattern_1.matcher(line);
+        
+        int count = 0;
+        while (matcher_1.find()) {
+            matcherP1.add(matcher_1.group());
+            
+            Pattern pattern_2 = Pattern.compile(Parameter_2_REGEX);
+            Matcher matcher_2 = pattern_2.matcher(matcherP1.toString());
+            
+            while (matcher_2.find()){
+                matcherP2.add(matcher_2.group());
+                
+                Pattern pattern_3 = Pattern.compile(Parameter_3_REGEX);
+                Matcher matcher_3 = pattern_3.matcher(matcherP2.toString());
+                
+                while(matcher_3.find()){
+                     if(matcher_3.find() == true){
+                         return 0;
+                     }else{
+                         count++;
+                         AddToken(matcher_3.group(), lineNo);
+                     }
+                }
+            }  
+        }
+        NCDTP.set(lineNo, count);
+        return count;
+
+    }
+    
+    //.........................................................................
+    //................TOTAL CALCULATION..................................
+    
+  
+    private void CalculateTotal() {
+            for (int i = 0; i < CmUnit.size(); i++) {
+            int total = (NPCRT.get(i) + (NPDTP.get(i)) + (NCDTP.get(i)));
+            CmUnit.set(i, total);
+        }
+    }
+           
+    private void AddToken(String token, int index) {
+        if (tokens.get(index).matches("")) {
+            tokens.set(index, token);
+        } else {
+            tokens.set(index, tokens.get(index) + "," + token);
+        }
+    }
+    
+    public ArrayList<Integer> getNPCRT(){
+        return NPCRT;
+    }
+    
+    public ArrayList<Integer> getNPDTP(){
+        return NPDTP;
+    }
+
+    public ArrayList<Integer> getNCDTP(){
+        return NCDTP;
+    }
+    
+}
