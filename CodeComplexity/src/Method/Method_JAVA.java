@@ -11,7 +11,7 @@ public class Method_JAVA {
     
     ArrayList<String> lines;
     ArrayList<Integer> CmUnit;
-    ArrayList<Integer> NPCRT;
+    ArrayList<Integer> WPCRT;
     //ArrayList<Integer> NCRT;
     ArrayList<Integer> VOID;
     ArrayList<Integer> NPDTP;
@@ -22,7 +22,7 @@ public class Method_JAVA {
     ArrayList<String> matcherP3;
      
      int NPRT_WEIGHT = 1;
-     int NCRT_WEIGHT = 1;
+     int NCRT_WEIGHT = 2;
      int VOID_WEIGHT = 0;
      int NPDTP_WEIGHT = 1;
      int NCDTP_WEIGHT = 1;
@@ -45,7 +45,22 @@ public class Method_JAVA {
         this.lines = lines;
         tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
         CmUnit = new ArrayList<>(Collections.nCopies(lines.size(), 0));
-        NPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        WPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+ //       NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        VOID = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NPDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NCDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+       
+       CalculateCM();
+       
+   }
+   
+   public Method_JAVA (ArrayList<String> lines){
+       
+        this.lines = lines;
+        tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
+        CmUnit = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        WPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
  //       NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         VOID = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         NPDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
@@ -57,10 +72,10 @@ public class Method_JAVA {
 
     private void CalculateCM() {
          for (int i = 0; i < lines.size(); i++) {
-            CalculateNPCRT(lines.get(i), i);
+            CalculateWPCRT(lines.get(i), i);
 //            CalculateNCRT(lines.get(i), i);
-            CalculateNPDTP(lines.get(i), i);
-            CalculateNCDTP(lines.get(i), i);
+  //          CalculateNPDTP(lines.get(i), i);
+//            CalculateNCDTP(lines.get(i), i);
         }
         CalculateTotal();
     }
@@ -68,7 +83,7 @@ public class Method_JAVA {
     //.........................................................................
     //................RETURN TYPE CALCULATION..................................
     
-    private int CalculateNPCRT(String line, int lineNo) {
+    private int CalculateWPCRT(String line, int lineNo) {
         Pattern p_pattern = Pattern.compile(P_Return_REGEX);
         Matcher p_matcher = p_pattern.matcher(line);
         
@@ -90,7 +105,7 @@ public class Method_JAVA {
         
         count = (premitive*NPRT_WEIGHT) + (composite*NCRT_WEIGHT);
         
-        NPCRT.set(lineNo, count);
+        WPCRT.set(lineNo, count);
         return count;
     }
 
@@ -166,7 +181,7 @@ public class Method_JAVA {
   
     private void CalculateTotal() {
             for (int i = 0; i < CmUnit.size(); i++) {
-            int total = (NPCRT.get(i) + (NPDTP.get(i)) + (NCDTP.get(i)));
+            int total = (WPCRT.get(i) + (NPDTP.get(i)) + (NCDTP.get(i)));
             CmUnit.set(i, total);
         }
     }
@@ -179,8 +194,8 @@ public class Method_JAVA {
         }
     }
     
-    public ArrayList<Integer> getNPCRT(){
-        return NPCRT;
+    public ArrayList<Integer> getWPCRT(){
+        return WPCRT;
     }
     
     public ArrayList<Integer> getNPDTP(){

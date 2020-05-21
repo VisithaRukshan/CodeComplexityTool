@@ -22,6 +22,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Size.Size_JAVA;
+import Method.Method_JAVA;
+import Variable.Variable_JAVA;
 
 /**
  *
@@ -55,6 +57,16 @@ public class Index extends javax.swing.JFrame {
     ArrayList<Integer> nop = new ArrayList();
     ArrayList<Integer> nsl = new ArrayList();
     ArrayList<String> token = new ArrayList();
+    ArrayList<Integer> cs = new ArrayList();
+    
+    ArrayList<Integer> wpcrt = new ArrayList();
+    ArrayList<Integer> npdtp = new ArrayList();
+    ArrayList<Integer> ncdtp = new ArrayList();
+    
+    ArrayList<Integer> wvs = new ArrayList();
+    ArrayList<Integer> npdtv = new ArrayList();
+    ArrayList<Integer> ncdtv = new ArrayList();
+    ArrayList<Integer> cv = new ArrayList();
    
    String arg2[] = {"0"};
     
@@ -139,10 +151,10 @@ public class Index extends javax.swing.JFrame {
         backbtnfunction1 = new javax.swing.JButton();
         MethodFinal = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         backbtnfunction2 = new javax.swing.JButton();
+        jScrollPane24 = new javax.swing.JScrollPane();
+        jTable15 = new javax.swing.JTable();
         InheritanceFinal = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -171,8 +183,8 @@ public class Index extends javax.swing.JFrame {
         backbtnfunction7 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        jScrollPane25 = new javax.swing.JScrollPane();
+        jTable16 = new javax.swing.JTable();
         viewcs = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -795,25 +807,6 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Line NO", "Program Statement", "Wmrt", "Npdtp", "Ncdtp", "Cm"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
-
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -826,6 +819,30 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jTable15.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "Program Statement", "Wmrt", "Npdtp", "Ncdtp", "Cm"
+            }
+        ));
+        jScrollPane24.setViewportView(jTable15);
+        if (jTable15.getColumnModel().getColumnCount() > 0) {
+            jTable15.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTable15.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTable15.getColumnModel().getColumn(1).setPreferredWidth(655);
+            jTable15.getColumnModel().getColumn(1).setMaxWidth(655);
+            jTable15.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTable15.getColumnModel().getColumn(2).setMaxWidth(60);
+            jTable15.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTable15.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTable15.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jTable15.getColumnModel().getColumn(4).setMaxWidth(60);
+            jTable15.getColumnModel().getColumn(5).setPreferredWidth(60);
+            jTable15.getColumnModel().getColumn(5).setMaxWidth(60);
+        }
+
         javax.swing.GroupLayout MethodFinalLayout = new javax.swing.GroupLayout(MethodFinal);
         MethodFinal.setLayout(MethodFinalLayout);
         MethodFinalLayout.setHorizontalGroup(
@@ -833,11 +850,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(MethodFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MethodFinalLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addContainerGap(1042, Short.MAX_VALUE))
             .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MethodFinalLayout.createSequentialGroup()
                     .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -848,15 +861,18 @@ public class Index extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(596, Short.MAX_VALUE)))
+            .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MethodFinalLayout.createSequentialGroup()
+                    .addGap(82, 82, 82)
+                    .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(83, Short.MAX_VALUE)))
         );
         MethodFinalLayout.setVerticalGroup(
             MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MethodFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction2)
-                .addGap(121, 121, 121)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(654, Short.MAX_VALUE))
             .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MethodFinalLayout.createSequentialGroup()
                     .addGap(105, 105, 105)
@@ -864,6 +880,11 @@ public class Index extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 521, Short.MAX_VALUE)
                     .addComponent(jButton2)
                     .addContainerGap()))
+            .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MethodFinalLayout.createSequentialGroup()
+                    .addGap(84, 84, 84)
+                    .addComponent(jScrollPane24, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                    .addGap(85, 85, 85)))
         );
 
         card.add(MethodFinal, "methodFinal");
@@ -1123,22 +1144,33 @@ public class Index extends javax.swing.JFrame {
 
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Line NO", "Program Statement", "Nkw", "Nid", "Nop", "Nnv", "Nsl", "Cs"
+                "No.", "Program Statement", "Nkw", "Nid", "Nop", "Nnv", "Nsl", "Cs"
             }
         ));
         jScrollPane7.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(1).setPreferredWidth(655);
+            jTable6.getColumnModel().getColumn(1).setMaxWidth(655);
+            jTable6.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(2).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(4).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(5).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(5).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(6).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(6).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(6).setHeaderValue("Nsl");
+            jTable6.getColumnModel().getColumn(7).setPreferredWidth(60);
+            jTable6.getColumnModel().getColumn(7).setMaxWidth(60);
+            jTable6.getColumnModel().getColumn(7).setHeaderValue("Cs");
+        }
 
         jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 0, 255));
@@ -1163,34 +1195,27 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SizeFinalLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backbtnfunction6)))
-                .addContainerGap(84, Short.MAX_VALUE))
-            .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(SizeFinalLayout.createSequentialGroup()
-                    .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(SizeFinalLayout.createSequentialGroup()
-                            .addGap(436, 436, 436)
-                            .addComponent(jButton6))
-                        .addGroup(SizeFinalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(590, Short.MAX_VALUE)))
+                        .addComponent(backbtnfunction6))
+                    .addGroup(SizeFinalLayout.createSequentialGroup()
+                        .addGap(493, 493, 493)
+                        .addComponent(jButton6))
+                    .addGroup(SizeFinalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         SizeFinalLayout.setVerticalGroup(
             SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SizeFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction6)
-                .addGap(152, 152, 152)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(309, Short.MAX_VALUE))
-            .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(SizeFinalLayout.createSequentialGroup()
-                    .addGap(112, 112, 112)
-                    .addComponent(jLabel26)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
-                    .addComponent(jButton6)
-                    .addContainerGap()))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel26)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap())
         );
 
         card.add(SizeFinal, "sizeFinal");
@@ -1214,24 +1239,29 @@ public class Index extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Variables");
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        jTable16.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Line NO", "Program Statement", "Wvs", "Npdtv", "Ncdtv", "Cv"
+                "No.", "Program Statement", "Wvs", "Npdtv", "Ncdtv", "Cv"
             }
         ));
-        jScrollPane8.setViewportView(jTable7);
+        jScrollPane25.setViewportView(jTable16);
+        if (jTable16.getColumnModel().getColumnCount() > 0) {
+            jTable16.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTable16.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTable16.getColumnModel().getColumn(1).setPreferredWidth(655);
+            jTable16.getColumnModel().getColumn(1).setMaxWidth(655);
+            jTable16.getColumnModel().getColumn(2).setPreferredWidth(60);
+            jTable16.getColumnModel().getColumn(2).setMaxWidth(60);
+            jTable16.getColumnModel().getColumn(3).setPreferredWidth(60);
+            jTable16.getColumnModel().getColumn(3).setMaxWidth(60);
+            jTable16.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jTable16.getColumnModel().getColumn(4).setMaxWidth(60);
+            jTable16.getColumnModel().getColumn(5).setPreferredWidth(60);
+            jTable16.getColumnModel().getColumn(5).setMaxWidth(60);
+        }
 
         javax.swing.GroupLayout VariablesFinalLayout = new javax.swing.GroupLayout(VariablesFinal);
         VariablesFinal.setLayout(VariablesFinalLayout);
@@ -1243,32 +1273,28 @@ public class Index extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(backbtnfunction7))
                     .addGroup(VariablesFinalLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(94, Short.MAX_VALUE))
-            .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VariablesFinalLayout.createSequentialGroup()
-                    .addGap(418, 418, 418)
-                    .addComponent(jButton7)
-                    .addContainerGap(596, Short.MAX_VALUE)))
+                        .addGap(489, 489, 489)
+                        .addComponent(jButton7))
+                    .addGroup(VariablesFinalLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(VariablesFinalLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         VariablesFinalLayout.setVerticalGroup(
             VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VariablesFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction7)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
-            .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VariablesFinalLayout.createSequentialGroup()
-                    .addGap(468, 468, 468)
-                    .addComponent(jButton7)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jButton7)
+                .addGap(25, 25, 25))
         );
 
         card.add(VariablesFinal, "variableFinal");
@@ -2694,6 +2720,9 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+         
+            DefaultTableModel tbl = (DefaultTableModel)jTable6.getModel();
+           tbl.setRowCount(0);
         
         try {
             optimizeCode optCode = new optimizeCode(filename);
@@ -2705,20 +2734,106 @@ public class Index extends javax.swing.JFrame {
             nnv = sizeJava.getNNV();
             nop = sizeJava.getNOP();
             nsl = sizeJava.getNSL();
+            cs = sizeJava.getCS();
             
+           
+            
+            Object rowData[] = new Object[8];
+            for( int i = 0; i < optimizedCode.size(); i++){
+              
+                rowData[0] = i;
+                rowData[1] = optimizedCode.get(i);
+                rowData[2] = nkw.get(i);
+                rowData[3] = nid.get(i);
+                rowData[4] = nop.get(i);
+                rowData[5] = nnv.get(i);
+                rowData[6] = nsl.get(i);
+                rowData[7] = cs.get(i);
+                
+                tbl.addRow(rowData);
+            }
+    
         } catch (IOException ex) {
           
         }
         
-        
+        cardLayout.show(card, "sizeFinal");
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        
+         DefaultTableModel tbl = (DefaultTableModel)jTable15.getModel();
+       tbl.setRowCount(0);
+        
+        try {
+            optimizeCode optCode = new optimizeCode(filename);
+            optimizedCode = optCode.getOptimizedCode();
+            
+            Method_JAVA method_JAVA = new Method_JAVA(optimizedCode);
+            wpcrt = method_JAVA.getWPCRT();
+            npdtp = method_JAVA.getNPDTP();
+            ncdtp = method_JAVA.getNCDTP();
+            
+           
+            
+            Object rowData[] = new Object[6];
+            for( int i = 0; i < optimizedCode.size(); i++){
+              
+                rowData[0] = i;
+                rowData[1] = optimizedCode.get(i);
+                rowData[2] = wpcrt.get(i);
+                rowData[3] = npdtp.get(i);
+                rowData[4] = ncdtp.get(i);
+  //              rowData[5] = nnv.get(i);
+               
+                
+                tbl.addRow(rowData);
+            }
+    
+        } catch (IOException ex) {
+          
+        }
+        
         cardLayout.show(card, "methodFinal");
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-       cardLayout.show(card, "variableFinal");
+           
+        
+        DefaultTableModel tbl = (DefaultTableModel)jTable16.getModel();
+           tbl.setRowCount(0);
+        
+        try {
+            optimizeCode optCode = new optimizeCode(filename);
+            optimizedCode = optCode.getOptimizedCode();
+            
+           Variable_JAVA variableJava = new Variable_JAVA(optimizedCode);
+        
+           wvs = variableJava.getWVS();
+           npdtv = variableJava.getNPDTV();
+           ncdtv = variableJava.getNCDTV();
+           cv = variableJava.getCV();
+           
+           
+            Object rowData[] = new Object[6];
+            for( int i = 0; i < optimizedCode.size(); i++){
+              
+                rowData[0] = i;
+                rowData[1] = optimizedCode.get(i);
+                rowData[2] = wvs.get(i);
+                rowData[3] = npdtv.get(i);
+                rowData[4] = ncdtv.get(i);
+                rowData[5] = cv.get(i);
+               
+                
+                tbl.addRow(rowData);
+            }
+    
+        } catch (IOException ex) {
+          
+        }
+        
+        cardLayout.show(card, "variableFinal");
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void backbtnfunction1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnfunction1ActionPerformed
@@ -3023,12 +3138,12 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane24;
+    private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable10;
@@ -3036,11 +3151,11 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JTable jTable12;
     private javax.swing.JTable jTable13;
     private javax.swing.JTable jTable14;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable15;
+    private javax.swing.JTable jTable16;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
