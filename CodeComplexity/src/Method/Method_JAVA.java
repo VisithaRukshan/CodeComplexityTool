@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.sound.midi.Soundbank;
 
 
 
@@ -21,11 +22,11 @@ public class Method_JAVA {
     ArrayList<String> matcherP2;
     ArrayList<String> matcherP3;
      
-     int NPRT_WEIGHT = 1;
-     int NCRT_WEIGHT = 2;
-     int VOID_WEIGHT = 0;
-     int NPDTP_WEIGHT = 1;
-     int NCDTP_WEIGHT = 1;
+     int NPRT_WEIGHT ;
+     int NCRT_WEIGHT ;
+     int VOID_WEIGHT ;
+     int NPDTP_WEIGHT ;
+     int NCDTP_WEIGHT ;
      
   
     String P_Return_REGEX = "(public|private|protected)( byte| short | int| long| float | double | boolean | char)(.*?)(\\))";
@@ -41,6 +42,13 @@ public class Method_JAVA {
          VOID_WEIGHT = VOID_W;
          NPDTP_WEIGHT = NPDTP_W;
          NCDTP_WEIGHT = NCDTP_W;
+         
+          System.out.println(NPRT_WEIGHT);
+        System.out.println(NCRT_WEIGHT);
+        System.out.println(VOID_WEIGHT);
+        System.out.println(NPDTP_WEIGHT);
+        System.out.println(NCDTP_W);
+        
          
         this.lines = lines;
         tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
@@ -180,6 +188,9 @@ public class Method_JAVA {
                 }
             }  
         }
+        
+  
+        
         NCDTP.set(lineNo, count);
         return count;
 
@@ -190,8 +201,12 @@ public class Method_JAVA {
     
   
     private void CalculateTotal() {
+        
+       
+        System.out.println( NCDTP);
+        
             for (int i = 0; i < CmUnit.size(); i++) {
-            int total = (WPCRT.get(i) + (NPDTP.get(i)) + (NCDTP.get(i)));
+            int total = (WPCRT.get(i) +( (NPDTP.get(i) * NPDTP_WEIGHT) + (NCDTP.get(i) * NCDTP_WEIGHT)));
             CmUnit.set(i, total);
         }
     }
