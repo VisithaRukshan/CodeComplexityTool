@@ -26,6 +26,7 @@ import Method.Method_JAVA;
 import Variable.Variable_JAVA;
 import Control_Structure.Control_Structure;
 import Control_Structure.Control_Structure_cpp;
+import java.awt.print.PrinterException;
 import java.util.Stack;
 
 /**
@@ -180,8 +181,8 @@ public class Index extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
         backbtnfunction5 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         SizeFinal = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -446,14 +447,14 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(filechooseLayout.createSequentialGroup()
                         .addGap(189, 189, 189)
-                        .addComponent(choosetxt)
+                        .addComponent(choosetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filechooseLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(uploadbtn)
-                        .addGap(325, 325, 325))))
+                        .addGap(293, 293, 293))))
             .addGroup(filechooseLayout.createSequentialGroup()
                 .addComponent(backbtnfile)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -477,7 +478,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(choosetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(uploadbtn)))
                 .addContainerGap(354, Short.MAX_VALUE))
         );
@@ -1073,31 +1074,8 @@ public class Index extends javax.swing.JFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Control Structure");
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Line NO", "Program Statement", "Wtcs", "Nc", "Ccpps", "Ccs"
-            }
-        ));
+        jTable5.setModel(this.lineComplexityTableModel);
         jScrollPane6.setViewportView(jTable5);
-
-        jButton5.setText("Print PDF");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         backbtnfunction5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
         backbtnfunction5.addActionListener(new java.awt.event.ActionListener() {
@@ -1106,42 +1084,51 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setBackground(new java.awt.Color(153, 255, 255));
+        jButton12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(0, 0, 255));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pdf.png"))); // NOI18N
+        jButton12.setText("Print");
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.setIconTextGap(6);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ControlStructureFinalLayout = new javax.swing.GroupLayout(ControlStructureFinal);
         ControlStructureFinal.setLayout(ControlStructureFinalLayout);
         ControlStructureFinalLayout.setHorizontalGroup(
             ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backbtnfunction5))
-                .addContainerGap(141, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                            .addGap(436, 436, 436)
-                            .addComponent(jButton5))
-                        .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(590, Short.MAX_VALUE)))
+                    .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backbtnfunction5))
+                    .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(499, 499, 499))
         );
         ControlStructureFinalLayout.setVerticalGroup(
             ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction5)
-                .addGap(112, 112, 112)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addGap(111, 111, 111)
-                    .addComponent(jLabel24)
-                    .addGap(308, 308, 308)
-                    .addComponent(jButton5)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(53, 53, 53)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         card.add(ControlStructureFinal, "controlStuctureFinal");
@@ -1686,7 +1673,7 @@ public class Index extends javax.swing.JFrame {
                         .addGap(159, 159, 159)
                         .addComponent(jButton24))
                     .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                        .addGap(485, 485, 485)
+                        .addGap(470, 470, 470)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2593,10 +2580,6 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -3245,6 +3228,14 @@ public class Index extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Input Values Added Succesfully.");
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        try {
+            jTable5.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     
    
     /**
@@ -3323,6 +3314,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -3339,7 +3331,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
