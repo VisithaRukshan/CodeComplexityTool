@@ -27,7 +27,17 @@ import Variable.Variable_JAVA;
 
 import Control_Structure.Control_Structure;
 import Control_Structure.Control_Structure_cpp;
+import Coupling.RecCallRec_same_file;
+import Coupling.RecCallReg_same_file;
+import Coupling.Recurtion;
+import Coupling.RegCallGlobal_same_file;
+import Coupling.RegCallRec_same_file;
+import Coupling.RegrCallReg_same_file;
+import Coupling.codeLines;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.print.PrinterException;
+import java.io.FileNotFoundException;
 import java.util.Stack;
 
 
@@ -81,6 +91,17 @@ public class Index extends javax.swing.JFrame {
     ArrayList<Integer> ncdtv = new ArrayList();
     ArrayList<Integer> cv = new ArrayList();
    
+    
+    
+      ArrayList<String> mymethod = new ArrayList<String>();
+      ArrayList<String> methodSet = new ArrayList<String>();
+      ArrayList<String> recursivelist = new ArrayList<String>();
+      ArrayList<String> coupling_class = new ArrayList<>();
+      ArrayList<String> Globalvariables = new ArrayList<>();
+       ArrayList<String> MandV = new ArrayList<>();
+       ArrayList<String> trash = new ArrayList<>();
+      ArrayList<Integer> allc = new ArrayList<Integer>();
+      ArrayList<Integer> gs = new ArrayList<Integer>();
    String arg2[] = {"0"};
     
    int countIndex = 0;
@@ -112,7 +133,68 @@ public class Index extends javax.swing.JFrame {
         
         
     }
-
+    public void couplingprint(String[] word){
+     String sentence = "";
+                for ( int j = 0 ; j < word.length ; j++) {
+                          sentence =  sentence+ " " + word[j];
+                         
+                     } 
+                  
+    }
+ public void couplingtotextarea(){
+         
+    int aa = 2;
+    int bb = 2;
+    int cc = 3;
+    int dd = 4;
+    int ee = 3;
+    int ff = 1;
+    
+     DefaultTableModel tb = (DefaultTableModel)jTable10.getModel();
+     tb.setValueAt(aa, 0, 1);
+     tb.setValueAt(bb, 1, 1);
+     tb.setValueAt(cc, 2, 1);
+     tb.setValueAt(dd, 3, 1);
+     tb.setValueAt(ee, 4, 1);
+     tb.setValueAt(ff, 5, 1);
+     
+    
+    
+        try {
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+            int cout = 0;
+            while (scanner.hasNextLine()) {
+                
+               String line = scanner.nextLine();
+               mymethod.add(line);
+               jTextArea4.setText(jTextArea4.getText() + "\n" + line  );
+               cout++;
+               String[] words = line.split("\n" ) ;
+               couplingprint(words);  
+            }
+            String word = "";
+            //int cc = 0;
+            //method
+        
+           
+           // System.out.println("cc = " + cc);
+            jTextField7.setText(Integer.toString(cout));
+            if(choosetxt.getText().contains("java")){
+                    jTextField6.setText("Java");
+            }
+            else if(choosetxt.getText().contains("cpp")){
+                    jTextField6.setText("C++");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+     ////method
+     /////////////////////////////////////////////////////
+     
+     
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,6 +250,8 @@ public class Index extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         backbtnfunction1 = new javax.swing.JButton();
+        jLabel56 = new javax.swing.JLabel();
+        tot = new javax.swing.JTextField();
         MethodFinal = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
@@ -402,7 +486,6 @@ public class Index extends javax.swing.JFrame {
         choosebtn.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn.setText("Choose");
-        choosebtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -415,7 +498,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn.setText("Upload");
-        uploadbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -676,7 +758,6 @@ public class Index extends javax.swing.JFrame {
         choosebtn1.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn1.setText("Choose");
-        choosebtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -689,7 +770,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn1.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn1.setText("Upload");
-        uploadbtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -714,7 +794,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn2.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn2.setText("UnZip");
-        uploadbtn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn2.addActionListener(new java.awt.event.ActionListener() {
@@ -783,21 +862,13 @@ public class Index extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Line NO", "Program Statement", "Nr", "Nmcms", "Nmcmd", "Nmcrms", "Nmcrmd", "Nrmcrms", "Nrmcrmd", "Nrmcms", "Nrmcmd", "Nmrgvs", "Nmrgvd", "Nrmrgvs", "Nrmrgvd", "Ccp"
+                "Line NO", "Program Statement", "Nr", "Nmcms", "Nmcrms", "Nrmcrms", "Nrmcms", "Nmrgvs", "Nmcmd", "Nmcrmd", "Nrmcrmd", "Nmrgvd", "Nrmrgvs", "Nrmrgvd", "cpp"
             }
         ));
+        jTable1.setRowHeight(25);
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setText("Print PDF");
@@ -819,6 +890,14 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jLabel56.setText("Total Complexcity due to coupling");
+
+        tot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CouplingFinalLayout = new javax.swing.GroupLayout(CouplingFinal);
         CouplingFinal.setLayout(CouplingFinalLayout);
         CouplingFinalLayout.setHorizontalGroup(
@@ -827,6 +906,12 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backbtnfunction1)
                 .addContainerGap(1036, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CouplingFinalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(172, 172, 172))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -845,14 +930,18 @@ public class Index extends javax.swing.JFrame {
             .addGroup(CouplingFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction1)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 404, Short.MAX_VALUE)
+                .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(219, 219, 219))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGap(108, 108, 108)
                     .addComponent(jLabel16)
                     .addGap(56, 56, 56)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(78, 78, 78)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(42, 42, 42)
                     .addComponent(jButton1)
                     .addContainerGap(204, Short.MAX_VALUE)))
         );
@@ -916,7 +1005,7 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MethodFinalLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -933,7 +1022,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         card.add(MethodFinal, "methodFinal");
@@ -1126,7 +1215,6 @@ public class Index extends javax.swing.JFrame {
         jButton12.setForeground(new java.awt.Color(0, 0, 255));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pdf.png"))); // NOI18N
         jButton12.setText("Print");
-        jButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.setIconTextGap(6);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -1294,7 +1382,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         SizeFinalLayout.setVerticalGroup(
             SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1304,7 +1392,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap())
@@ -1372,7 +1460,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         VariablesFinalLayout.setVerticalGroup(
             VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1382,7 +1470,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
                 .addContainerGap())
@@ -1842,20 +1930,14 @@ public class Index extends javax.swing.JFrame {
             new Object [][] {
                 {"A recursive call ", null},
                 {"A regular method calling another regular method in the same file ", null},
-                {"A regular method calling another regular method in a different file", null},
                 {"A regular method calling a recursive method in the same file", null},
-                {"A regular method calling a recursive method in a different file ", null},
                 {"A recursive method calling another recursive method in the same file ", null},
-                {"A recursive method calling another recursive method in a different file", null},
                 {"A recursive method calling a regular method in the same file ", null},
-                {"A recursive method calling a regular method in a different file", null},
-                {"A regular method referencing a global variable in the same file", null},
-                {"A regular method referencing a global variable in a different file ", null},
-                {"A recursive method referencing a global variable in the same file ", null},
-                {"A recursive method referencing a global variable in a different file ", null}
+                {"A regular method referencing a global variable in the same file", null}
+
             },
             new String [] {
-                "Control Structure Type", "Weight"
+                "Coupling", "Weight"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -2580,13 +2662,17 @@ public class Index extends javax.swing.JFrame {
     private void choosetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosetxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_choosetxtActionPerformed
-
+    public static File f;
     private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
+        f = chooser.getSelectedFile();
         filename = f.getAbsolutePath();
         choosetxt.setText(filename);
+        
+        
+        
+       
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void uploadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtnActionPerformed
@@ -2644,6 +2730,7 @@ public class Index extends javax.swing.JFrame {
         
         if(t == 0){
             cardLayout.show(card, "couplingCalculation");
+            couplingtotextarea();
         }
    
     }//GEN-LAST:event_couplingbtnActionPerformed
@@ -2671,14 +2758,15 @@ public class Index extends javax.swing.JFrame {
 
     private void singleFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleFileActionPerformed
             cardLayout.show(card, "filechoose");
+      
     }//GEN-LAST:event_singleFileActionPerformed
 
     private void choosebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtn1ActionPerformed
-        /*JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        filename = f.getAbsolutePath();
-        choosetxtarea.setText(filename);*/
+////        JFileChooser choo = new JFileChooser();
+////        choo.showOpenDialog(null);
+////        File f = choo.getSelectedFile();
+////        filename = f.getAbsolutePath();
+////        choosetxtarea.setText(filename);
         
         //Multiple File chooser
         
@@ -2720,6 +2808,11 @@ public class Index extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         try {
+            jTable1.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2896,6 +2989,194 @@ public class Index extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
        cardLayout.show(card, "couplingFinal");
+         jTable1.getTableHeader().setBackground(Color.LIGHT_GRAY);
+     //get current weight
+    DefaultTableModel tb = (DefaultTableModel)jTable10.getModel();  
+    int a1 = Integer.parseInt(tb.getValueAt(0, 1).toString());
+    int b2 = Integer.parseInt(tb.getValueAt(1, 1).toString());
+    int c3 = Integer.parseInt(tb.getValueAt(2, 1).toString());
+    int d4 = Integer.parseInt(tb.getValueAt(3, 1).toString());
+    int e5 = Integer.parseInt(tb.getValueAt(4, 1).toString());
+    int f6 = Integer.parseInt(tb.getValueAt(5, 1).toString());
+    
+     
+  
+ 
+       
+      //set new font for jtable 
+      jTable1.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+      //Calling all method in coupling package
+      //recursive call
+         try {
+             Recurtion.recursion();
+             System.out.println("recursive call");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // regular method calling another regular method in the same file
+        try {
+            RegrCallReg_same_file.collectMethods();
+            System.out.println(" regular method calling another regular method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegrCallReg_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegrCallReg_same_file.searchForMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            codeLines.readLines();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         //regular method calling a recursive method in the same file
+         try {
+            
+           RegCallRec_same_file.collectMethods1();
+             System.out.println("regular method calling a recursive method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallRec_same_file.storeReRegMethods1();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallRec_same_file.searchForMethods1();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //recursive method calling another recursive method in the same file
+         try {
+            
+            RecCallRec_same_file.collectRecursiveMethods();
+             System.out.println("recursive method calling another recursive method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+           RecCallRec_same_file.searchForRecursiveInSameFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        //recursive method calling a regular method in the same file
+         try {
+            RecCallReg_same_file.collectMethods();
+             System.out.println("recursive method calling a regular method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RecCallReg_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RecCallReg_same_file.recursion();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         //regular method referencing a global variable in the same file
+         try {
+            RegCallGlobal_same_file.collectGloabalVaribales();
+             System.out.println("regular method referencing a global variable in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallGlobal_same_file.collectMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegCallGlobal_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegCallGlobal_same_file.searchForMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         
+         
+         
+        //1
+        ArrayList<Integer> regularCallregular;
+        regularCallregular = RegrCallReg_same_file.countList;
+        //2
+        ArrayList<Integer> recursiveL;
+        recursiveL = Recurtion.countList1;
+        //3
+        ArrayList<Integer> regularCallrecrsive;
+        regularCallrecrsive = RegCallRec_same_file.countList2;
+        //4
+         ArrayList<Integer> recursiveCallrecursive;
+        recursiveCallrecursive = RecCallRec_same_file.countList3;
+        //5
+        ArrayList<Integer> recursiveCallregular;
+        recursiveCallregular = RecCallReg_same_file.countList4;
+        //6
+        ArrayList<Integer> regularCallglobal;
+        regularCallglobal = RegCallGlobal_same_file.countList5;
+        
+        //Uploaded sourse code 
+        ArrayList<String> programe_statement;
+        programe_statement = codeLines.linesList;
+       
+        
+       DefaultTableModel dtm1 = (DefaultTableModel)jTable1.getModel();
+
+      
+        Object rowData[] = new Object[16];
+        for( int i = 0; i < programe_statement.size(); i++){
+            
+            rowData[0]=i+1;
+            rowData[1] = programe_statement.get(i);
+            rowData[2] = recursiveL.get(i);
+            rowData[3] = regularCallregular.get(i);
+            rowData[4] = regularCallrecrsive.get(i);
+            rowData[5] = recursiveCallrecursive.get(i);
+            rowData[6] = recursiveCallregular.get(i);
+            rowData[7] = regularCallglobal.get(i);
+            //calculate cpp value
+            rowData[14] =(recursiveL.get(i)*a1 + regularCallregular.get(i)*b2 + regularCallrecrsive.get(i)*c3 + recursiveCallrecursive.get(i)*d4 + recursiveCallregular.get(i)*e5 + regularCallglobal.get(i)*f6);
+           
+            dtm1.addRow(rowData);
+        }
+        
+        Integer count;
+        Integer count10;
+        Integer count11;
+        Integer count12;
+        Integer count13;
+        Integer count14;
+        
+        count = Recurtion.recursiveCount;
+        count10 = RegrCallReg_same_file.RegCallRegCount;
+        count11 = RegCallRec_same_file.RegCallRecCount;
+        count12 = RecCallRec_same_file.RecCallRecCount;
+        count13 = RecCallReg_same_file.RecCallRegCount;
+        count14 = RegCallGlobal_same_file.RegCallGlobalCount;
+        
+        int total_count = count*a1 + count10*b2 + count11*c3 + count12*d4 + count13*e5 + count14*f6;
+         String total=Integer.toString(total_count);
+        tot.setText(total);
+     
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -3519,6 +3800,10 @@ public class Index extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton26ActionPerformed
 
+    private void totActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totActionPerformed
+
 
     
    
@@ -3672,6 +3957,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -3747,6 +4033,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton sizebtn;
     private javax.swing.JPanel subCard;
     private javax.swing.JPanel threeInOne;
+    private javax.swing.JTextField tot;
     private javax.swing.JButton uploadbtn;
     private javax.swing.JButton uploadbtn1;
     private javax.swing.JButton uploadbtn2;

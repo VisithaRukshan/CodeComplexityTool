@@ -298,11 +298,6 @@
                       <Font name="Times New Roman" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Choose"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -324,11 +319,6 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Upload"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -783,11 +773,6 @@
                       <Font name="Times New Roman" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Choose"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -809,11 +794,6 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Upload"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -863,11 +843,6 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="UnZip"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -894,6 +869,13 @@
                           <Component id="backbtnfunction1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="1036" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel56" min="-2" pref="170" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="tot" min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -919,15 +901,20 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="backbtnfunction1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="652" max="32767" attributes="0"/>
+                          <EmptySpace pref="404" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel56" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="tot" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="191" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="227" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="204" max="32767" attributes="0"/>
                           </Group>
@@ -946,25 +933,25 @@
                     <Component class="javax.swing.JTable" name="jTable1">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="16" rowCount="10">
+                          <Table columnCount="15" rowCount="0">
                             <Column editable="true" title="Line NO" type="java.lang.Object"/>
                             <Column editable="true" title="Program Statement" type="java.lang.Object"/>
                             <Column editable="true" title="Nr" type="java.lang.Object"/>
                             <Column editable="true" title="Nmcms" type="java.lang.Object"/>
-                            <Column editable="true" title="Nmcmd" type="java.lang.Object"/>
                             <Column editable="true" title="Nmcrms" type="java.lang.Object"/>
-                            <Column editable="true" title="Nmcrmd" type="java.lang.Object"/>
                             <Column editable="true" title="Nrmcrms" type="java.lang.Object"/>
-                            <Column editable="true" title="Nrmcrmd" type="java.lang.Object"/>
                             <Column editable="true" title="Nrmcms" type="java.lang.Object"/>
-                            <Column editable="true" title="Nrmcmd" type="java.lang.Object"/>
                             <Column editable="true" title="Nmrgvs" type="java.lang.Object"/>
+                            <Column editable="true" title="Nmcmd" type="java.lang.Object"/>
+                            <Column editable="true" title="Nmcrmd" type="java.lang.Object"/>
+                            <Column editable="true" title="Nrmcrmd" type="java.lang.Object"/>
                             <Column editable="true" title="Nmrgvd" type="java.lang.Object"/>
                             <Column editable="true" title="Nrmrgvs" type="java.lang.Object"/>
                             <Column editable="true" title="Nrmrgvd" type="java.lang.Object"/>
-                            <Column editable="true" title="Ccp" type="java.lang.Object"/>
+                            <Column editable="true" title="cpp" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="rowHeight" type="int" value="25"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -997,6 +984,16 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backbtnfunction1ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel56">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Total Complexcity due to coupling"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="tot">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="totActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1527,11 +1524,6 @@
                       <Image iconType="3" name="/Images/pdf.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Print"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                        <EtchetBorder/>
-                      </Border>
-                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -2758,7 +2750,7 @@
                     <Component class="javax.swing.JTable" name="jTable10">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;A recursive call &quot;, null},&#xa;        {&quot;A regular method calling another regular method in the same file &quot;, null},&#xa;        {&quot;A regular method calling another regular method in a different file&quot;, null},&#xa;        {&quot;A regular method calling a recursive method in the same file&quot;, null},&#xa;        {&quot;A regular method calling a recursive method in a different file &quot;, null},&#xa;        {&quot;A recursive method calling another recursive method in the same file &quot;, null},&#xa;        {&quot;A recursive method calling another recursive method in a different file&quot;, null},&#xa;        {&quot;A recursive method calling a regular method in the same file &quot;, null},&#xa;        {&quot;A recursive method calling a regular method in a different file&quot;, null},&#xa;        {&quot;A regular method referencing a global variable in the same file&quot;, null},&#xa;        {&quot;A regular method referencing a global variable in a different file &quot;, null},&#xa;        {&quot;A recursive method referencing a global variable in the same file &quot;, null},&#xa;        {&quot;A recursive method referencing a global variable in a different file &quot;, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Control Structure Type&quot;, &quot;Weight&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, true&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;A recursive call &quot;, null},&#xa;        {&quot;A regular method calling another regular method in the same file &quot;, null},  &#xa;        {&quot;A regular method calling a recursive method in the same file&quot;, null},     &#xa;        {&quot;A recursive method calling another recursive method in the same file &quot;, null},&#xa;        {&quot;A recursive method calling a regular method in the same file &quot;, null},&#xa;        {&quot;A regular method referencing a global variable in the same file&quot;, null}&#xa;   &#xa;      &#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Coupling&quot;, &quot;Weight&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, true&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
                         </Property>
                         <Property name="focusable" type="boolean" value="false"/>
                         <Property name="intercellSpacing" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
