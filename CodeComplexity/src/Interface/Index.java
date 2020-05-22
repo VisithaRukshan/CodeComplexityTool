@@ -31,6 +31,7 @@ import Variable.Variable_JAVA;
  */
 public class Index extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form Index
      */
@@ -1986,6 +1987,11 @@ public class Index extends javax.swing.JFrame {
 
         jButton19.setBackground(new java.awt.Color(0, 51, 255));
         jButton19.setText("Save");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         jButton20.setBackground(new java.awt.Color(0, 51, 255));
         jButton20.setText("Calculate");
@@ -2385,7 +2391,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2719,6 +2725,9 @@ public class Index extends javax.swing.JFrame {
         cardLayout.show(card, "inheritanceFinal");
     }//GEN-LAST:event_jButton16ActionPerformed
 
+    //.........................................................................
+    //..........................Size Function..................................
+    
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
          
             DefaultTableModel tbl = (DefaultTableModel)jTable6.getModel();
@@ -2760,6 +2769,9 @@ public class Index extends javax.swing.JFrame {
         cardLayout.show(card, "sizeFinal");
     }//GEN-LAST:event_jButton20ActionPerformed
 
+    //.........................................................................
+    //........................Method Function..................................
+    
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         
          DefaultTableModel tbl = (DefaultTableModel)jTable15.getModel();
@@ -2773,6 +2785,7 @@ public class Index extends javax.swing.JFrame {
             wpcrt = method_JAVA.getWPCRT();
             npdtp = method_JAVA.getNPDTP();
             ncdtp = method_JAVA.getNCDTP();
+            nnv = method_JAVA.getCM();
             
            
             
@@ -2784,7 +2797,7 @@ public class Index extends javax.swing.JFrame {
                 rowData[2] = wpcrt.get(i);
                 rowData[3] = npdtp.get(i);
                 rowData[4] = ncdtp.get(i);
-  //              rowData[5] = nnv.get(i);
+                rowData[5] = nnv.get(i);
                
                 
                 tbl.addRow(rowData);
@@ -2797,6 +2810,9 @@ public class Index extends javax.swing.JFrame {
         cardLayout.show(card, "methodFinal");
     }//GEN-LAST:event_jButton18ActionPerformed
 
+    //.........................................................................
+    //......................Variable Function..................................
+    
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
            
         
@@ -2977,6 +2993,10 @@ public class Index extends javax.swing.JFrame {
       
          
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton19ActionPerformed
 
     
    
