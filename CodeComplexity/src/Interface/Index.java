@@ -24,6 +24,9 @@ import javax.swing.table.DefaultTableModel;
 import Size.Size_JAVA;
 import Method.Method_JAVA;
 import Variable.Variable_JAVA;
+import Control_Structure.Control_Structure;
+import Control_Structure.Control_Structure_cpp;
+import java.util.Stack;
 
 /**
  *
@@ -42,8 +45,13 @@ public class Index extends javax.swing.JFrame {
     private String foldername = "";
     private List<String> folderPathList = new ArrayList<>();
     
+    ArrayList<LineComplexity> lineComplexityList = new ArrayList<>();
+    DefaultTableModel lineComplexityTableModel =  new DefaultTableModel();
+    ArrayList<String> controlstruc = new ArrayList<String>();
+    ArrayList<Integer> ifelse = new ArrayList<Integer>();
+    
     ArrayList<String> classes = new ArrayList<String>();
-   ArrayList<Integer> directInheritence = new ArrayList<Integer>();
+    ArrayList<Integer> directInheritence = new ArrayList<Integer>();
     ArrayList<Integer> IndirectInheritence = new ArrayList<Integer>();
    
     ArrayList<String> all = new ArrayList<String>();
@@ -216,12 +224,14 @@ public class Index extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable9 = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         backbtnviewcs1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton25 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         couplingCalculation = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
@@ -1542,6 +1552,11 @@ public class Index extends javax.swing.JFrame {
         card.add(viewoverall, "viewoverall");
 
         jTextField4.setEditable(false);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel35.setText("Java/C++");
@@ -1578,23 +1593,13 @@ public class Index extends javax.swing.JFrame {
         jTable9.getTableHeader().setReorderingAllowed(false);
         jScrollPane13.setViewportView(jTable9);
 
-        jButton11.setBackground(new java.awt.Color(0, 51, 255));
-        jButton11.setText("Save");
-
-        jButton12.setBackground(new java.awt.Color(0, 51, 255));
-        jButton12.setText("Calculate");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         jTextField5.setEditable(false);
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel36.setText("No of Lines");
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 0, 0));
         jLabel37.setText("Code Complexcity Due to Control Structure");
 
         backbtnviewcs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
@@ -1605,36 +1610,85 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "file.java", "file.cpp" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton25.setBackground(new java.awt.Color(0, 51, 255));
+        jButton25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(255, 255, 255));
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calculate.png"))); // NOI18N
+        jButton25.setText("Calculate");
+        jButton25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton25.setIconTextGap(6);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton24.setBackground(new java.awt.Color(0, 204, 0));
+        jButton24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton24.setForeground(new java.awt.Color(255, 255, 255));
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/show.png"))); // NOI18N
+        jButton24.setText("Show Details");
+        jButton24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton24.setIconTextGap(6);
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setBackground(new java.awt.Color(0, 51, 255));
+        jButton11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save.png"))); // NOI18N
+        jButton11.setText("Save");
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.setIconTextGap(6);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlStructureCalculationLayout = new javax.swing.GroupLayout(controlStructureCalculation);
         controlStructureCalculation.setLayout(controlStructureCalculationLayout);
         controlStructureCalculationLayout.setHorizontalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
                 .addComponent(backbtnviewcs1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane13)
-                                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50)
-                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane13)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
                         .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                                .addGap(319, 319, 319)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                                .addGap(320, 320, 320)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
+            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGap(314, 314, 314)
+                        .addComponent(jButton25)
+                        .addGap(159, 159, 159)
+                        .addComponent(jButton24))
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGap(485, 485, 485)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         controlStructureCalculationLayout.setVerticalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1647,21 +1701,25 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         card.add(controlStructureCalculation, "controlStructureCalculation");
@@ -2391,7 +2449,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2662,10 +2720,6 @@ public class Index extends javax.swing.JFrame {
     private void viewcombobox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewcombobox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_viewcombobox1ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        cardLayout.show(card, "controlStuctureFinal");
-    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void backbtnviewcs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs1ActionPerformed
         cardLayout.show(card, "functions");
@@ -2998,6 +3052,199 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        //loadTable(Control_Structure.getInstance().getComplexity(jComboBox1.getSelectedItem().toString()));
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        //^[ \\t]*do *|while *.*  -->  do - while
+
+        Control_Structure cs = new Control_Structure();
+        Control_Structure_cpp cpp = new Control_Structure_cpp();
+
+        this.lineComplexityTableModel.addColumn("Line no");
+        this.lineComplexityTableModel.addColumn("Program statements");
+        this.lineComplexityTableModel.addColumn("Wtcs");
+        this.lineComplexityTableModel.addColumn("NC");
+        this.lineComplexityTableModel.addColumn("Ccspps");
+        this.lineComplexityTableModel.addColumn("Ccs");
+
+        int ifWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(0, 1).toString());
+        int iterateWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(1, 1).toString());
+        int switchWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(2, 1).toString());
+        int caseWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(3, 1).toString());
+
+        Stack ccsStack = new Stack();
+        int currentCcs = 0;
+        int totalCcs = 0;
+        int totalCcspps = 0;
+        int totalNC = 0;
+        int totalWtcs = 0;
+
+        //Java Calculation
+        if(choosetxt.getText().contains("java")){
+
+            for(LineComplexity lineObj : lineComplexityList)
+            {
+                String codeSegment = cs.getControllerCodeSegment(lineObj.statement);
+                String type = cs.getControlStructureType(codeSegment);
+                int closingTagCount = cs.numberOfClosingTags(lineObj.statement);
+                int openingTagCount = cs.numberOfOpeningTags(lineObj.statement);
+                System.out.println(codeSegment);
+
+                if (closingTagCount > 0) {
+                    for (int i = 0;i<closingTagCount;i++){
+                        currentCcs = (int) ccsStack.pop();
+                    }
+
+                }
+                // if a case or default add open close tags
+                if(type.equalsIgnoreCase("case")||type.equalsIgnoreCase("default")){
+                    currentCcs = (int) ccsStack.pop();
+                }
+                if (type.isEmpty()) {
+                    if (openingTagCount > 0) {
+                        for (int i = 0;i<openingTagCount;i++){
+                            ccsStack.push(currentCcs);
+                        }
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, null, null, null, 0});
+                } else {
+                    int weight = cs.getWeight(type, ifWeight, iterateWeight, switchWeight, caseWeight);
+                    int nc = cs.getNumberOfConditions(codeSegment);
+                    int ccpps = (int)ccsStack.lastElement();
+                    int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
+                    currentCcs = ccs;
+                    if (openingTagCount > 0) {
+                        for (int i = 0;i<openingTagCount;i++){
+                            ccsStack.push(currentCcs);
+                        }
+                    }
+                    // if a switch structure, add a ccs manually
+                    if(type.equalsIgnoreCase("switch")){
+                        ccsStack.push(currentCcs);
+                    }
+                    if(type.equalsIgnoreCase("case")||type.equalsIgnoreCase("default")){
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, weight, nc, ccpps, ccs});
+                }
+
+            }
+
+            //C++ Calculation
+        }else{
+
+            for(LineComplexity lineObj : lineComplexityList)
+            {
+                String type = cpp.getControlStructureType(lineObj.statement);
+                int closingTagCount = cpp.numberOfClosingTags(lineObj.statement);
+                int openingTagCount = cpp.numberOfOpeningTags(lineObj.statement);
+                System.out.println(lineObj.statement);
+
+                if (closingTagCount > 0) {
+                    for (int i = 0;i<closingTagCount;i++)
+                    currentCcs = (int) ccsStack.pop();
+                }
+                if (type.isEmpty()) {
+                    if (openingTagCount > 0) {
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, null, null, null, 0});
+                } else {
+                    int weight = cpp.getWeight(type, ifWeight, iterateWeight, switchWeight, caseWeight);
+                    int nc = cpp.getNumberOfConditions(lineObj.statement);
+                    int ccpps = (int)ccsStack.lastElement();
+                    int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
+                    currentCcs = ccs;
+                    if (openingTagCount > 0) {
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, weight, nc, ccpps, ccs});
+                }
+
+            }
+
+        }
+
+        // Total Complexity count
+        //jLabel19.setText(String.valueOf(totalCcs));
+        //jLabel25.setText(String.valueOf(totalCcspps));
+        //jLabel53.setText(String.valueOf(totalNC));
+        //jLabel54.setText(String.valueOf(totalWtcs));
+
+        cardLayout.show(card, "controlStuctureFinal");
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        jButton24.setVisible(false);
+        jButton25.setVisible(true);
+
+        if(choosetxt.getText().contains("java")){
+            jTextField4.setText("Java");
+        }else{
+            jTextField4.setText("C++");
+        }
+
+        try {
+
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+            int lineCount = 0;
+
+            while (scanner.hasNextLine()) {
+                String lineStatement = scanner.nextLine();
+                jTextArea3.setText(jTextArea3.getText() + "\n" + lineStatement  );
+                lineCount++;
+
+                LineComplexity lineObj = initLineObj(lineStatement, lineCount);
+                this.lineComplexityList.add(lineObj);
+            }
+
+            jTextField5.setText(Integer.toString(lineCount) );
+            scanner.close();
+
+            fillArray( controlstruc.size());
+            for(int count = 0 ; count < controlstruc.size() ; count++){
+                getAmount(controlstruc.get(count)); //serachInderectInheritence(classes.get(count));
+            }
+            for(int countC = 0 ; countC < controlstruc.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                    IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private LineComplexity initLineObj(String lineStatement, int lineCount) {
+        LineComplexity lineObj = new LineComplexity();
+        lineObj.lineNumber = lineCount;
+        lineObj.statement = lineStatement;
+        return lineObj;
+    }
+    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        
+        if (jTable9.isEditing())
+        jTable9.getCellEditor().stopCellEditing();
+
+        JOptionPane.showMessageDialog(this, "Input Values Added Succesfully.");
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     
    
     /**
@@ -3076,7 +3323,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -3089,6 +3335,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -3096,6 +3344,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3223,4 +3472,13 @@ public class Index extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
+}
+
+class  LineComplexity {
+    int lineNumber;
+    String statement;
+    int wtcs;
+    int nc;
+    int ccspps;
+    int ccs;
 }
