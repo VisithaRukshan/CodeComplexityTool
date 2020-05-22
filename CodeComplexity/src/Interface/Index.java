@@ -163,6 +163,14 @@ public class Index extends javax.swing.JFrame {
         jTable5 = new javax.swing.JTable();
         backbtnfunction5 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         SizeFinal = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -1095,6 +1103,34 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel21.setText("Total Ccs :");
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("Ccspps :");
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel27.setText("NC :");
+
+        jLabel53.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel54.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel55.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel55.setText("Wtcs :");
+
         javax.swing.GroupLayout ControlStructureFinalLayout = new javax.swing.GroupLayout(ControlStructureFinal);
         ControlStructureFinal.setLayout(ControlStructureFinalLayout);
         ControlStructureFinalLayout.setHorizontalGroup(
@@ -1102,16 +1138,32 @@ public class Index extends javax.swing.JFrame {
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
                 .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
                         .addComponent(jButton12)
-                        .addGap(491, 491, 491))))
+                        .addGap(491, 491, 491))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59))))
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                 .addComponent(backbtnfunction5)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -1121,12 +1173,24 @@ public class Index extends javax.swing.JFrame {
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
                 .addComponent(backbtnfunction5)
                 .addGap(81, 81, 81)
-                .addComponent(jLabel24)
+                .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel24)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         card.add(ControlStructureFinal, "controlStuctureFinal");
@@ -3018,7 +3082,11 @@ public class Index extends javax.swing.JFrame {
 
         Stack ccsStack = new Stack();
         int currentCcs = 0;
-
+        int totalCcs = 0;
+        int totalCcspps = 0;
+        int totalNC = 0;
+        int totalWtcs = 0;
+ 
         //Java Calculation
         if(choosetxt.getText().contains("java")){
 
@@ -3052,6 +3120,10 @@ public class Index extends javax.swing.JFrame {
                     int nc = cs.getNumberOfConditions(codeSegment);
                     int ccpps = (int)ccsStack.lastElement();
                     int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
                     currentCcs = ccs;
                     if (openingTagCount > 0) {
                         for (int i = 0;i<openingTagCount;i++){
@@ -3094,6 +3166,10 @@ public class Index extends javax.swing.JFrame {
                     int nc = cpp.getNumberOfConditions(lineObj.statement);
                     int ccpps = (int)ccsStack.lastElement();
                     int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
                     currentCcs = ccs;
                     if (openingTagCount > 0) {
                         ccsStack.push(currentCcs);
@@ -3104,19 +3180,12 @@ public class Index extends javax.swing.JFrame {
             }
 
         }
-
-        //sumCcs.append();
-
-        //double sum = 0;
-        /*for(int i = 0; i < this.jTable5.getRowCount(); i++)
-        {
-            Integer.parseInt((String) this.jTable5.getValueAt(i, 5));
-            //sumCcs += amount;
-        }
-
-        jLabel3.setText(String.valueOf(sumCcs));
-
-        jLabel3 = new JLabel("0.0");*/
+        
+        // Total Complexity count
+        jLabel19.setText(String.valueOf(totalCcs));
+        jLabel25.setText(String.valueOf(totalCcspps));
+        jLabel53.setText(String.valueOf(totalNC));
+        jLabel54.setText(String.valueOf(totalWtcs));
 
         cardLayout.show(card, "controlStuctureFinal");
     }//GEN-LAST:event_jButton25ActionPerformed
@@ -3309,11 +3378,16 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -3342,6 +3416,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
