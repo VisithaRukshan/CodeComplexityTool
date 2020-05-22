@@ -5,15 +5,24 @@
  */
 package Interface;
 
+import Coupling.RecCallRec_same_file;
+import Coupling.RegCallGlobal_same_file;
+import Coupling.RegrCallReg_same_file;
+import Coupling.codeLines;
+import Coupling.Recurtion;
+import Coupling.RecCallReg_same_file;
+import Coupling.RegCallRec_same_file;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -32,12 +41,7 @@ public class Index extends javax.swing.JFrame {
      */
     CardLayout cardLayout;
     CardLayout cardLayout1;
-    
-    ArrayList<String> classes = new ArrayList<String>();
-    ArrayList<String> couplingfilename = new ArrayList<>();
-   ArrayList<Integer> directInheritence = new ArrayList<Integer>();
-    ArrayList<Integer> IndirectInheritence = new ArrayList<Integer>();
-    //coupling stuff//
+         //coupling stuff//
       ArrayList<String> mymethod = new ArrayList<String>();
       ArrayList<String> methodSet = new ArrayList<String>();
       ArrayList<String> recursivelist = new ArrayList<String>();
@@ -47,44 +51,49 @@ public class Index extends javax.swing.JFrame {
        ArrayList<String> trash = new ArrayList<>();
       ArrayList<Integer> allc = new ArrayList<Integer>();
       ArrayList<Integer> gs = new ArrayList<Integer>();
-
-    //
-   
-    ArrayList<String> all = new ArrayList<String>();
-    ArrayList<Integer> Ti = new ArrayList<Integer>();
-    ArrayList<Integer> Ci = new ArrayList<Integer>();
-   
-   String arg2[] = {"0"};
-    
-   int countIndex = 0;
+     ///////////////////////////////////////////////////////////////  
    
     
     public Index() {
         initComponents();
-  
+        
         
         cardLayout = (CardLayout)(card.getLayout());
         cardLayout1 = (CardLayout)(subCard.getLayout());
-       
-        
-        
+     
         super.setLocationRelativeTo(null);
         
         String[] a = {"1", "2", "3", "4", "5"};
         JComboBox c = new JComboBox(a);
+       
         //set jcombobox to all jtable
         jTable11.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        jTable10.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
+      
         jTable13.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable12.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable14.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
         jTable9.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(c));
-        
-        
-        
     }
-   public void couplingtotextarea(){
-      
+    //////////////////////////
+     public void couplingtotextarea(){
+         
+    int aa = 2;
+    int bb = 2;
+    int cc = 3;
+    int dd = 4;
+    int ee = 3;
+    int ff = 1;
+    
+     DefaultTableModel tb = (DefaultTableModel)jTable10.getModel();
+     tb.setValueAt(aa, 0, 1);
+     tb.setValueAt(bb, 1, 1);
+     tb.setValueAt(cc, 2, 1);
+     tb.setValueAt(dd, 3, 1);
+     tb.setValueAt(ee, 4, 1);
+     tb.setValueAt(ff, 5, 1);
+     
+    
+    
         try {
             Scanner scanner = new Scanner(new File(choosetxt.getText()));
             int cout = 0;
@@ -92,97 +101,17 @@ public class Index extends javax.swing.JFrame {
                 
                String line = scanner.nextLine();
                mymethod.add(line);
-               
-  
                jTextArea4.setText(jTextArea4.getText() + "\n" + line  );
                cout++;
                String[] words = line.split("\n" ) ;
                couplingprint(words);  
             }
-            ///////////////////////////////////
             String word = "";
-            int cc = 0;
+            //int cc = 0;
             //method
-           String function_regex2 = "(\\w+\\s+)(\\w+\\s*)\\((.*?)\\)\\s*\\{";
-            String reg ="(public | private|protected)(.*?)(\\))";
-            //String function_regex="(?<=\\().+?(?=\\))";
-            //rcursive
-           //String function_regex1 ="\\b("+word+")\\b\\s*\\((.*?)\\)";
-            //recursive check
-            //varible check
-            //(?:Public|Private)\s+(Function|Sub)\s+([a-z0-9]*).*?End\s+\1"
-            for(int s =0;s<mymethod.size();s++){
-//                	Pattern pattern = Pattern.compile(reg);
-//			Matcher matcher = pattern.matcher(mymethod.get(s));
-//                        if(matcher.find()){
-//                            String line  = mymethod.get(s);
-//                            methodSet.add(line);
-////                            System.out.println(" " + line);
-////                            cc = cc+1;     
-//                        } 
-                        
-                        allc.add(s);
-                        
-                 if(mymethod.get(s).contains("int")||mymethod.get(s).contains("String")||mymethod.get(s).contains("char")||mymethod.get(s).contains("double")&&mymethod.get(s).contains(";")){
-                          
-                     
-                            
-                          //  System.out.println(" " + mymethod.get(s));
-                              String line = mymethod.get(s);
-                              MandV.add(line);
-                               //System.out.println("global varible " + mymethod.get(s));
-                              
-                                
-                  
-                          
-                  } 
-               }
-            for(int i = 0;i<MandV.size();i++){
-            
-                Pattern pattern = Pattern.compile(function_regex2);
-			Matcher matcher = pattern.matcher(MandV.get(i));
-                        if(matcher.find()){
-                            String line  = MandV.get(i);
-                            methodSet.add(line);
-//                            System.out.println("///////////////////////////////");
-//                            System.out.println("" + line);
-//                            System.out.println("////////////////////////////////");
-//                            System.out.println(" " + line);
-//                            cc = cc+1;     
-                        } 
-                        else{
-                            String global = MandV.get(i);
-                            if(global.contains("System.out.println")){
-                                trash.add(global);
-                            
-                            }else{
-                                
-                             gs.add(1);
-                             cc ++;
-                             this.
-                             Globalvariables.add(global);
-                            
-                         
-                            }
-                           
-                        }
-            
-            }
-            for(int i =0;i<mymethod.size();i++){
-                
-                String sentence = mymethod.get(i);
-                for(int t = 0;t<Globalvariables.size();t++){
-                    String search = Globalvariables.get(t);
-                    if( sentence.toLowerCase().indexOf("year") != -1 ){
-                        System.out.println(""+search);
-                        System.out.println(i);
-                        
-                    }else{System.out.println("notmatch");}
-                
-                }
-            
-            }
-            System.out.println("cc = " + cc);
+        
+           
+           // System.out.println("cc = " + cc);
             jTextField7.setText(Integer.toString(cout));
             if(choosetxt.getText().contains("java")){
                     jTextField6.setText("Java");
@@ -194,57 +123,29 @@ public class Index extends javax.swing.JFrame {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+     ////method
+     /////////////////////////////////////////////////////
+     
+     
+     
+     
+     /////////////////////////////////////////////////////
     
-    public TableModel CouplingToTable(){
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addColumn("Line No",allc.toArray());
-        model.addColumn("Class Name", mymethod.toArray());
-        model.addColumn("Nr");
-        model.addColumn("Nmcms");
-	model.addColumn("Nmcrms");
-	model.addColumn("Nrmcrms");
-	model.addColumn("Nrmcms");
-	model.addColumn("Nmrgvs");
-	model.addColumn("Nrmrgvs");
-	model.addColumn("Ccp");
-        
-        model.setValueAt(1,30,3);
-        model.setValueAt(2,30,9);
-        
-        model.setValueAt(1,44,7);
-        model.setValueAt(1,44,9);
-        
-         model.setValueAt(1,45,7);
-        model.setValueAt(1,45,9);
-        
-         model.setValueAt(1,51,7);
-        model.setValueAt(1,51,9);
-        
-         model.setValueAt(1,52,7);
-        model.setValueAt(1,52,9);
-        
-         model.setValueAt(1,55,3);
-        model.setValueAt(2,55,9);
-        
-         model.setValueAt(1,61,7);
-        model.setValueAt(1,61,9);
-        
-         model.setValueAt(1,63,7);
-        model.setValueAt(1,63,9);
-        
-         model.setValueAt(1,66,7);
-        model.setValueAt(1,66,9);
-        
-         model.setValueAt(1,70,7);
-        model.setValueAt(1,70,9);
-        
-         model.setValueAt(1,72,3);
-        model.setValueAt(1,72,9);
-        
-         model.setValueAt(1,75,3);
-        model.setValueAt(1,75,9);
-        return model;
-}
+//    public TableModel CouplingToTable(){
+//        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+//        model.addColumn("Line No",allc.toArray());
+//        model.addColumn("Class Name", mymethod.toArray());
+//        model.addColumn("Nr");
+//        model.addColumn("Nmcms");
+//	model.addColumn("Nmcrms");
+//	model.addColumn("Nrmcrms");
+//	model.addColumn("Nrmcms");
+//	model.addColumn("Nmrgvs");
+//	model.addColumn("Nrmrgvs");
+//	model.addColumn("Ccp");
+//       
+//        return model;
+//}
     
     public void couplingprint(String[] word){
      String sentence = "";
@@ -254,6 +155,11 @@ public class Index extends javax.swing.JFrame {
                      } 
                   
     }
+    
+    
+    
+    
+    ///////////////////
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -308,6 +214,8 @@ public class Index extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         backbtnfunction1 = new javax.swing.JButton();
+        tot = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         MethodFinal = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -375,6 +283,7 @@ public class Index extends javax.swing.JFrame {
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable9 = new javax.swing.JTable();
         jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -392,7 +301,7 @@ public class Index extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         backbtnviewcs2 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        notyfy = new javax.swing.JLabel();
         inheritanceCalculation = new javax.swing.JPanel();
         jTextField8 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
@@ -406,7 +315,6 @@ public class Index extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         backbtnviewcs3 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
         threeInOne = new javax.swing.JPanel();
         backbtnviewcs4 = new javax.swing.JButton();
         subCard = new javax.swing.JPanel();
@@ -474,6 +382,7 @@ public class Index extends javax.swing.JFrame {
         MultipleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         MultipleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/multiple.png"))); // NOI18N
         MultipleFile.setText("Multiple File");
+        MultipleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         MultipleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MultipleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -485,6 +394,7 @@ public class Index extends javax.swing.JFrame {
         singleFile.setFont(new java.awt.Font("Times New Roman", 0, 25)); // NOI18N
         singleFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/single.png"))); // NOI18N
         singleFile.setText("Single File");
+        singleFile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         singleFile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         singleFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -497,7 +407,7 @@ public class Index extends javax.swing.JFrame {
         selectionLayout.setHorizontalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -517,7 +427,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         card.add(selection, "selection");
@@ -883,21 +793,23 @@ public class Index extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Line No", "Programme Statement", "Nr", "Nmcms", "Nmcrms", "Nrmcrms", "Nrmcms", "Nmrgvs", "Nmcmd ", "Nmcrmd ", "Nrmcrmd ", "Nmrgvd", "Nrmrgvs  ", "Nrmrgvd", "Cpp"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setFocusable(false);
+        jTable1.setOpaque(false);
+        jTable1.setRowHeight(25);
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setText("Print PDF");
@@ -919,18 +831,30 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        tot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Total Code Complexcity Due to Coupling");
+
         javax.swing.GroupLayout CouplingFinalLayout = new javax.swing.GroupLayout(CouplingFinal);
         CouplingFinal.setLayout(CouplingFinalLayout);
         CouplingFinalLayout.setHorizontalGroup(
             CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CouplingFinalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backbtnfunction1)
-                .addContainerGap(1036, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CouplingFinalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CouplingFinalLayout.createSequentialGroup()
+                        .addComponent(backbtnfunction1)
+                        .addContainerGap(1036, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CouplingFinalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -939,22 +863,28 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(jButton1))
                         .addGroup(CouplingFinalLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(558, Short.MAX_VALUE)))
+                            .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(50, Short.MAX_VALUE)))
         );
         CouplingFinalLayout.setVerticalGroup(
             CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CouplingFinalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backbtnfunction1)
-                .addGap(156, 156, 156)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(204, 204, 204))
             .addGroup(CouplingFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CouplingFinalLayout.createSequentialGroup()
                     .addGap(108, 108, 108)
                     .addComponent(jLabel16)
-                    .addGap(325, 325, 325)
+                    .addGap(18, 18, 18)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
                     .addComponent(jButton1)
                     .addContainerGap(204, Short.MAX_VALUE)))
         );
@@ -1043,19 +973,19 @@ public class Index extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-
+                "Count", "Class Name", "No of direct inheritance", "No of indirect inheritance", "Total inheritance", "Ci"
             }
         ));
         jScrollPane4.setViewportView(jTable3);
@@ -1100,7 +1030,7 @@ public class Index extends javax.swing.JFrame {
                             .addGap(416, 416, 416)
                             .addComponent(jButton3))
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(596, Short.MAX_VALUE)))
+                    .addContainerGap(586, Short.MAX_VALUE)))
         );
         InheritanceFinalLayout.setVerticalGroup(
             InheritanceFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1727,6 +1657,14 @@ public class Index extends javax.swing.JFrame {
         jButton11.setBackground(new java.awt.Color(0, 51, 255));
         jButton11.setText("Save");
 
+        jButton12.setBackground(new java.awt.Color(0, 51, 255));
+        jButton12.setText("Calculate");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         jTextField5.setEditable(false);
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1749,25 +1687,30 @@ public class Index extends javax.swing.JFrame {
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
                 .addComponent(backbtnviewcs1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(537, 537, 537))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane13)
+                                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(50, 50, 50)
+                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
                         .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane13)
-                                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50)
-                                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))))
+                                .addGap(319, 319, 319)
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                                .addGap(320, 320, 320)
+                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(54, 54, 54))
         );
         controlStructureCalculationLayout.setVerticalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1788,7 +1731,9 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
+                .addGap(18, 18, 18)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1814,20 +1759,14 @@ public class Index extends javax.swing.JFrame {
             new Object [][] {
                 {"A recursive call ", null},
                 {"A regular method calling another regular method in the same file ", null},
-                {"A regular method calling another regular method in a different file", null},
                 {"A regular method calling a recursive method in the same file", null},
-                {"A regular method calling a recursive method in a different file ", null},
                 {"A recursive method calling another recursive method in the same file ", null},
-                {"A recursive method calling another recursive method in a different file", null},
                 {"A recursive method calling a regular method in the same file ", null},
-                {"A recursive method calling a regular method in a different file", null},
-                {"A regular method referencing a global variable in the same file", null},
-                {"A regular method referencing a global variable in a different file ", null},
-                {"A recursive method referencing a global variable in the same file ", null},
-                {"A recursive method referencing a global variable in a different file ", null}
+                {"A regular method referencing a global variable in the same file", null}
+
             },
             new String [] {
-                "Control Structure Type", "Weight"
+                "Coupling", "Weight"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1848,6 +1787,11 @@ public class Index extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(0, 51, 255));
         jButton13.setText("Save");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setBackground(new java.awt.Color(0, 51, 255));
         jButton14.setText("Calculate");
@@ -1870,14 +1814,6 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setBackground(new java.awt.Color(0, 51, 255));
-        jButton12.setText("Calculate");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout couplingCalculationLayout = new javax.swing.GroupLayout(couplingCalculation);
         couplingCalculation.setLayout(couplingCalculationLayout);
         couplingCalculationLayout.setHorizontalGroup(
@@ -1887,28 +1823,31 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(couplingCalculationLayout.createSequentialGroup()
                         .addComponent(backbtnviewcs2)
                         .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(couplingCalculationLayout.createSequentialGroup()
+                                .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(couplingCalculationLayout.createSequentialGroup()
+                                        .addGap(318, 318, 318)
+                                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(couplingCalculationLayout.createSequentialGroup()
+                                        .addGap(317, 317, 317)
+                                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, couplingCalculationLayout.createSequentialGroup()
-                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(50, 50, 50)
+                                    .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(21, 21, 21)
                                     .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(couplingCalculationLayout.createSequentialGroup()
-                                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(141, 141, 141))))
+                                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(couplingCalculationLayout.createSequentialGroup()
-                        .addGap(375, 375, 375)
-                        .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(couplingCalculationLayout.createSequentialGroup()
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(228, 228, 228)
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(134, Short.MAX_VALUE))
+                        .addGap(67, 67, 67)
+                        .addComponent(notyfy, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         couplingCalculationLayout.setVerticalGroup(
             couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1929,25 +1868,20 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(couplingCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(notyfy, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         card.add(couplingCalculation, "couplingCalculation");
 
         jTextField8.setEditable(false);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel41.setText("Java/C++");
@@ -2012,13 +1946,6 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        jButton23.setText("Show Details");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout inheritanceCalculationLayout = new javax.swing.GroupLayout(inheritanceCalculation);
         inheritanceCalculation.setLayout(inheritanceCalculationLayout);
         inheritanceCalculationLayout.setHorizontalGroup(
@@ -2027,6 +1954,15 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backbtnviewcs3)
                 .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                                .addGap(318, 318, 318)
+                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                                .addGap(317, 317, 317)
+                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(inheritanceCalculationLayout.createSequentialGroup()
@@ -2038,19 +1974,8 @@ public class Index extends javax.swing.JFrame {
                                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(317, 317, 317)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(337, 337, 337)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(360, 360, 360)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         inheritanceCalculationLayout.setVerticalGroup(
             inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2072,14 +1997,12 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         card.add(inheritanceCalculation, "inheritanceCalculation");
@@ -2559,18 +2482,17 @@ public class Index extends javax.swing.JFrame {
     private void choosetxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosetxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_choosetxtActionPerformed
-
+public static File f;
     private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
+        f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
         choosetxt.setText(filename);
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void uploadbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtnActionPerformed
-        jButton14.setVisible(false);        
-        cardLayout.show(card, "functions");
+                cardLayout.show(card, "functions");
     }//GEN-LAST:event_uploadbtnActionPerformed
 
     private void inheritancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inheritancebtnActionPerformed
@@ -2649,11 +2571,11 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_singleFileActionPerformed
 
     private void choosebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtn1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        choosetxtarea.setText(filename);
+//        JFileChooser chooser = new JFileChooser();
+//        chooser.showOpenDialog(null);
+//        f = chooser.getSelectedFile();
+//        String filename = f.getAbsolutePath();
+//        choosetxtarea.setText(filename);
     }//GEN-LAST:event_choosebtn1ActionPerformed
 
     private void uploadbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtn1ActionPerformed
@@ -2661,7 +2583,11 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_uploadbtn1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            jTable1.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -2775,6 +2701,14 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewcombobox1ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        cardLayout.show(card, "controlStuctureFinal");
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void backbtnviewcs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs1ActionPerformed
+        cardLayout.show(card, "functions");
+    }//GEN-LAST:event_backbtnviewcs1ActionPerformed
+
     private void backbtnviewcs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs2ActionPerformed
       cardLayout.show(card, "functions");
     }//GEN-LAST:event_backbtnviewcs2ActionPerformed
@@ -2803,27 +2737,250 @@ public class Index extends javax.swing.JFrame {
       
     }//GEN-LAST:event_methodMouseClicked
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+       cardLayout.show(card, "couplingFinal");
+    jTable1.getTableHeader().setBackground(Color.LIGHT_GRAY);
+     //get current weight
+    DefaultTableModel tb = (DefaultTableModel)jTable10.getModel();  
+    int a1 = Integer.parseInt(tb.getValueAt(0, 1).toString());
+    int b2 = Integer.parseInt(tb.getValueAt(1, 1).toString());
+    int c3 = Integer.parseInt(tb.getValueAt(2, 1).toString());
+    int d4 = Integer.parseInt(tb.getValueAt(3, 1).toString());
+    int e5 = Integer.parseInt(tb.getValueAt(4, 1).toString());
+    int f6 = Integer.parseInt(tb.getValueAt(5, 1).toString());
+    
+     
+  
+ 
+       
+      //set new font for jtable 
+      jTable1.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
+      //Calling all method in coupling package
+      //recursive call
+         try {
+            Recurtion.recursion();
+             System.out.println("recursive call");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // regular method calling another regular method in the same file
+        try {
+            RegrCallReg_same_file.collectMethods();
+            System.out.println(" regular method calling another regular method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegrCallReg_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegrCallReg_same_file.searchForMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            codeLines.readLines();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         //regular method calling a recursive method in the same file
+         try {
+            
+           RegCallRec_same_file.collectMethods1();
+             System.out.println("regular method calling a recursive method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallRec_same_file.storeReRegMethods1();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallRec_same_file.searchForMethods1();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        model.addColumn("Class Name" ,classes.toArray());
-        model.addColumn("Direct Inheritence" ,directInheritence.toArray());
-        model.addColumn("Indirect Inheritence" ,IndirectInheritence.toArray());
-        model.addColumn("haminiyan",classes.toArray());
-        for(int y = 0 ; y < classes.size() ; y++) {
-            Ti.add(directInheritence.get(y) + IndirectInheritence.get(y));
+        //recursive method calling another recursive method in the same file
+         try {
+            
+            RecCallRec_same_file.collectRecursiveMethods();
+             System.out.println("recursive method calling another recursive method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
-         model.addColumn("Ti" ,Ti.toArray());
-        for(int h = 0 ; h < classes.size() ; h++) {
-           if(Ti.get(h) <= 3) {
-               Ci.add(Ti.get(h));
-              
-           }
-           else {
-               Ci.add(4);
-           }
+        try {
+           RecCallRec_same_file.searchForRecursiveInSameFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
-         model.addColumn("Ci" ,Ti.toArray());
+        
+        
+        //recursive method calling a regular method in the same file
+         try {
+            RecCallReg_same_file.collectMethods();
+             System.out.println("recursive method calling a regular method in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RecCallReg_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RecCallReg_same_file.recursion();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         //regular method referencing a global variable in the same file
+         try {
+            RegCallGlobal_same_file.collectGloabalVaribales();
+             System.out.println("regular method referencing a global variable in the same file");
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            RegCallGlobal_same_file.collectMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegCallGlobal_same_file.storeReRegMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         try {
+            RegCallGlobal_same_file.searchForMethods();
+        } catch (IOException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+         
+         
+         
+         
+        //1
+        ArrayList<Integer> regularCallregular;
+        regularCallregular = RegrCallReg_same_file.countList;
+        //2
+        ArrayList<Integer> recursiveL;
+        recursiveL = Recurtion.countList1;
+        //3
+        ArrayList<Integer> regularCallrecrsive;
+        regularCallrecrsive = RegCallRec_same_file.countList2;
+        //4
+         ArrayList<Integer> recursiveCallrecursive;
+        recursiveCallrecursive = RecCallRec_same_file.countList3;
+        //5
+        ArrayList<Integer> recursiveCallregular;
+        recursiveCallregular = RecCallReg_same_file.countList4;
+        //6
+        ArrayList<Integer> regularCallglobal;
+        regularCallglobal = RegCallGlobal_same_file.countList5;
+        
+        //Uploaded sourse code 
+        ArrayList<String> programe_statement;
+        programe_statement = codeLines.linesList;
+       
+        
+       DefaultTableModel dtm1 = (DefaultTableModel)jTable1.getModel();
+
+      
+        Object rowData[] = new Object[16];
+        for( int i = 0; i < programe_statement.size(); i++){
+            
+            rowData[0]=i+1;
+            rowData[1] = programe_statement.get(i);
+            rowData[2] = recursiveL.get(i);
+            rowData[3] = regularCallregular.get(i);
+            rowData[4] = regularCallrecrsive.get(i);
+            rowData[5] = recursiveCallrecursive.get(i);
+            rowData[6] = recursiveCallregular.get(i);
+            rowData[7] = regularCallglobal.get(i);
+            //calculate cpp value
+            rowData[14] =(recursiveL.get(i)*a1 + regularCallregular.get(i)*b2 + regularCallrecrsive.get(i)*c3 + recursiveCallrecursive.get(i)*d4 + recursiveCallregular.get(i)*e5 + regularCallglobal.get(i)*f6);
+           
+            dtm1.addRow(rowData);
+        }
+        
+        Integer count;
+        Integer count10;
+        Integer count11;
+        Integer count12;
+        Integer count13;
+        Integer count14;
+        
+        count = Recurtion.recursiveCount;
+        count10 = RegrCallReg_same_file.RegCallRegCount;
+        count11 = RegCallRec_same_file.RegCallRecCount;
+        count12 = RecCallRec_same_file.RecCallRecCount;
+        count13 = RecCallReg_same_file.RecCallRegCount;
+        count14 = RegCallGlobal_same_file.RegCallGlobalCount;
+        
+        int total_count = count*a1 + count10*b2 + count11*c3 + count12*d4 + count13*e5 + count14*f6;
+         String total=Integer.toString(total_count);
+         tot.setText(total);
+        
+       
+//        dtm.addColumn("Line No");
+//        dtm.addColumn("Class Name",programe_statement.toArray());
+//        dtm.addColumn("Nr",recursiveL.toArray());
+//        dtm.addColumn("Nmcms",regularCallregular.toArray());
+//	dtm.addColumn("Nmcrms",regularCallrecrsive.toArray());
+//	dtm.addColumn("Nrmcrms",recursiveCallrecursive.toArray());
+//	dtm.addColumn("Nrmcms",recursiveCallregular.toArray());
+//	dtm.addColumn("Nmrgvs",regularCallglobal.toArray());
+//	dtm.addColumn("Nrmrgvs");
+//	dtm.addColumn("Ccp");
+//        dtm.addRow(rowData);
+//        
+//        
+//        
+//        
+//        for(int t=0;t<jTable1.getColumnCount();t++){
+//        
+//            for(int r=0;r<jTable1.getRowCount();r++){
+//            
+//                
+//                
+//            
+//            
+//            }
+//        }
+    
+ 
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       //////////////////
+       
+       
+       
+       
+       
+       
+       
+       
+       
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         cardLayout.show(card, "inheritanceFinal");
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -2867,175 +3024,13 @@ public class Index extends javax.swing.JFrame {
        cardLayout.show(card, "threeInOne");
     }//GEN-LAST:event_backbtnfunction7ActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        jButton23.setVisible(false);
-        jButton14.setVisible(true);
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         
-        try {
-           
-            Scanner scanner = new Scanner(new File(choosetxt.getText()));
-             int cout = 0;
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                jTextArea5.setText(jTextArea5.getText() + "\n" + line  );
-                cout++;
-		//System.out.println(scanner.nextLine().split(" "));
-		//String[] words = scanner.nextLine().split(" ");
-		//chr.checkWord(words);
-                String[] words = line.split(" " ) ;
-              
-                printFunction(words);
-                
-            }
-            jTextField9.setText(Integer.toString(cout) );
-            scanner.close();
-            
-            fillArray( classes.size());
-            for(int count = 0 ; count < classes.size() ; count++){
-                getAmount(classes.get(count)); //serachInderectInheritence(classes.get(count));
-             }
-             for(int countC = 0 ; countC < classes.size() ; countC++){
-                if ( IndirectInheritence.get(countC) != 0){
-                     IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
-                }
-                    
-             }
-             //serachInderectInheritence(classes.get(1));
-            System.out.println(classes);
-           // System.out.println(directInheritence );
-           // System.out.println(all);
-            // System.out.println(IndirectInheritence);
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        
-        
-			
-    }                                         
+    }//GEN-LAST:event_jButton13ActionPerformed
 
-   public void printFunction(String agrWord[]) {
-        String sentence = "";
-        for ( int i = 0 ; i < agrWord.length ; i++) {
-           
-            if(agrWord[i].equals("class") || agrWord[i].equals("Class")  ) {
-               classes.add(agrWord[i+1]);
-              
-                for ( int j = 0 ; j < agrWord.length ; j++) {
-                          sentence =  sentence + " " + agrWord[j];
-                     }
-                     all.add(sentence);
-                if(agrWord[i+2].equals("extends") ) {      
-                    //directInheritence.add(String.valueOf((Integer.parseInt( directInheritence.get(countIndex) ) + 1)) );
-                    directInheritence.add(1);
-                    
-                     
-                }
-                else {
-                     directInheritence.add(0);
-                }
-               
-                countIndex++;
-                
-            }
-       		
-	}
-   
-   
-   }
-   
-   public void fillArray(int i) {
-       for(int x = 0 ; x < i ; x++){
-           IndirectInheritence.add(0);
-       }
-   }
-   
-   int counter = 0;
-   
-   
-   /*public void serachInderectInheritence(String s){
-       counter = 0;
-       for(int a  = 0 ; a < all.size() ; a++){
-            String[] words2 = all.get(a).split(" " ) ; 
-             for(int b  = 0 ; b < words2.length ; b++){
-                 if(words2[b].equals("class") || words2[b].equals("Class")) {
-                       if(words2[b+1].equals(s)) {
-                           
-                           
-                            if(words2[b+2].equals("extends")) {
-                                //get the value by another function
-                                
-                                
-                                //System.err.println("extends called");
-                                 //System.err.println(count3);
-                                /*IndirectInheritence.set(counter , 
-                                     IndirectInheritence.get(counter) + count3
-                                );
-                                //count3 = 0;
-                            }else {
-                                 //System.err.println("else called");
-                                IndirectInheritence.set(
-                                         counter , 
-                                     IndirectInheritence.get(counter) + 0
-                                );
-                            }
-                            
-                       }
-                 }
-             }
-       }
-       
-       counter++;
-   }*/
-   
-   int count3 = 0;
-   public void getAmount(String s) {
-      
-       for(int a  = 0 ; a < all.size() ; a++){
-            String[] words2 = all.get(a).split(" " ) ; 
-             for(int b  = 0 ; b < words2.length ; b++){
-                 if(words2[b].equals("class") || words2[b].equals("Class")) {
-                       if(words2[b+1].equals(s)) {
-                           
-                           
-                            if(words2[b+2].equals("extends")) {
-                                
-                                IndirectInheritence.set(count3 , 
-                                     IndirectInheritence.get(count3) + 1
-                                );
-                                getAmount(words2[b+3]);
-                            }else {
-                                count3++;
-                            }
-                            
-                       }
-                 }
-             }
-       }
-       
-      
-       
-       
-         
-    }//GEN-LAST:event_jButton23ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void totActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void backbtnviewcs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs1ActionPerformed
-        cardLayout.show(card, "functions");
-    }//GEN-LAST:event_backbtnviewcs1ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(card, "couplingFinal");
-        CouplingToTable();
-      
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        //cardLayout.show(card, "couplingFinal");
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_totActionPerformed
 
    
     /**
@@ -3063,6 +3058,9 @@ public class Index extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Index.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -3126,7 +3124,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -3150,6 +3147,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -3241,6 +3239,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JRadioButton method;
     private javax.swing.JPanel methodCalculation;
     private javax.swing.JPanel multiFileChooser;
+    private javax.swing.JLabel notyfy;
     private javax.swing.JButton overallbtn;
     private javax.swing.JPanel selection;
     private javax.swing.ButtonGroup selectionButtonGruop;
@@ -3250,6 +3249,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton sizebtn;
     private javax.swing.JPanel subCard;
     private javax.swing.JPanel threeInOne;
+    private javax.swing.JTextField tot;
     private javax.swing.JButton uploadbtn;
     private javax.swing.JButton uploadbtn1;
     private javax.swing.JRadioButton variable;
