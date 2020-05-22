@@ -24,7 +24,12 @@ import javax.swing.table.DefaultTableModel;
 import Size.Size_JAVA;
 import Method.Method_JAVA;
 import Variable.Variable_JAVA;
+
+import Control_Structure.Control_Structure;
+import Control_Structure.Control_Structure_cpp;
 import java.awt.print.PrinterException;
+import java.util.Stack;
+
 
 /**
  *
@@ -43,8 +48,14 @@ public class Index extends javax.swing.JFrame {
     private String foldername = "";
     private List<String> folderPathList = new ArrayList<>();
     
+    ArrayList<LineComplexity> lineComplexityList = new ArrayList<>();
+    DefaultTableModel lineComplexityTableModel =  new DefaultTableModel();
+    ArrayList<String> controlstruc = new ArrayList<String>();
+    ArrayList<Integer> ifelse = new ArrayList<Integer>();
+    
     ArrayList<String> classes = new ArrayList<String>();
-     ArrayList<Integer> directInheritence = new ArrayList<Integer>();
+
+    ArrayList<Integer> directInheritence = new ArrayList<Integer>();
     ArrayList<Integer> IndirectInheritence = new ArrayList<Integer>();
    
     ArrayList<String> all = new ArrayList<String>();
@@ -139,6 +150,7 @@ public class Index extends javax.swing.JFrame {
         csbtn = new javax.swing.JButton();
         overallbtn = new javax.swing.JButton();
         backbtnfunction = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
         multiFileChooser = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -149,6 +161,7 @@ public class Index extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         choosetxtarea = new javax.swing.JTextArea();
         backbtnmulti = new javax.swing.JButton();
+        uploadbtn2 = new javax.swing.JButton();
         CouplingFinal = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -170,15 +183,23 @@ public class Index extends javax.swing.JFrame {
         FinalDueToAllFactor = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTable4 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        javax.swing.JTable jTable44 = new javax.swing.JTable();
         backbtnfunction4 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
         ControlStructureFinal = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
         backbtnfunction5 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         SizeFinal = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -207,13 +228,14 @@ public class Index extends javax.swing.JFrame {
         viewoverall = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        viewcombobox2 = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane11 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton10 = new javax.swing.JButton();
         backbtnoverall = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         controlStructureCalculation = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -221,12 +243,14 @@ public class Index extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable9 = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         backbtnviewcs1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton25 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         couplingCalculation = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
@@ -344,7 +368,7 @@ public class Index extends javax.swing.JFrame {
         selectionLayout.setHorizontalGroup(
             selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectionLayout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addGroup(selectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selectionLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -364,7 +388,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(singleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(MultipleFile, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         card.add(selection, "selection");
@@ -375,8 +399,10 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        choosebtn.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn.setText("Choose");
+        choosebtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -389,6 +415,7 @@ public class Index extends javax.swing.JFrame {
         uploadbtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn.setText("Upload");
+        uploadbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -441,14 +468,14 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(filechooseLayout.createSequentialGroup()
                         .addGap(189, 189, 189)
-                        .addComponent(choosetxt)
+                        .addComponent(choosetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, filechooseLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
-                        .addComponent(uploadbtn)
-                        .addGap(325, 325, 325))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(uploadbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(290, 290, 290))))
             .addGroup(filechooseLayout.createSequentialGroup()
                 .addComponent(backbtnfile)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -472,8 +499,8 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(filechooseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(choosetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(uploadbtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(uploadbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(354, Short.MAX_VALUE))
         );
 
@@ -557,6 +584,8 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/a2.png"))); // NOI18N
+
         javax.swing.GroupLayout functionsLayout = new javax.swing.GroupLayout(functions);
         functions.setLayout(functionsLayout);
         functionsLayout.setHorizontalGroup(
@@ -573,8 +602,9 @@ public class Index extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addComponent(jLabel11))))))
-                .addGap(76, 76, 76)
+                                    .addComponent(jLabel11)))
+                            .addComponent(jLabel17))))
+                .addGap(25, 25, 25)
                 .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(functionsLayout.createSequentialGroup()
@@ -607,7 +637,9 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel12))
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(functionsLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,10 +648,10 @@ public class Index extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(overallbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(309, Short.MAX_VALUE))
+                        .addGroup(functionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(csbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(couplingbtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         card.add(functions, "functions");
@@ -641,8 +673,10 @@ public class Index extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(51, 51, 255));
         jLabel15.setText("Desktop Application -");
 
+        choosebtn1.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn1.setText("Choose");
+        choosebtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -655,6 +689,7 @@ public class Index extends javax.swing.JFrame {
         uploadbtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn1.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn1.setText("Upload");
+        uploadbtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -672,6 +707,19 @@ public class Index extends javax.swing.JFrame {
         backbtnmulti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backbtnmultiActionPerformed(evt);
+            }
+        });
+
+        uploadbtn2.setBackground(new java.awt.Color(255, 0, 0));
+        uploadbtn2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        uploadbtn2.setForeground(new java.awt.Color(255, 255, 255));
+        uploadbtn2.setText("UnZip");
+        uploadbtn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        uploadbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        uploadbtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        uploadbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadbtn2ActionPerformed(evt);
             }
         });
 
@@ -695,15 +743,17 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
-                .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(choosebtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                    .addComponent(uploadbtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(61, 61, 61))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiFileChooserLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(uploadbtn1)
-                .addGap(309, 309, 309))
             .addGroup(multiFileChooserLayout.createSequentialGroup()
                 .addComponent(backbtnmulti)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiFileChooserLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(uploadbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(306, 306, 306))
         );
         multiFileChooserLayout.setVerticalGroup(
             multiFileChooserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -720,10 +770,13 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15))
-                    .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(uploadbtn1)
-                .addContainerGap(272, Short.MAX_VALUE))
+                    .addGroup(multiFileChooserLayout.createSequentialGroup()
+                        .addComponent(choosebtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(uploadbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(uploadbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         card.add(multiFileChooser, "multiFileChooser");
@@ -971,9 +1024,9 @@ public class Index extends javax.swing.JFrame {
         jLabel22.setText("Complexity due to all the factors");
         jLabel22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTable4.setAutoCreateRowSorter(true);
-        jTable4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jTable44.setAutoCreateRowSorter(true);
+        jTable44.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTable44.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -995,14 +1048,7 @@ public class Index extends javax.swing.JFrame {
                 "Line NO", "Program Statement", "Cs", "Cv", "Cm", "Ci", "Ccp", "Ccs", "TCps"
             }
         ));
-        jScrollPane5.setViewportView(jTable4);
-
-        jButton4.setText("Print PDF");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jScrollPane5.setViewportView(jTable44);
 
         backbtnfunction4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
         backbtnfunction4.addActionListener(new java.awt.event.ActionListener() {
@@ -1011,44 +1057,51 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButton26.setBackground(new java.awt.Color(153, 255, 255));
+        jButton26.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton26.setForeground(new java.awt.Color(0, 0, 255));
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pdf.png"))); // NOI18N
+        jButton26.setText("Print");
+        jButton26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton26.setIconTextGap(6);
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FinalDueToAllFactorLayout = new javax.swing.GroupLayout(FinalDueToAllFactor);
         FinalDueToAllFactor.setLayout(FinalDueToAllFactorLayout);
         FinalDueToAllFactorLayout.setHorizontalGroup(
             FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FinalDueToAllFactorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1075, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FinalDueToAllFactorLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1076, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FinalDueToAllFactorLayout.createSequentialGroup()
+                        .addComponent(jButton26)
+                        .addGap(493, 493, 493))))
+            .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
+                .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backbtnfunction4)
                     .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                        .addComponent(backbtnfunction4)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                    .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                            .addGap(482, 482, 482)
-                            .addComponent(jButton4))
-                        .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(jLabel22)))
-                    .addContainerGap(532, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel22)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         FinalDueToAllFactorLayout.setVerticalGroup(
             FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FinalDueToAllFactorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(backbtnfunction4)
-                .addGap(101, 101, 101)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
-            .addGroup(FinalDueToAllFactorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FinalDueToAllFactorLayout.createSequentialGroup()
-                    .addGap(100, 100, 100)
-                    .addComponent(jLabel22)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 531, Short.MAX_VALUE)
-                    .addComponent(jButton4)
-                    .addContainerGap()))
+                .addGap(73, 73, 73)
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         card.add(FinalDueToAllFactor, "finalDueAllFactor");
@@ -1058,31 +1111,8 @@ public class Index extends javax.swing.JFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Control Structure");
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Line NO", "Program Statement", "Wtcs", "Nc", "Ccpps", "Ccs"
-            }
-        ));
+        jTable5.setModel(this.lineComplexityTableModel);
         jScrollPane6.setViewportView(jTable5);
-
-        jButton5.setText("Print PDF");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         backbtnfunction5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
         backbtnfunction5.addActionListener(new java.awt.event.ActionListener() {
@@ -1091,42 +1121,109 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setBackground(new java.awt.Color(153, 255, 255));
+        jButton12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(0, 0, 255));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pdf.png"))); // NOI18N
+        jButton12.setText("Print");
+        jButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton12.setIconTextGap(6);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel21.setText("Total Ccs :");
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("Ccspps :");
+
+        jLabel53.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel27.setText("NC :");
+
+        jLabel54.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel55.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel55.setText("Wtcs :");
+
         javax.swing.GroupLayout ControlStructureFinalLayout = new javax.swing.GroupLayout(ControlStructureFinal);
         ControlStructureFinal.setLayout(ControlStructureFinalLayout);
         ControlStructureFinalLayout.setHorizontalGroup(
             ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel55)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(backbtnfunction5))
-                .addContainerGap(141, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                            .addGap(436, 436, 436)
-                            .addComponent(jButton5))
-                        .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(590, Short.MAX_VALUE)))
+                .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(480, 480, 480))
         );
         ControlStructureFinalLayout.setVerticalGroup(
             ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(backbtnfunction5)
-                .addGap(112, 112, 112)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
-            .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ControlStructureFinalLayout.createSequentialGroup()
-                    .addGap(111, 111, 111)
-                    .addComponent(jLabel24)
-                    .addGap(308, 308, 308)
-                    .addComponent(jButton5)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(77, 77, 77)
+                .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(ControlStructureFinalLayout.createSequentialGroup()
+                        .addGroup(ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ControlStructureFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
         );
 
         card.add(ControlStructureFinal, "controlStuctureFinal");
@@ -1440,17 +1537,14 @@ public class Index extends javax.swing.JFrame {
 
         card.add(viewcs, "viewcs");
 
-        jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 28)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 0, 0));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Overall Code Complexity");
 
         jLabel33.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText(" Java / C++ Files :");
-
-        viewcombobox2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        viewcombobox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         jLabel34.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1466,9 +1560,30 @@ public class Index extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane11.setViewportView(jTextArea2);
 
+        backbtnoverall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        backbtnoverall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnoverallActionPerformed(evt);
+            }
+        });
+
+        jButton27.setBackground(new java.awt.Color(0, 204, 0));
+        jButton27.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton27.setForeground(new java.awt.Color(255, 255, 255));
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/show.png"))); // NOI18N
+        jButton27.setText("Show Details");
+        jButton27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton27.setIconTextGap(6);
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
+
         jButton10.setBackground(new java.awt.Color(0, 0, 255));
         jButton10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calculate.png"))); // NOI18N
         jButton10.setText("Calculate");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -1477,39 +1592,37 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        backbtnoverall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
-        backbtnoverall.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backbtnoverallActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout viewoverallLayout = new javax.swing.GroupLayout(viewoverall);
         viewoverall.setLayout(viewoverallLayout);
         viewoverallLayout.setHorizontalGroup(
             viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewoverallLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(469, 469, 469))
             .addGroup(viewoverallLayout.createSequentialGroup()
                 .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewoverallLayout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(viewoverallLayout.createSequentialGroup()
-                        .addGap(500, 500, 500)
-                        .addComponent(jButton10))
-                    .addGroup(viewoverallLayout.createSequentialGroup()
                         .addGap(276, 276, 276)
                         .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(viewoverallLayout.createSequentialGroup()
                         .addComponent(backbtnoverall)
                         .addGap(345, 345, 345)
-                        .addComponent(jLabel32)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                        .addComponent(jLabel32))
+                    .addGroup(viewoverallLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         viewoverallLayout.setVerticalGroup(
             viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1519,22 +1632,30 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(viewoverallLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel32)))
-                .addGap(32, 32, 32)
-                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewcombobox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel34)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewoverallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel33)
+                        .addComponent(jLabel34)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jButton10)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         card.add(viewoverall, "viewoverall");
 
         jTextField4.setEditable(false);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel35.setText("Java/C++");
@@ -1571,23 +1692,13 @@ public class Index extends javax.swing.JFrame {
         jTable9.getTableHeader().setReorderingAllowed(false);
         jScrollPane13.setViewportView(jTable9);
 
-        jButton11.setBackground(new java.awt.Color(0, 51, 255));
-        jButton11.setText("Save");
-
-        jButton12.setBackground(new java.awt.Color(0, 51, 255));
-        jButton12.setText("Calculate");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         jTextField5.setEditable(false);
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel36.setText("No of Lines");
 
-        jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 0, 0));
         jLabel37.setText("Code Complexcity Due to Control Structure");
 
         backbtnviewcs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
@@ -1598,36 +1709,87 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "file.java", "file.cpp" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton25.setBackground(new java.awt.Color(0, 51, 255));
+        jButton25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(255, 255, 255));
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calculate.png"))); // NOI18N
+        jButton25.setText("Calculate");
+        jButton25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton25.setIconTextGap(6);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton24.setBackground(new java.awt.Color(0, 204, 0));
+        jButton24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton24.setForeground(new java.awt.Color(255, 255, 255));
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/show.png"))); // NOI18N
+        jButton24.setText("Show Details");
+        jButton24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton24.setIconTextGap(6);
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setBackground(new java.awt.Color(0, 51, 255));
+        jButton11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save.png"))); // NOI18N
+        jButton11.setText("Save");
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.setIconTextGap(6);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlStructureCalculationLayout = new javax.swing.GroupLayout(controlStructureCalculation);
         controlStructureCalculation.setLayout(controlStructureCalculationLayout);
         controlStructureCalculationLayout.setHorizontalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createSequentialGroup()
                 .addComponent(backbtnviewcs1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane13)
-                                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50)
-                            .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane13)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
                         .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                                .addGap(319, 319, 319)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                                .addGap(320, 320, 320)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(54, 54, 54))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(54, 54, 54))
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGap(347, 347, 347)
+                        .addComponent(jButton25)
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton24))
+                    .addGroup(controlStructureCalculationLayout.createSequentialGroup()
+                        .addGap(470, 470, 470)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         controlStructureCalculationLayout.setVerticalGroup(
             controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1640,21 +1802,25 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(controlStructureCalculationLayout.createSequentialGroup()
-                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(controlStructureCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         card.add(controlStructureCalculation, "controlStructureCalculation");
@@ -2508,15 +2674,48 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_singleFileActionPerformed
 
     private void choosebtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtn1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
+        /*JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        String filename = f.getAbsolutePath();
-        choosetxtarea.setText(filename);
+        filename = f.getAbsolutePath();
+        choosetxtarea.setText(filename);*/
+        
+        //Multiple File chooser
+        
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Select Folder");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            foldername = chooser.getSelectedFile().toString();
+        } else {
+        }
+
+        File folder = new File(foldername);
+        File[] listOfFiles = folder.listFiles();
+
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                if (file.getPath().endsWith(".java")) {
+                    folderPathList.add(file.getPath());
+                }
+            }
+        }
+
+        System.out.println(folderPathList);
     }//GEN-LAST:event_choosebtn1ActionPerformed
 
     private void uploadbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtn1ActionPerformed
+        uploadbtn1.setVisible(true);        
+        
+        if(foldername.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please Select Folder !");
+          }else{
             cardLayout.show(card, "functions");
+        }
     }//GEN-LAST:event_uploadbtn1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2534,14 +2733,6 @@ public class Index extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
@@ -2663,10 +2854,6 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        cardLayout.show(card,"finalDueAllFactor");
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void backbtnoverallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnoverallActionPerformed
         cardLayout.show(card, "functions");
     }//GEN-LAST:event_backbtnoverallActionPerformed
@@ -2674,10 +2861,6 @@ public class Index extends javax.swing.JFrame {
     private void viewcombobox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewcombobox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_viewcombobox1ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        cardLayout.show(card, "controlStuctureFinal");
-    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void backbtnviewcs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnviewcs1ActionPerformed
         cardLayout.show(card, "functions");
@@ -3054,7 +3237,8 @@ public class Index extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton19ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+
+   private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
        
         DefaultTableModel tblModel = (DefaultTableModel)jTable12.getModel();
         
@@ -3077,6 +3261,264 @@ public class Index extends javax.swing.JFrame {
         ncdtv_w = Integer.parseInt(tblModel.getValueAt(3, 1).toString());
                
     }//GEN-LAST:event_jButton21ActionPerformed
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        //loadTable(Control_Structure.getInstance().getComplexity(jComboBox1.getSelectedItem().toString()));
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+     
+        Control_Structure cs = new Control_Structure();
+        Control_Structure_cpp cpp = new Control_Structure_cpp();
+
+        this.lineComplexityTableModel.addColumn("Line no");
+        this.lineComplexityTableModel.addColumn("Program statements");
+        this.lineComplexityTableModel.addColumn("Wtcs");
+        this.lineComplexityTableModel.addColumn("NC");
+        this.lineComplexityTableModel.addColumn("Ccspps");
+        this.lineComplexityTableModel.addColumn("Ccs");
+
+        int ifWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(0, 1).toString());
+        int iterateWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(1, 1).toString());
+        int switchWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(2, 1).toString());
+        int caseWeight = Integer.parseInt(this.jTable9.getModel().getValueAt(3, 1).toString());
+
+        Stack ccsStack = new Stack();
+        int currentCcs = 0;
+        int totalCcs = 0;
+        int totalCcspps = 0;
+        int totalNC = 0;
+        int totalWtcs = 0;
+
+        //Java Calculation
+        if(choosetxt.getText().contains("java")){
+
+            for(LineComplexity lineObj : lineComplexityList)
+            {
+                String codeSegment = cs.getControllerCodeSegment(lineObj.statement);
+                String type = cs.getControlStructureType(codeSegment);
+                int closingTagCount = cs.numberOfClosingTags(lineObj.statement);
+                int openingTagCount = cs.numberOfOpeningTags(lineObj.statement);
+                System.out.println(codeSegment);
+
+                if (closingTagCount > 0) {
+                    for (int i = 0;i<closingTagCount;i++){
+                        currentCcs = (int) ccsStack.pop();
+                    }
+
+                }
+                // if a case or default add open close tags
+                if(type.equalsIgnoreCase("case")||type.equalsIgnoreCase("default")){
+                    currentCcs = (int) ccsStack.pop();
+                }
+                if (type.isEmpty()) {
+                    if (openingTagCount > 0) {
+                        for (int i = 0;i<openingTagCount;i++){
+                            ccsStack.push(currentCcs);
+                        }
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, null, null, null, 0});
+                } else {
+                    int weight = cs.getWeight(type, ifWeight, iterateWeight, switchWeight, caseWeight);
+                    int nc = cs.getNumberOfConditions(codeSegment);
+                    int ccpps = (int)ccsStack.lastElement();
+                    int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
+                    currentCcs = ccs;
+                    if (openingTagCount > 0) {
+                        for (int i = 0;i<openingTagCount;i++){
+                            ccsStack.push(currentCcs);
+                        }
+                    }
+                    // if a switch structure, add a ccs manually
+                    if(type.equalsIgnoreCase("switch")){
+                        ccsStack.push(currentCcs);
+                    }
+                    if(type.equalsIgnoreCase("case")||type.equalsIgnoreCase("default")){
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, weight, nc, ccpps, ccs});
+                }
+
+            }
+
+        //C++ Calculation
+        }else{
+
+            for(LineComplexity lineObj : lineComplexityList)
+            {
+                String type = cpp.getControlStructureType(lineObj.statement);
+                int closingTagCount = cpp.numberOfClosingTags(lineObj.statement);
+                int openingTagCount = cpp.numberOfOpeningTags(lineObj.statement);
+                System.out.println(lineObj.statement);
+
+                if (closingTagCount > 0) {
+                    for (int i = 0;i<closingTagCount;i++)
+                    currentCcs = (int) ccsStack.pop();
+                }
+                if (type.isEmpty()) {
+                    if (openingTagCount > 0) {
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, null, null, null, 0});
+                } else {
+                    int weight = cpp.getWeight(type, ifWeight, iterateWeight, switchWeight, caseWeight);
+                    int nc = cpp.getNumberOfConditions(lineObj.statement);
+                    int ccpps = (int)ccsStack.lastElement();
+                    int ccs = (weight*nc)+ccpps;
+                    totalCcs += ccs;
+                    totalCcspps += ccpps;
+                    totalNC += nc;
+                    totalWtcs += weight;
+                    currentCcs = ccs;
+                    if (openingTagCount > 0) {
+                        ccsStack.push(currentCcs);
+                    }
+                    this.lineComplexityTableModel.addRow(new Object[]{lineObj.lineNumber, lineObj.statement, weight, nc, ccpps, ccs});
+                }
+
+            }
+
+        }
+
+        // Total Complexity count
+        jLabel19.setText(String.valueOf(totalCcs));
+        jLabel25.setText(String.valueOf(totalCcspps));
+        jLabel53.setText(String.valueOf(totalNC));
+        jLabel54.setText(String.valueOf(totalWtcs));
+
+        cardLayout.show(card, "controlStuctureFinal");
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        jButton24.setVisible(false);
+        jButton25.setVisible(true);
+
+        if(choosetxt.getText().contains("java")){
+            jTextField4.setText("Java");
+        }else{
+            jTextField4.setText("C++");
+        }
+
+        try {
+
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+            int lineCount = 0;
+
+            while (scanner.hasNextLine()) {
+                String lineStatement = scanner.nextLine();
+                jTextArea3.setText(jTextArea3.getText() + "\n" + lineStatement  );
+                lineCount++;
+
+                LineComplexity lineObj = initLineObj(lineStatement, lineCount);
+                this.lineComplexityList.add(lineObj);
+            }
+
+            jTextField5.setText(Integer.toString(lineCount) );
+            scanner.close();
+
+            fillArray( controlstruc.size());
+            for(int count = 0 ; count < controlstruc.size() ; count++){
+                getAmount(controlstruc.get(count)); //serachInderectInheritence(classes.get(count));
+            }
+            for(int countC = 0 ; countC < controlstruc.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                    IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private LineComplexity initLineObj(String lineStatement, int lineCount) {
+        LineComplexity lineObj = new LineComplexity();
+        lineObj.lineNumber = lineCount;
+        lineObj.statement = lineStatement;
+        return lineObj;
+    }
+    
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        
+        if (jTable9.isEditing())
+        jTable9.getCellEditor().stopCellEditing();
+
+        JOptionPane.showMessageDialog(this, "Input Values Added Succesfully.");
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        try {
+            jTable5.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void uploadbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadbtn2ActionPerformed
+        /*if(choosetxt.getText().contains("zip")){
+            Unzip();
+        }else{
+            return;
+        }*/
+    }//GEN-LAST:event_uploadbtn2ActionPerformed
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        jButton27.setVisible(false);
+        jButton10.setVisible(true);
+
+        if(choosetxt.getText().contains("java")){
+            jLabel3.setText("Java");
+        }else{
+            jLabel3.setText("C++");
+        }
+
+        try {
+
+            Scanner scanner = new Scanner(new File(choosetxt.getText()));
+            int lineCount = 0;
+
+            while (scanner.hasNextLine()) {
+                String lineStatement = scanner.nextLine();
+                jTextArea2.setText(jTextArea2.getText() + "\n" + lineStatement  );
+                lineCount++;
+
+                LineComplexity lineObj = initLineObj(lineStatement, lineCount);
+                this.lineComplexityList.add(lineObj);
+            }
+
+            jTextField3.setText(Integer.toString(lineCount) );
+            scanner.close();
+
+            fillArray( controlstruc.size());
+            for(int count = 0 ; count < controlstruc.size() ; count++){
+                getAmount(controlstruc.get(count)); //serachInderectInheritence(classes.get(count));
+            }
+            for(int countC = 0 ; countC < controlstruc.size() ; countC++){
+                if ( IndirectInheritence.get(countC) != 0){
+                    IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        cardLayout.show(card,"finalDueAllFactor");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        
+    }//GEN-LAST:event_jButton26ActionPerformed
+
 
     
    
@@ -3169,13 +3611,16 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3184,14 +3629,21 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -3217,6 +3669,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -3294,13 +3749,22 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel threeInOne;
     private javax.swing.JButton uploadbtn;
     private javax.swing.JButton uploadbtn1;
+    private javax.swing.JButton uploadbtn2;
     private javax.swing.JRadioButton variable;
     private javax.swing.JPanel variableCalculation;
     private javax.swing.JComboBox<String> viewcombobox1;
-    private javax.swing.JComboBox<String> viewcombobox2;
     private javax.swing.JPanel viewcs;
     private javax.swing.JPanel viewoverall;
     // End of variables declaration//GEN-END:variables
 
     
+}
+
+class  LineComplexity {
+    int lineNumber;
+    String statement;
+    int wtcs;
+    int nc;
+    int ccspps;
+    int ccs;
 }
