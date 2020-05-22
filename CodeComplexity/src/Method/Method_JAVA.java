@@ -12,7 +12,7 @@ public class Method_JAVA {
     ArrayList<String> lines;
     ArrayList<Integer> CmUnit;
     ArrayList<Integer> WPCRT;
-    //ArrayList<Integer> NCRT;
+    ArrayList<Integer> NCRT;
     ArrayList<Integer> VOID;
     ArrayList<Integer> NPDTP;
     ArrayList<Integer> NCDTP;
@@ -46,7 +46,7 @@ public class Method_JAVA {
         tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
         CmUnit = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         WPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
- //       NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         VOID = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         NPDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         NCDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
@@ -61,7 +61,7 @@ public class Method_JAVA {
         tokens = new ArrayList<>(Collections.nCopies(lines.size(), ""));
         CmUnit = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         WPCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
- //       NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
+        NCRT = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         VOID = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         NPDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
         NCDTP = new ArrayList<>(Collections.nCopies(lines.size(), 0));
@@ -73,9 +73,9 @@ public class Method_JAVA {
     private void CalculateCM() {
          for (int i = 0; i < lines.size(); i++) {
             CalculateWPCRT(lines.get(i), i);
-//            CalculateNCRT(lines.get(i), i);
-  //          CalculateNPDTP(lines.get(i), i);
-//            CalculateNCDTP(lines.get(i), i);
+  //          CalculateNCRT(lines.get(i), i);
+            CalculateNPDTP(lines.get(i), i);
+            CalculateNCDTP(lines.get(i), i);
         }
         CalculateTotal();
     }
@@ -118,16 +118,22 @@ public class Method_JAVA {
         
         int count = 0;
         while (matcher_1.find()) {
-            matcherP1.add(matcher_1.group());
             
+            
+            String match = matcher_1.group();
+   //         System.out.println(match);
+//            matcherP1.add(matcher_1.group());
+//            matcherP1.add(matcher_1.group());
+//            
             Pattern pattern_2 = Pattern.compile(Parameter_2_REGEX);
-            Matcher matcher_2 = pattern_2.matcher(matcherP1.toString());
+            Matcher matcher_2 = pattern_2.matcher(match);
             
             while (matcher_2.find()){
-                matcherP2.add(matcher_2.group());
+                String match2 = matcher_2.group();
+    //            System.out.println(match2);
                 
                 Pattern pattern_3 = Pattern.compile(Parameter_3_REGEX);
-                Matcher matcher_3 = pattern_3.matcher(matcherP2.toString());
+                Matcher matcher_3 = pattern_3.matcher(match2);
                 
                 while(matcher_3.find()){
                     count++;
@@ -149,23 +155,27 @@ public class Method_JAVA {
         
         int count = 0;
         while (matcher_1.find()) {
-            matcherP1.add(matcher_1.group());
+            String match = matcher_1.group();
             
             Pattern pattern_2 = Pattern.compile(Parameter_2_REGEX);
-            Matcher matcher_2 = pattern_2.matcher(matcherP1.toString());
+            Matcher matcher_2 = pattern_2.matcher(match);
             
             while (matcher_2.find()){
-                matcherP2.add(matcher_2.group());
+                String match2 = matcher_2.group();
                 
                 Pattern pattern_3 = Pattern.compile(Parameter_3_REGEX);
-                Matcher matcher_3 = pattern_3.matcher(matcherP2.toString());
-                
-                while(matcher_3.find()){
-                     if(matcher_3.find() == true){
-                         return 0;
-                     }else{
+  //              System.out.println(match2);
+                String[] split1 = match2.split(",");
+               
+                for(int b = 0; b < split1.length ; b++){
+ //                System.out.println(split1[b]);
+                 Matcher matcher_3 = pattern_3.matcher(split1[b]);
+                  
+                    if(matcher_3.find()==false){
                          count++;
-                         AddToken(matcher_3.group(), lineNo);
+  //                       AddToken(matcher_3.group(), lineNo);
+                     }else{
+                        
                      }
                 }
             }  
@@ -204,6 +214,10 @@ public class Method_JAVA {
 
     public ArrayList<Integer> getNCDTP(){
         return NCDTP;
+    }
+    
+    public ArrayList<Integer> getCM(){
+        return CmUnit;
     }
     
 }
