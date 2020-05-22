@@ -38,6 +38,18 @@ import java.util.Stack;
 public class Index extends javax.swing.JFrame {
 
     
+    int val1 = 1;
+    int val2 = 1;
+    int val3 = 1;
+    int val4 = 1;
+    int val5 = 1;
+    
+    int value1 = 0;
+   int value2 ;
+   int value3 ;
+   int value4 ;
+   int value5 ;
+    
     /**
      * Creates new form Index
      */
@@ -265,7 +277,6 @@ public class Index extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         backbtnviewcs2 = new javax.swing.JButton();
         inheritanceCalculation = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         jScrollPane16 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
@@ -278,6 +289,8 @@ public class Index extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         backbtnviewcs3 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         threeInOne = new javax.swing.JPanel();
         backbtnviewcs4 = new javax.swing.JButton();
         subCard = new javax.swing.JPanel();
@@ -402,7 +415,6 @@ public class Index extends javax.swing.JFrame {
         choosebtn.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn.setText("Choose");
-        choosebtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -415,7 +427,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn.setText("Upload");
-        uploadbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -676,7 +687,6 @@ public class Index extends javax.swing.JFrame {
         choosebtn1.setBackground(new java.awt.Color(0, 204, 0));
         choosebtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         choosebtn1.setText("Choose");
-        choosebtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         choosebtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         choosebtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         choosebtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -689,7 +699,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn1.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn1.setText("Upload");
-        uploadbtn1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -714,7 +723,6 @@ public class Index extends javax.swing.JFrame {
         uploadbtn2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         uploadbtn2.setForeground(new java.awt.Color(255, 255, 255));
         uploadbtn2.setText("UnZip");
-        uploadbtn2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         uploadbtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         uploadbtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         uploadbtn2.addActionListener(new java.awt.event.ActionListener() {
@@ -916,7 +924,7 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MethodFinalLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(MethodFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -933,7 +941,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         card.add(MethodFinal, "methodFinal");
@@ -1126,7 +1134,6 @@ public class Index extends javax.swing.JFrame {
         jButton12.setForeground(new java.awt.Color(0, 0, 255));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pdf.png"))); // NOI18N
         jButton12.setText("Print");
-        jButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.setIconTextGap(6);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -1294,7 +1301,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 946, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         SizeFinalLayout.setVerticalGroup(
             SizeFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1304,7 +1311,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap())
@@ -1372,7 +1379,7 @@ public class Index extends javax.swing.JFrame {
                         .addGroup(VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         VariablesFinalLayout.setVerticalGroup(
             VariablesFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1382,7 +1389,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
                 .addContainerGap())
@@ -1958,8 +1965,6 @@ public class Index extends javax.swing.JFrame {
 
         card.add(couplingCalculation, "couplingCalculation");
 
-        jTextField8.setEditable(false);
-
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel41.setText("Java/C++");
 
@@ -1998,6 +2003,11 @@ public class Index extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(0, 51, 255));
         jButton15.setText("Save");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setBackground(new java.awt.Color(0, 51, 255));
         jButton16.setText("Calculate");
@@ -2030,6 +2040,15 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JAVA", "C++" }));
+
         javax.swing.GroupLayout inheritanceCalculationLayout = new javax.swing.GroupLayout(inheritanceCalculation);
         inheritanceCalculation.setLayout(inheritanceCalculationLayout);
         inheritanceCalculationLayout.setHorizontalGroup(
@@ -2038,30 +2057,34 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backbtnviewcs3)
                 .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                            .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane17)
-                                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50)
-                            .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inheritanceCalculationLayout.createSequentialGroup()
+                        .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane17)
+                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(71, 71, 71))
                     .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                         .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                                 .addGap(317, 317, 317)
                                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(inheritanceCalculationLayout.createSequentialGroup()
-                                .addGap(337, 337, 337)
+                                .addGap(207, 207, 207)
                                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(137, 137, 137)
                                 .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(360, 360, 360)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         inheritanceCalculationLayout.setVerticalGroup(
             inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2075,18 +2098,24 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inheritanceCalculationLayout.createSequentialGroup()
                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGroup(inheritanceCalculationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(inheritanceCalculationLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2545,7 +2574,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 1092, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
@@ -2557,7 +2586,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(97, 97, 97)
-                    .addComponent(card, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(card, javax.swing.GroupLayout.PREFERRED_SIZE, 690, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -2585,7 +2614,7 @@ public class Index extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        filename = f.getAbsolutePath();
+       filename = f.getAbsolutePath();
         choosetxt.setText(filename);
     }//GEN-LAST:event_choosebtnActionPerformed
 
@@ -2899,24 +2928,45 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-        
+               DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+
         model.addColumn("Class Name" ,classes.toArray());
-         model.addColumn("Direct Inheritence" ,directInheritence.toArray());
-          model.addColumn("Indirect Inheritence" ,IndirectInheritence.toArray());
+        model.addColumn("Direct Inheritence" ,directInheritence.toArray());
+        model.addColumn("Indirect Inheritence" ,IndirectInheritence.toArray());
         for(int y = 0 ; y < classes.size() ; y++) {
             Ti.add(directInheritence.get(y) + IndirectInheritence.get(y));
         }
-         model.addColumn("Ti" ,Ti.toArray());
+        model.addColumn("Ti" ,Ti.toArray());
+        int value = 0;
         for(int h = 0 ; h < classes.size() ; h++) {
-           if(Ti.get(h) <= 3) {
-               Ci.add(Ti.get(h));
-           }
-           else {
-               Ci.add(4);
-           }
-        }
-         model.addColumn("Ci" ,Ti.toArray());
+            if(Ti.get(h) == 0) {
+                value = (Ti.get(h) * val1);
+                System.err.println(value);
+               
+            }
+            if(Ti.get(h) == 1) {
+                 value = (Ti.get(h) * val2);
+                System.err.println(value);
+               
+            }
+            if(Ti.get(h) == 2) {
+                value = (Ti.get(h) * val3);
+                System.err.println(value);
+                
+            }
+            if(Ti.get(h) == 3) {
+                 value = (Ti.get(h) * val4);
+                System.err.println(value);
+                
+            }
+            if(Ti.get(h) == 4) {
+                value = (Ti.get(h) * val5);
+                System.err.println(value);
+                
+            }
+             Ci.add(value);
+            }
+       model.addColumn("Ci" ,Ci.toArray());
         cardLayout.show(card, "inheritanceFinal");
     }//GEN-LAST:event_jButton16ActionPerformed
 
@@ -3113,53 +3163,179 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnfunction7ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        jButton23.setVisible(false);
-        jButton14.setVisible(true);
-        
-        try {
-           
-            Scanner scanner = new Scanner(new File(choosetxt.getText()));
-             int cout = 0;
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                jTextArea5.setText(jTextArea5.getText() + "\n" + line  );
-                cout++;
-		//System.out.println(scanner.nextLine().split(" "));
-		//String[] words = scanner.nextLine().split(" ");
-		//chr.checkWord(words);
-                String[] words = line.split(" " ) ;
-              
-                printFunction(words);
-                
-            }
-            jTextField9.setText(Integer.toString(cout) );
-           
-            
-            scanner.close();
-            
-            fillArray( classes.size());
-            for(int count = 0 ; count < classes.size() ; count++){
-                getAmount(classes.get(count)); //serachInderectInheritence(classes.get(count));
-             }
-             for(int countC = 0 ; countC < classes.size() ; countC++){
-                if ( IndirectInheritence.get(countC) != 0){
-                     IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
-                }
+        String selectedLanguage =  (String) jComboBox2.getSelectedItem();
+       
+        if(selectedLanguage.equals("JAVA")) {
+             jButton23.setVisible(false);
+            jButton14.setVisible(true);
+
+            try {
+
+               
+                Scanner scanner = new Scanner(new File(choosetxt.getText()));
+                int cout = 0;
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    jTextArea5.setText(jTextArea5.getText() + "\n" + line  );
+                    cout++;
+                    //System.out.println(scanner.nextLine().split(" "));
+                    //String[] words = scanner.nextLine().split(" ");
+                    //chr.checkWord(words);
+                    String[] words = line.split(" " ) ;
+
+                  
                     
-             }
-             //serachInderectInheritence(classes.get(1));
-            System.out.println(classes);
-            System.out.println(directInheritence );
-            System.out.println(all);
-             System.out.println(IndirectInheritence);
-        } catch (Exception ex) {
-            System.out.println(ex);
+                    printFunction(words);
+                 
+                      
+
+                }
+                jTextField9.setText(Integer.toString(cout) );
+                scanner.close();
+
+                fillArray( classes.size());
+                for(int count = 0 ; count < classes.size() ; count++){
+                    getAmount(classes.get(count)); //serachInderectInheritence(classes.get(count));
+                }
+                for(int countC = 0 ; countC < classes.size() ; countC++){
+                    if ( IndirectInheritence.get(countC) != 0){
+                        IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                    }
+
+                }
+                //serachInderectInheritence(classes.get(1));
+                System.out.println(classes);
+                System.out.println(directInheritence );
+                System.out.println(all);
+                System.out.println(IndirectInheritence);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
         
+        if(selectedLanguage.equals("C++")) {
+              jButton23.setVisible(false);
+                jButton14.setVisible(true);
+
+                try {
+
+                    Scanner scanner = new Scanner(new File(choosetxt.getText()));
+                    int cout = 0;
+                    while (scanner.hasNextLine()) {
+                        String line = scanner.nextLine();
+                        jTextArea5.setText(jTextArea5.getText() + "\n" + line  );
+                        cout++;
+                        //System.out.println(scanner.nextLine().split(" "));
+                        //String[] words = scanner.nextLine().split(" ");
+                        //chr.checkWord(words);
+                        String[] words = line.split(" " ) ;
+
+                        printFunction2(words);
+
+                    }
+                    jTextField9.setText(Integer.toString(cout) );
+                    scanner.close();
+
+                    fillArray2( classes.size());
+                    for(int count = 0 ; count < classes.size() ; count++){
+                        getAmount2(classes.get(count)); //serachInderectInheritence(classes.get(count));
+                    }
+                    
+                    for(int countC = 0 ; countC < classes.size() ; countC++){
+                        if ( IndirectInheritence.get(countC) != 0){
+                            IndirectInheritence.set(countC , IndirectInheritence.get(countC) -1 );
+                        }
+
+                    }
+                    int first = 0;
+                    int last = IndirectInheritence.size() ;
+                      first = IndirectInheritence.get(last);
+                     for(int countC1 = 0 ; countC1 < IndirectInheritence.size() ; countC1++){
+                       
+                         System.err.println(IndirectInheritence.get(last) + ">" + IndirectInheritence.get(last-1) );
+                         IndirectInheritence.set((last ), IndirectInheritence.get(last - 1));
+                         last--;
+                         if(last == 1 ){
+                             break;
+                         }
+
+                    }
+                     IndirectInheritence.set(0, first);
+                    
+                    //serachInderectInheritence(classes.get(1));
+                    System.out.println(classes);
+                    System.out.println(directInheritence );
+                    System.out.println(all);
+                    System.out.println(IndirectInheritence);
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
+        }
         
-			
+       
+		
     }                                         
 
+     public void printFunction2(String agrWord[]) {
+            String sentence = "";
+            for ( int i = 0 ; i < agrWord.length ; i++) {
+
+                if(agrWord[i].equals("class") || agrWord[i].equals("Class")  ) {
+                    classes.add(agrWord[i+1]);
+                    for ( int j = 0 ; j < agrWord.length ; j++) {
+                        sentence =  sentence + " " + agrWord[j];
+                    }
+                    all.add(sentence);
+                    if(agrWord[i+2].equals(":") ) {
+                        
+                            directInheritence.add(1);
+                        
+
+                    }
+                    else {
+                        directInheritence.add(0);
+                    }
+
+                    countIndex++;
+
+                }
+
+            }
+        }
+       public void fillArray2(int i) {
+            for(int x = 0 ; x < i ; x++){
+                IndirectInheritence.add(0);
+            }
+        }
+
+       // int counter1 = 0;
+
+        int count31 = 0;
+    public void getAmount2(String s) {
+
+            for(int a  = 0 ; a < all.size() ; a++){
+                String[] words2 = all.get(a).split(" " ) ;
+                for(int b  = 0 ; b < words2.length ; b++){
+                    if(words2[b].equals("class") || words2[b].equals("Class")) {
+                        if(words2[b+1].equals(s)) {
+
+                            if(words2[b+2].equals(":")) {
+                           
+                                IndirectInheritence.set(count31 ,
+                                    IndirectInheritence.get(count31) + 1
+                                );
+                               getAmount2(words2[b+4]);
+                            }else {
+                                count31++;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+    } 
+    
    public void printFunction(String agrWord[]) {
         String sentence = "";
         for ( int i = 0 ; i < agrWord.length ; i++) {
@@ -3527,6 +3703,17 @@ public class Index extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton26ActionPerformed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+            val2 =  Integer.valueOf(  jTable11.getModel().getValueAt(0, 1).toString());
+            val3 =  Integer.valueOf(  jTable11.getModel().getValueAt(1, 1).toString());
+            val4 =  Integer.valueOf(  jTable11.getModel().getValueAt(2, 1).toString());
+            val5 =  Integer.valueOf(  jTable11.getModel().getValueAt(3, 1).toString());
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
 
     
    
@@ -3629,6 +3816,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3741,7 +3930,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JRadioButton method;
     private javax.swing.JPanel methodCalculation;
